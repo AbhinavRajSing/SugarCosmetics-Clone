@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Eye</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <style>
+        body{
+            margin:0;
+            padding:0;
+            font-family: 'Open Sans', sans-serif;font-size: small
+        }
+        .head-img{
+            width:80%;
+            height:280px;
+            margin:10px auto;
+        }
+        .head-img > img{
+            width:100%;
+            height:280px;
+        }
+        .main1{
+            /* border:1px solid black; */
+            width:80%;
+            height:50px;
+            margin:2px auto;
+
+        }
+        .main1{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .main2{
+            display: flex;
+            flex-direction: row;
+        }
+        .select{
+            border:none;
+            background:transparent;
+        }
+        .show{
+            color:grey;
+            font-size: smaller;
+            margin:17px
+        }
+        .btn1{
+            border:none;
+            background: transparent;
+        }
+        .btn1:focus{
+            outline:none;
+
+        }
+        .btn1:hover{
+            color:darkgray;
+            transition: all 0.2s ease-in;
+        }
+        .select:focus{
+            outline:none;
+        }
+
+        .main{
+            display:flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width:80%;
+            margin:5px auto;
+            /* border: 1px solid black; */
+        }
+        .cards{
+            width:22%;
+            height:350px;
+            /* border:1px solid black; */
+            margin:5px 30px 5px 2px;
+        }
+        .cards > img{
+            width:100%;
+            height:300px;
+            margin:0px
+        }
+        .title{
+            text-align: center;
+            /* border:1px solid black; */
+            height:40px;
+            font-weight:900;
+            color:black
+        }
+        #main2{
+            display:none;
+            width:80%
+        }
+        /* .list{
+            display:flex;
+            flex-direction:column
+        } */
+        .cards1{
+            width:100%;
+            height:350px;
+            /* border:1px solid black; */
+            margin:5px 30px 5px 2px;
+            display:flex;
+            flex-direction: row;
+            justify-content: space-between;
+            /* border:1px solid black */
+        }
+        .cards1 > img{
+            width:22%;
+            height:300px;
+            margin:0px
+        }
+        .cards1 > title{
+            margin:5px 0px
+        }
+        .title1{
+            /* border:1px solid black; */
+            font-weight: bolder;
+            width:50%;
+            text-align:center;
+        }
+        .price{
+            /* border:1px solid black; */
+            width:30%;
+            text-align: center;
+            padding:10px;
+            color:rgb(252,40,121)
+            
+        }
+        
+        .cart{
+            border:none;
+            background-color: rgb(252,40,121);
+            color:white;
+            width:30%;
+            height:30px
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="main1">
+        <p style="font-family: 'Open Sans', sans-serif;font-size: small;"><a href=""><i class="fa fa-home" style="font-size:20px;color: black;"></i></a> Home/Lips</p>
+        <div class="main2">
+            <p class="show">Showing all Results </p>
+            <select class="select">
+                <option>Filter</option>
+                <option id="az">Alphabetically, A-Z</option>
+                <option id="za">Alphabetically, Z-A</option>
+                <option id="lh">Price, low to high</option>
+                <option id="hl">Price, high to low</option>
+            </select>
+            <button class="btn1" id="grid"><i class="fa fa-th" style="font-size:20px"></i></button>
+            <button class="btn1" id="list"><i class="fa fa-th-list" style="font-size:20px"></i></button>
+        </div>
+    </div>
+    <!-- <div id = "cmain1"> -->
+        <div class="main" id="main">
+
+        </div>
+    <!-- </div> -->
+    
+    <!-- <div id="cmain2"> -->
+        <div class="main" id ="main2">
+
+        </div>
+    <!-- </div> -->
+   
+
+
+     <script> 
+        let list = document.getElementById("list").addEventListener("click",getItemlist)
+        let grid = document.getElementById("grid").addEventListener("click",getItemgrid)
+        // let az = document.getElementById("grid").addEventListener("click",getItemg)
+        // let za = document.getElementById("grid").addEventListener("click",getItemg)
+        // let lh = document.getElementById("grid").addEventListener("click",getItemg)
+        // let hl = document.getElementById("grid").addEventListener("click",getItemg) -->
+        
+        window.addEventListener("load",execute)
+
+        function execute(e){
+            e.preventDefault();
+            getItem()
+        }
+
+        let main1 = document.getElementById("main")
+        let main2 = document.getElementById("main2")
+        function getItem(){
+            let url = `http://localhost:3000/eye`
+
+            let xhr = new XMLHttpRequest()
+            xhr.open('GET', url)
+            xhr.onload = () => {
+                if(xhr.status === 200){
+                    let res = JSON.parse(xhr.response)
+                    console.log(res)
+                    let html =""
+                    let html1 =""
+                    for(i in res){
+                        html+=`<div class="cards">
+                                
+                                    <img src=${res[i].img}/>
+                                <div class="title">
+                                    <p style="margin:0px;">${res[i].title}</p>
+                                    <p style="margin:0px;">₹${res[i].price}</p>
+                                </div>
+                            </div>`
+                            html1+=`
+                            <div class="cards1">
+                                
+                                <img src=${res[i].img}/>
+                            <div class="title1">
+                                <p style="margin:0px;">${res[i].title}</p>
+                            </div>
+                            <div class="price">
+                                
+                                    <p><s>₹${res[i].mrp}</s> - ₹${res[i].price}</p>
+                                    <button id="cart" class="cart">Add to Cart</button>
+                                
+                                
+                            </div>
+                        </div>`
+                           main1.innerHTML = html
+                            main2.innerHTML = html1
+                    }
+                }
+            }
+            xhr.send()
+        }
+        
+
+
+    //    let cmain1 = document.getElementById("cmain1")
+    //    let cmain2 = document.getElementById("cmain2")
+
+        function getItemlist(){
+            main2.style.display="block"
+            main2.style.direction="row"
+            main1.style.display="none"
+            console.log(1)
+
+        }
+
+        function getItemgrid(){
+            main2.style.display="none"
+            main1.style.display="flex"
+            console.log(2)
+        }
+
+    </script>
+</body>
+</html>
