@@ -1,6 +1,6 @@
 /* ---------------------------------------------Header Code starts here----------------------------------------------- */
 body{
-    margin: 0%;
+    margin: 0;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -367,3 +367,139 @@ body{
 }
 
 /* ---------------------------------------------Footer Code Ends here----------------------------------------------- */
+
+/* ---------------------------------------------LandingPage Code Ends here----------------------------------------------- */
+
+.mySlides{
+    display: none;
+    /* border: 1px solid black; */
+}
+
+.slideshow__container{
+    max-width: 100%;
+    margin: auto;
+    /* border: 1px solid black; */
+}
+
+.dot{
+    cursor: pointer;
+    height: 12px;
+    width: 12px;
+    background-color: #bbb;
+    border-radius: 50%;
+    margin-right: 1%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover{
+    background-color: #000000;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+#diaplayFData, #diaplayJustInData{
+    display: flex;
+    flex-wrap: wrap;
+    /* border: 1px solid black; */
+    width: 95%;
+    height: auto;
+
+}
+
+.displayCard{
+    width: 22%;
+    height: 300px;
+    /* border: 1px solid black; */
+    margin-bottom: 2%;
+    margin-left: 2%;
+}
+
+.display__Featured>p, .display__Clearance>p, .display__JustIn__page{
+    text-align: center;
+    font-size: 25px;
+    letter-spacing: 1px;
+}
+
+.display__Featured__page, #display__Clearance__page, .display__JustIn__page{
+    display: flex;
+}
+
+.display__Featured__page>button, .display__JustIn__page>button{
+    height: 20%;
+    padding: 20px;
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    font-size: 20px;
+    /* border: 1px solid black; */
+    margin-top: 8%;
+}
+
+.display__Featured__page>button:hover, .display__JustIn__page>button:hover{
+    background-color: black;
+    color: white;
+}
+
+.lineX{
+    display: flex;
+    width: 10%;
+    height: 20px;
+    /* border: 1px solid black; */
+    margin: auto;
+    margin-top: 0%;
+    color: #D7D7D7;
+}
+
+.lineXClear, .lineXIn{
+    display: flex;
+    width: 10%;
+    height: 20px;
+    /* border: 1px solid black; */
+    margin-top: 0%;
+    color: #D7D7D7;
+    margin-left: 46.5%;
+}
+
+.lineX>div:nth-child(1), .lineX>div:nth-child(3), .lineXClear>div:nth-child(1), .lineXClear>div:nth-child(3),
+.lineXIn>div:nth-child(1), .lineXIn>div:nth-child(3){
+    width: 50px;
+    height: 2px;
+    background-color: #D7D7D7;
+    margin-top: 10%;
+}
+
+.displaySearchItem{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#display__Adds{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.adds__Cards{
+    width: 45%;
+    height: 350px;
+    /* border: 1px solid black; */
+    margin: auto;
+    margin-bottom: 2%;
+    margin-top: 5%;
+    cursor: pointer;
+}
+
+.clear__Cards{
+    width: 15%;
+    height: 300px;
+    border: 1px solid black;
+    margin-bottom: 2%;
+    margin-left: 1.2%;
+    margin-top: 2%;
+}
+
+/* ---------------------------------------------LandingPage Code Ends here----------------------------------------------- */
