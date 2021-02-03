@@ -47,14 +47,14 @@ function displayData(data){
         let title = data[i].title
         let mrp = data[i].mrp
         let price = data[i].price
-        console.log(data)
+        // console.log(data)
         html += `                
         <div class="displayCard" id=${data[i].id} onClick="testClick(this)" onmouseover="showItemsOnCard(this)" 
         onmouseout="removeItemsOnCard(this)">
             <div class="productImage"><img class="img" src="${img}" alt=""></div>
             <div class="productTitle"><label id="titleUnderline">${title}</label></div>
-            <div class="flat">Hi</div>
-            <div class="plain">Hello</div>
+            <div class="flat" id="${data[i].id}" onClick="addToWishList(this)"><i class="far fa-heart"></i></div>
+            <div class="plain" id="${data[i].id}" onClick="viewProductModal(this)"><i class="fas fa-search-plus"></i></div>
             <div class="productFinalSalePrice">
                 <div class="productActualPrice"><label id="priceStriked">Rs. ${mrp}</label></div>
                 <div class="productSalePrice">Rs. ${price}</div>
@@ -65,9 +65,85 @@ function displayData(data){
     }
 }
 
-function showItemsOnCard(val){
-    let id = val.id
+//---------------------------------------Featured pagination ends here-------------------------------------------//
+
+//---------------------------------------Add to wishList starts here-------------------------------------------//
+function addToWishList(pID){
+    let id = pID.id
     console.log(id)
+}
+//---------------------------------------Add to wishList ends here-------------------------------------------//
+//---------------------------------------Product view modal starts here-------------------------------------------//
+function viewProductModal(pID){
+    let id = pID.id
+    console.log(id)
+    fetch(`http://localhost:3000/combined?id=${id}`).then(res => res.json()).then(data => diaplayModalData(data)).catch((Error) => console.log(Error))
+}
+
+function diaplayModalData(val){
+
+    console.log(val)
+    let html = ""
+    let title = val[0].title
+    let img = val[0].img
+    let mrp = val[0].mrp
+    let price = val[0].price
+
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("myBtn");
+    var span = document.getElementsByClassName("close")[0];
+    modal.style.display = "block";
+    html+= `
+        <div class="modalMainContainer">
+            <div>
+                <img class="img" src="${img}" alt="${title}">
+            </div>
+            <div>
+            <div class="modalTitle"><label>${title}</label></div>
+                <div class="modalPrice">
+                    <div>${mrp}</div>
+                    <div>${price}</div>
+                </div>
+                <div class="modalPNumber">
+                    <button class="minus">-</button>
+                    <input type="text" class="quan" value="1">
+                    <button class="plus">+</button>
+                </div>
+                <div class="modalAddBtn">
+                    <button class="addCartBtnModal">ADD TO CART</button>
+                </div>
+                <div class="modalAddwishlist">
+                    <i class="far fa-heart">Add to Wishlist</i>
+                </div>
+                <div class="modalBanner">
+                    <img class="img" src="//cdn.shopify.com/s/files/1/0906/2558/files/SUGAR_Trust_Seal_473x.progressive.jpg?v=1597728764" alt="">
+                </div>
+            </div>
+        </div>
+    `
+
+    document.getElementById("modalData").innerHTML = html
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+    modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+}
+
+
+//---------------------------------------Product view modal ends here-------------------------------------------//
+//---------------------------------------whishlist and product view starts here-------------------------------------------//
+
+function showItemsOnCard(val){
+    let ide = val.id
+    // console.log(ide.dataset)
     let elem = document.getElementsByClassName("flat");
     for(let i = 0; i <elem.length; i+=1){
         elem[i].style.display = "block"
@@ -91,16 +167,15 @@ function removeItemsOnCard(val){
         elemes[j].style.display = "none"
     }
 }
+//---------------------------------------whishlist and product view ends here-------------------------------------------//
 
-
-//---------------------------------------Featured pagination ends here-------------------------------------------//
 //---------------------------------------Onclick getting product details starts here------------------------------------//
 
 function testClick(elem){
     let id = elem.id
-    console.log(id)
+    // console.log(id)
 
-    fetch(`http://localhost:3000/combined?id=${id}`).then(res => res.json()).then(data => console.log(data)).catch((Error) => console.log(Error))
+    // fetch(`http://localhost:3000/combined?id=${id}`).then(res => res.json()).then(data => console.log(data)).catch((Error) => console.log(Error))
 }
 //---------------------------------------Onclick getting product details ends here--------------------------------------//
 
@@ -146,11 +221,14 @@ function displayJustInData(data){
         let title = data[i].title
         let mrp = data[i].mrp
         let price = data[i].price
-        console.log(data)
+        // console.log(data)
         Jhtml += `                
-        <div class="displayCard" id=${data[i].id} onClick="testClick(this)">
+        <div class="displayCard" id=${data[i].id} onClick="testClick(this)" onClick="testClick(this)" onmouseover="showItemsOnCard(this)" 
+        onmouseout="removeItemsOnCard(this)">
             <div class="productImage"><img class="img" src="${img}" alt=""></div>
             <div class="productTitle"><label id="titleUnderline">${title}</label></div>
+            <div class="flat" id="${data[i].id}" onClick="addToWishList(this)"><i class="far fa-heart"></i></div>
+            <div class="plain" id="${data[i].id}" onClick="viewProductModal(this)"><i class="fas fa-search-plus"></i></div>
             <div class="productFinalSalePrice">
                 <div class="productActualPrice"><label id="priceStriked">Rs. ${mrp}</label></div>
                 <div class="productSalePrice">Rs. ${price}</div>
@@ -206,11 +284,14 @@ function displaySkincareData(data){
         let title = data[i].title
         let mrp = data[i].mrp
         let price = data[i].price
-        console.log(data)
+        // console.log(data)
         Jhtml += `                
-        <div class="displayCard" id=${data[i].id} onClick="testClick(this)">
+        <div class="displayCard" id=${data[i].id} onClick="testClick(this)" onmouseover="showItemsOnCard(this)" 
+        onmouseout="removeItemsOnCard(this)">
             <div class="productImage"><img class="img" src="${img}" alt=""></div>
             <div class="productTitle"><label id="titleUnderline">${title}</label></div>
+            <div class="flat" id="${data[i].id}" onClick="addToWishList(this)"><i class="far fa-heart"></i></div>
+            <div class="plain" id="${data[i].id}" onClick="viewProductModal(this)"><i class="fas fa-search-plus"></i></div>
             <div class="productFinalSalePrice">
                 <div class="productActualPrice"><label id="priceStriked">Rs. ${mrp}</label></div>
                 <div class="productSalePrice">Rs. ${price}</div>
@@ -354,11 +435,14 @@ function displayClearance(data){
         let title = data[i].title
         let mrp = data[i].mrp
         let price = data[i].price
-        console.log(data)
+        // console.log(data)
         Chtml += `                
-        <div class="displayCard" id=${data[i].id} onClick="testClick(this)">
+        <div class="displayCard" id=${data[i].id} onClick="testClick(this)" onmouseover="showItemsOnCard(this)" 
+        onmouseout="removeItemsOnCard(this)">
             <div class="productImage"><img class="img" src="${img}" alt=""></div>
             <div class="productTitle"><label id="titleUnderline">${title}</label></div>
+            <div class="flat" id="${data[i].id}" onClick="addToWishList(this)"><i class="far fa-heart"></i></div>
+            <div class="plain" id="${data[i].id}" onClick="viewProductModal(this)"><i class="fas fa-search-plus"></i></div>
             <div class="productFinalSalePrice">
                 <div class="productActualPrice"><label id="priceStriked">Rs. ${mrp}</label></div>
                 <div class="productSalePrice">Rs. ${price}</div>
@@ -369,6 +453,7 @@ function displayClearance(data){
     }
 }
 //---------------------------------------clearance div starts here-------------------------------------------//
+
 //---------------------------------------slides for top carousel starts here-------------------------------------------//
 var slideIndex = 1;
 showSlides(slideIndex);
