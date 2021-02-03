@@ -49,9 +49,12 @@ function displayData(data){
         let price = data[i].price
         console.log(data)
         html += `                
-        <div class="displayCard" id=${data[i].id} onClick="testClick(this)">
+        <div class="displayCard" id=${data[i].id} onClick="testClick(this)" onmouseover="showItemsOnCard(this)" 
+        onmouseout="removeItemsOnCard(this)">
             <div class="productImage"><img class="img" src="${img}" alt=""></div>
             <div class="productTitle"><label id="titleUnderline">${title}</label></div>
+            <div class="flat">Hi</div>
+            <div class="plain">Hello</div>
             <div class="productFinalSalePrice">
                 <div class="productActualPrice"><label id="priceStriked">Rs. ${mrp}</label></div>
                 <div class="productSalePrice">Rs. ${price}</div>
@@ -61,6 +64,28 @@ function displayData(data){
         document.getElementById("diaplayFData").innerHTML = html
     }
 }
+
+function showItemsOnCard(val){
+    let id = val.id
+    console.log(id)
+    let elem = document.getElementsByClassName("flat");
+    for(let i = 0; i <elem.length; i+=1){
+        elem[i].style.display = "block"
+    }
+    // document.getElementsByClassName("plain")[0].style.display = "block";
+
+    console.log("iiiiiiiii")
+}
+
+function removeItemsOnCard(val){
+    let id = val.id
+    document.getElementsByClassName("flat")[0].style.display = "none";
+    document.getElementsByClassName("plain")[0].style.display = "none";
+
+    console.log("outside")
+}
+
+
 //---------------------------------------Featured pagination ends here-------------------------------------------//
 //---------------------------------------Onclick getting product details starts here------------------------------------//
 

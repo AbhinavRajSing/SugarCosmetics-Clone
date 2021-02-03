@@ -423,11 +423,17 @@ body{
     margin-bottom: 2%;
     margin-left: 2%;
     cursor: pointer;
+    position: relative;
 }
+
+/* .displayCard:hover .flat, .displayCard:hover .plain{
+    display: block;
+} */
 
 .productImage{
     width: 100%;
     height: 70%;
+    /* position: absolute; */
     /* border: 1px solid black; */
 }
 
@@ -456,6 +462,21 @@ body{
     /* border: 1px solid black; */
     margin-bottom: 2%;
     margin-left: 3.8%;
+}
+
+.flat, .plain{
+    width: 35px;
+    height: 35px;
+    border: 1px solid black;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    display: none;
+}
+  
+#plain{
+    top: 45px;
+    right: 2px;
 }
 
 .display__Featured>p, .display__Clearance>p, .display__JustIn__page>p, .diaplay__DaySpecial>p, .display__Skincare>p,
