@@ -259,6 +259,7 @@ let botAnswers = {
 }
 let keyArr = Object.keys(botAnswers)
 let audio = new Audio("https://tgdown.eu-gb.mybluemix.net/4292994105966528/ting.mp3")
+let defaultAnswer = ["Need Help ? Ask something relavent like 'product', 'offer' or 'face'"]
 
 showPopup = () => {
     chatIcon.setAttribute("class", "hideItem")
@@ -271,23 +272,8 @@ showWelcomeMsg = () => {
         let arrIndex = 0
         setInterval(()=>{
             if(arrIndex < welcomeLines.length){
-                let url = "https://sugar-cosmetics.webpush.freshchat.com/5fe107e92ec49ebae945f0cedffc02a1f71c8cfcc175080ae2db0c652019a90b/f_hlimage/u_be1d8877d49e57a14b5be6e9cfc109a6d91d88702e89141f6559bdf9c348b663/img_1524456641013.png"
-                let botMsgDiv = document.createElement("div")
-                let chatIconDiv = document.createElement("div")
-                let botReplyDiv = document.createElement("div")
-                let botDP = document.createElement("img")
-                let botMsg = document.createElement("p")
-                botDP.setAttribute("src", url)
-                botMsg.textContent = welcomeLines[arrIndex]
-                botMsgDiv.setAttribute("class", "botMsg")
-                chatIconDiv.setAttribute("class", "chatIconDiv")
-                botReplyDiv.setAttribute("class", "botReplyDiv")
-                chatIconDiv.append(botDP)
-                botReplyDiv.append(botMsg)
-                botMsgDiv.append(chatIconDiv, botReplyDiv)
-                chatBox.append(botMsgDiv)
-                scrollDown()
-                audio.play();
+                botReply = welcomeLines[arrIndex]
+                printBotMsg(botReply)
                 arrIndex++
             }
         },1500)
@@ -314,31 +300,42 @@ displayMsg = (msg) => {
 
 chatBotReply = (msg) => {
     for(let i = 0; i < keyArr.length; i++){
-        setTimeout(()=>{
-            if(msg == keyArr[i]){
+        if(msg == keyArr[i]){
+            setTimeout(()=>{
                 let botReply = botAnswers[msg][Math.floor(Math.random() * botAnswers[msg].length)]
-                let url = "https://sugar-cosmetics.webpush.freshchat.com/5fe107e92ec49ebae945f0cedffc02a1f71c8cfcc175080ae2db0c652019a90b/f_hlimage/u_be1d8877d49e57a14b5be6e9cfc109a6d91d88702e89141f6559bdf9c348b663/img_1524456641013.png"
-                let botMsgDiv = document.createElement("div")
-                let chatIconDiv = document.createElement("div")
-                let botReplyDiv = document.createElement("div")
-                let botDP = document.createElement("img")
-                let botMsg = document.createElement("p")
-                botDP.setAttribute("src", url)
-                botMsg.textContent = botReply
-                botMsgDiv.setAttribute("class", "botMsg")
-                chatIconDiv.setAttribute("class", "chatIconDiv")
-                botReplyDiv.setAttribute("class", "botReplyDiv")
-                chatIconDiv.append(botDP)
-                botReplyDiv.append(botMsg)
-                botMsgDiv.append(chatIconDiv, botReplyDiv)
-                chatBox.append(botMsgDiv)
-                scrollDown()
-                audio.play();
-            }
-        },2000)
+                printBotMsg(botReply)
+                },1500)
+                break
+        }
+
+        if(keyArr[i+1] == undefined){
+            setTimeout(()=>{
+                let botReply = defaultAnswer
+                printBotMsg(botReply)
+            }, 2000)
+        }
     }
 }
 
+printBotMsg = (para) => {
+    let url = "https://sugar-cosmetics.webpush.freshchat.com/5fe107e92ec49ebae945f0cedffc02a1f71c8cfcc175080ae2db0c652019a90b/f_hlimage/u_be1d8877d49e57a14b5be6e9cfc109a6d91d88702e89141f6559bdf9c348b663/img_1524456641013.png"
+    let botMsgDiv = document.createElement("div")
+    let chatIconDiv = document.createElement("div")
+    let botReplyDiv = document.createElement("div")
+    let botDP = document.createElement("img")
+    let botMsg = document.createElement("p")
+    botDP.setAttribute("src", url)
+    botMsg.textContent = para
+    botMsgDiv.setAttribute("class", "botMsg")
+    chatIconDiv.setAttribute("class", "chatIconDiv")
+    botReplyDiv.setAttribute("class", "botReplyDiv")
+    chatIconDiv.append(botDP)
+    botReplyDiv.append(botMsg)
+    botMsgDiv.append(chatIconDiv, botReplyDiv)
+    chatBox.append(botMsgDiv)
+    scrollDown()
+    audio.play();
+}
 scrollDown = () => {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
