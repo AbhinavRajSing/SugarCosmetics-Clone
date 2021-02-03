@@ -474,7 +474,7 @@ body{
     display: none;
 }
   
-#plain{
+.plain{
     top: 45px;
     right: 2px;
 }

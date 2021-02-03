@@ -72,17 +72,24 @@ function showItemsOnCard(val){
     for(let i = 0; i <elem.length; i+=1){
         elem[i].style.display = "block"
     }
-    // document.getElementsByClassName("plain")[0].style.display = "block";
 
-    console.log("iiiiiiiii")
+    let elems = document.getElementsByClassName("plain");
+    for(let j = 0; j <elems.length; j+=1){
+        elems[j].style.display = "block"
+    }
 }
 
 function removeItemsOnCard(val){
     let id = val.id
-    document.getElementsByClassName("flat")[0].style.display = "none";
-    document.getElementsByClassName("plain")[0].style.display = "none";
+    let eleme = document.getElementsByClassName("flat");
+    for(let i = 0; i <eleme.length; i+=1){
+        eleme[i].style.display = "none"
+    }
 
-    console.log("outside")
+    let elemes = document.getElementsByClassName("plain");
+    for(let j = 0; j <elemes.length; j+=1){
+        elemes[j].style.display = "none"
+    }
 }
 
 
