@@ -1,3 +1,11 @@
+//---------------------------------------loading Animation starts here-------------------------------------------//
+let loader = `
+                <div class="boxLoading">
+                    <img class=img"" src="https://miro.medium.com/max/978/0*cWpsf9D3g346Va20.gif">
+                </div>`;
+//---------------------------------------Loading Animation ends here-------------------------------------------//
+
+//---------------------------------------Featured pagination starts here-------------------------------------------//
 window.addEventListener('load', getFeaData)
 
 function getFeaData(){
@@ -5,10 +13,12 @@ function getFeaData(){
     document.getElementById("nextBtn").addEventListener('click', function(){
         count++
         if(count>3){
+            document.getElementById("diaplayFData").innerHTML = loader
             fetch(`http://localhost:3000/featured?_page=3&_limit=4`).then(res => res.json()).then(data => displayData(data)).catch((Error) => console.log(Error))
             count = 3
         }
         else{
+            document.getElementById("diaplayFData").innerHTML = loader
             fetch(`http://localhost:3000/featured?_page=${count}&_limit=4`).then(res => res.json()).then(data => displayData(data)).catch((Error) => console.log(Error))
         }
     })
@@ -16,15 +26,17 @@ function getFeaData(){
     document.getElementById("prevBtn").addEventListener('click', function(){
         count--
         if(count == 1 || count < 1){
+            document.getElementById("diaplayFData").innerHTML = loader
             fetch(`http://localhost:3000/featured?_page=1&_limit=4`).then(res => res.json()).then(data => displayData(data)).catch((Error) => console.log(Error))
             count = 1
         }
         else{
+            document.getElementById("diaplayFData").innerHTML = loader
             fetch(`http://localhost:3000/featured?_page=${count}&_limit=4`).then(res => res.json()).then(data => displayData(data)).catch((Error) => console.log(Error))
         }
     })
 
-
+    document.getElementById("diaplayFData").innerHTML = loader
     fetch(`http://localhost:3000/featured?_page=1&_limit=4`).then(res => res.json()).then(data => displayData(data)).catch((Error) => console.log(Error))
 }
 
@@ -42,6 +54,9 @@ function displayData(data){
     }
 }
 
+//---------------------------------------Featured pagination ends here-------------------------------------------//
+
+//---------------------------------------JustIn pagination starts here-------------------------------------------//
 window.addEventListener('load', getJustInData)
 
 function getJustInData(){
@@ -50,10 +65,12 @@ function getJustInData(){
     document.getElementById("nextBtnIn").addEventListener('click', function(){
         count++
         if(count>8){
+            document.getElementById("diaplayJustInData").innerHTML = loader
             fetch(`http://localhost:3000/combined?_page=8&_limit=4`).then(res => res.json()).then(data => displayJustInData(data)).catch((Error) => console.log(Error))
             count = 8
         }
         else{
+            document.getElementById("diaplayJustInData").innerHTML = loader
             fetch(`http://localhost:3000/combined?_page=${count}&_limit=4`).then(res => res.json()).then(data => displayJustInData(data)).catch((Error) => console.log(Error))
         }
     })
@@ -61,14 +78,16 @@ function getJustInData(){
     document.getElementById("prevBtnIn").addEventListener('click', function(){
         count--
         if(count == 1 || count < 1){
+            document.getElementById("diaplayJustInData").innerHTML = loader
             fetch(`http://localhost:3000/combined?_page=1&_limit=4`).then(res => res.json()).then(data => displayJustInData(data)).catch((Error) => console.log(Error))
             count = 1
         }
         else{
+            document.getElementById("diaplayJustInData").innerHTML = loader
             fetch(`http://localhost:3000/combined?_page=${count}&_limit=4`).then(res => res.json()).then(data => displayJustInData(data)).catch((Error) => console.log(Error))
         }
     })
-
+    document.getElementById("diaplayJustInData").innerHTML = loader
     fetch(`http://localhost:3000/combined?_page=1&_limit=4`).then(res => res.json()).then(data => displayJustInData(data)).catch((Error) => console.log(Error))
 }
 
@@ -86,6 +105,10 @@ function displayJustInData(data){
     }
 }
 
+//---------------------------------------JustIn pagination ends here-------------------------------------------//
+
+//---------------------------------------live search starts here-------------------------------------------//
+
 document.getElementById("searchItems").addEventListener('keyup', liveSearch)
 
 function liveSearch(e){
@@ -96,11 +119,13 @@ function liveSearch(e){
 
 function extractItems(val){ 
     let data = val
+    document.getElementById("midDisplay").innerHTML = loader
     fetch(`http://localhost:3000/combined/?q=${data}`).then(res => res.json()).then(Sdata => displaySearchData(Sdata, val)).catch((Error) => console.log(Error))
 }
 
 function displaySearchData(Sdata, val){
     console.log(val)
+
     if(val !== ""){
         let Shtml = ""
         document.getElementById("midDisplay").setAttribute('class', 'displaySearchItem')
@@ -120,7 +145,12 @@ function displaySearchData(Sdata, val){
     }
 }
 
+//---------------------------------------live search ends here-------------------------------------------//
+
+//---------------------------------------mid Ads banner starts here-------------------------------------------//
+
 window.addEventListener('load', function(){
+    document.getElementById("display__Adds").innerHTML = loader
     fetch('http://localhost:3000/bannerAdds').then(res => res.json()).then(data => displayAddsBanner(data)).catch((Error) => console.log(Error))
 })
 
@@ -138,7 +168,12 @@ function displayAddsBanner(data){
     }
 }
 
+//---------------------------------------mid Ads banner ends here-------------------------------------------//
+
+//---------------------------------------clearance div starts here-------------------------------------------//
+
 window.addEventListener('load', function(){
+    document.getElementById("display__Clearance__page").innerHTML = loader
     fetch('http://localhost:3000/clearance').then(res => res.json()).then(data => displayClearance(data)).catch((Error) => console.log(Error))
 })
 
@@ -155,8 +190,8 @@ function displayClearance(data){
         document.getElementById("display__Clearance__page").innerHTML = Chtml
     }
 }
-
-
+//---------------------------------------clearance div starts here-------------------------------------------//
+//---------------------------------------slides for top carousel starts here-------------------------------------------//
 var slideIndex = 1;
 showSlides(slideIndex);
 
@@ -183,9 +218,9 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " active";
 }
+//---------------------------------------slides for top carousel ends here-------------------------------------------//
 
-
-////////// ChatBot Code Starts here /////////
+//---------------------------------------ChatBot code starts here-------------------------------------------//
 
 let welcomeFlag = false
 let line1 = "Hello there! Need help? Reach out to us right here, and we'll get back to you as soon as we can!";
@@ -317,4 +352,4 @@ chatInput.addEventListener('submit', e => {
     displayMsg(msg)
 });
 
-////////// ChatBot Code Ends Here //////////
+//---------------------------------------ChatBot code ende here-------------------------------------------//
