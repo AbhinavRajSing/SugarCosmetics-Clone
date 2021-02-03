@@ -622,11 +622,10 @@ body{
 
 /* ---------------------------------------------LandingPage Code Ends here----------------------------------------------- */
 
-/* ---------------------------------------------ChatBot Code Starts here----------------------------------------------- */
-
+/* ---------------------------------------------ChatBot Code Starts here----------------------------------------------- */ 
 .hideItem {
     display: none;
-}
+ }
 .chatDiv, .chatLine1, .chatLine2 {
     background-color: #44BBFF;
 }
@@ -787,7 +786,6 @@ body{
 .compTag {
     color: gray;
     font-size: 15px;
-    /* border: 1px solid black; */
     line-height: 15px;
     align-items: flex-start;
     margin: 0px;
@@ -863,4 +861,203 @@ body{
     top: -43px;
     position: absolute;
 }
+
 /* ---------------------------------------------ChatBot Code Ends here----------------------------------------------- */
+
+.hideSide {
+    display: none;
+}
+
+.shadow {
+    position: fixed;
+    top: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    opacity: 0.7;
+    z-index: 15;
+}
+
+.loginSidebar {
+    position: fixed;
+    width: 25vw;
+    height: 100%;
+    right: 0px;
+    top: 0px;
+    background-color: white;
+    z-index: 15;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.sidebarTop {
+    display: flex;
+    background-color: black;
+    padding: 25px 20px;
+    position: sticky;
+    top: 0px;
+}
+
+.sidebarTitle {
+    font-size: 25px;
+    font-weight: 500;
+    color: white;
+    margin: 0px;
+}
+
+.sidebarTopLeft {
+    width: 80%;
+}
+
+.sidebarTopRight {
+    width: 20%;
+    color: white;
+    margin: 0px;
+    padding: 5px;
+    border: 1px solid white;
+    background-color: transparent;
+    text-align: center;
+}
+
+.sidebarTopRight p {
+    margin: 0px;
+    padding: 0px;
+}
+
+.sidebarMid {
+    padding: 25px;
+}
+
+.sidebarFBDiv {
+    width: 100%;
+    height: 50px;
+    background-color: #2C82C9;
+    margin: 3px 0px;
+    color: white;
+    display: flex;
+}
+
+.fbDivLeft, .googleDivLeft {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fbDivRight, .googleDivRight {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebarGoogleDiv {
+    width: 100%;
+    height: 50px;
+    background-color: #e74c3c;
+    margin: 5px 0px;
+    color: white;
+    display: flex;
+}
+
+.sidebarFBDiv:hover {
+    background-color:#4c8fc5;
+    cursor: pointer;
+}
+
+.sidebarGoogleDiv:hover {
+    background-color: #e76c5f;
+    cursor: pointer;
+}
+
+.loginOr {
+    font-size: 20px;
+    text-align: center;
+    margin: 3px;
+    margin-bottom: 15px;
+}
+
+.loginInput {
+    width: 100%;
+    height: 30px;
+    border: 1px solid lightgray;
+    margin-top: 5px;
+    margin-bottom: 25px;
+}
+
+.inputLabel {
+    color:rgb(22, 22, 22);
+}
+.forgotPassDiv {
+    display: flex;
+    align-items: center;
+}
+
+.forgotPassDiv:hover {
+    color: crimson;
+    cursor: pointer;
+}
+
+.forgotRing {
+    margin-right: 10px;
+}
+
+.loginBtn, .registerBtn {
+    width: 100%;
+    background-color: transparent;
+    border: 2px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+.registerBtn {
+    margin-top: 25px;
+}
+
+.loginBtn:hover, .registerBtn:hover {
+    background-color: rgb(44, 44, 44);
+    color: white;
+    cursor: pointer;
+    border: 2px solid rgb(44, 44, 44);
+}
+
+.loginLastDiv {
+    border-top: 1px solid gray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+.loginUserIcon {
+    width: 68px;
+    opacity: 0.2;
+}
+
+.loginLastDiv p {
+    text-align: justify;
+}
+
+.createACLink {
+    border-bottom: 1px solid gray;
+    color: gray;
+}
+
+.createACLink:hover {
+    border-bottom: 1px solid black;
+    color: black;
+    cursor: pointer;
+}
+
+.flex {
+    display: flex;
+}
+
+.redStar {
+    color: red;
+    margin-left: 5px;
+}
