@@ -10,7 +10,99 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="mainContainer">
+    <div id="mainContainer" class="mainContainer">
+        
+        <!-- Login Code Starts here -->
+        <div id="shadow" class="hideSide"></div>
+        <div id="loginSidebar" class="hideSide">
+            <div class="sidebarTop">
+                    <div class="sidebarTopLeft">
+                        <p class="sidebarTitle">SIGN IN</p>
+                    </div>
+                    <button id="sideClose" class="sidebarTopRight">Hide X</button>
+            </div>
+            <div id="loginSide" class="hideSide">
+                <div class="sidebarFBDiv">
+                    <div class="fbDivLeft">
+                        <i class="fab fa-lg fa-facebook-f"></i>
+                    </div>
+                    <div class="fbDivRight">
+                        <p>Use Facebook</p>
+                    </div>
+                </div>
+                <div class="sidebarGoogleDiv">
+                    <div class="googleDivLeft">
+                        <i class="fab fa-lg fa-google"></i>
+                    </div>
+                    <div class="googleDivRight">
+                        <p>Use Google</p>
+                    </div>
+                </div>
+                <div>
+                    <p class="loginOr">--------- Or ---------</p>
+                </div>
+                <div>
+                    <div class="flex">
+                        <label class="inputLabel" for="email">Email address</label>
+                        <label class="inputLabel redStar" for="email"> *</label>
+                    </div>
+                    <input class="loginInput" type="text">
+                    <div class="flex">
+                        <label class="inputLabel" for="password">Password</label>
+                        <label class="inputLabel redStar" for="password">*</label>
+                    </div>
+                    <input class="loginInput" type="text">
+                </div>
+                <div class="forgotPassDiv">
+                    <i class="far forgotRing fa-life-ring"></i>
+                    <p>Lost Your Password ?</p>
+                </div>
+                <button class="loginBtn">LOGIN</button>
+                <div class="loginLastDiv">
+                    <img class="loginUserIcon" src="https://www.flaticon.com/svg/vstatic/svg/126/126486.svg?token=exp=1612352577~hmac=ec3054dc829617abe794c87c804876d2" alt="">
+                    <p>No account yet ?</p>
+                    <p>Registering for this site allows you to access 
+                        your order status and history. Just fill in 
+                        the fields below, and we'll get a new account 
+                        set up for you in no time. We will only ask you 
+                        for information necessary to make the purchase 
+                        process faster and easy</p>
+                    <p id="createAcc" class="createACLink">Create An Account</p>
+                </div>
+            </div>
+            
+             <div id="registerSide" class="hideSide">
+                <div>
+                    <label class="inputLabel" for="firstName">First Name</label>
+                    <input class="loginInput" type="text">
+                    <label class="inputLabel" for="lastName">Last Name</label>
+                    <input class="loginInput" type="text">
+                    <div class="flex">
+                        <label class="inputLabel" for="email">Email address</label>
+                        <label class="inputLabel redStar" for="email"> *</label>
+                    </div>
+                    <input class="loginInput" type="text">
+                    <div class="flex">
+                        <label class="inputLabel" for="password">Password</label>
+                        <label class="inputLabel redStar" for="password">*</label>
+                    </div>
+                    <input class="loginInput" type="text">
+                </div>
+                <button class="registerBtn">Register</button>
+                <div class="loginLastDiv">
+                    <img class="loginUserIcon" src="https://www.flaticon.com/svg/vstatic/svg/126/126486.svg?token=exp=1612352577~hmac=ec3054dc829617abe794c87c804876d2" alt="">
+                    <p>No account yet ?</p>
+                    <p>Registering for this site allows you to access 
+                        your order status and history. Just fill in 
+                        the fields below, and we'll get a new account 
+                        set up for you in no time. We will only ask you 
+                        for information necessary to make the purchase 
+                        process faster and easy</p>
+                    <p id="createLogin" class="createACLink">Login</p>
+                </div>
+             </div>
+        </div>
+        <!-- Login Code Ends here -->
 
         <!-- ChatBot Code Starts here -->
         <div class="chatContainer">
@@ -59,7 +151,7 @@
                 <div class="Header__Search__searchicon"><i class="fas fa-search"></i></div>
             </div>
             <div class="Header__Login"> 
-                <a href="" class="Header__Login__P">Login / Register</a>
+                <a id="loginLink" class="Header__Login__P">Login / Register</a>
             </div>
             <div class="Header__LikeCart">
                 <div><i class="far fa-heart"></i></div>

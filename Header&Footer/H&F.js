@@ -315,3 +315,47 @@ chatInput.addEventListener('submit', e => {
 });
 
 ////////// ChatBot Code Ends Here //////////
+
+////////// Login Code Starts Here //////////
+
+let loginLink = document.getElementById("loginLink")
+let sideClose = document.getElementById("sideClose")
+let mainContainer = document.getElementById("mainContainer")
+let shadow = document.getElementById("shadow")
+let sidebar = document.getElementById("loginSidebar")
+let loginSide = document.getElementById("loginSide")
+let registerSide = document.getElementById("registerSide")
+let registerFormBtn = document.getElementById("createAcc")
+let loginFormBtn = document.getElementById("createLogin")
+
+displayLoginForm = () => {
+    shadow.setAttribute("class", "shadow")
+    sidebar.setAttribute("class", "loginSidebar")
+    loginSide.setAttribute("class", "sidebarMid")
+    registerSide.setAttribute("class", "hideSide")
+}
+
+displayRegisterForm = () => {
+    shadow.setAttribute("class", "shadow")
+    sidebar.setAttribute("class", "loginSidebar")
+    registerSide.setAttribute("class", "sidebarMid")
+    loginSide.setAttribute("class", "hideSide")
+}
+
+closeSideBar = () => {
+    shadow.setAttribute("class", "hideSide")
+    sidebar.setAttribute("class", "hideSide")
+}
+
+alertxxx = () => {
+    alert("hi")
+}
+
+loginLink.addEventListener("dblclick", alertxxx)
+loginLink.addEventListener("click", displayLoginForm)
+sideClose.addEventListener("click", closeSideBar)
+shadow.addEventListener("click", closeSideBar)
+loginFormBtn.addEventListener("click", displayLoginForm)
+registerFormBtn.addEventListener("click", displayRegisterForm)
+
+////////// Login Code Ends Here //////////
