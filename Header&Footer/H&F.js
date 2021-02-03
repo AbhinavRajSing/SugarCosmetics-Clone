@@ -14,8 +14,8 @@ function getFeaData(){
         count++
         if(count>3){
             document.getElementById("diaplayFData").innerHTML = loader
-            fetch(`http://localhost:3000/featured?_page=3&_limit=4`).then(res => res.json()).then(data => displayData(data)).catch((Error) => console.log(Error))
-            count = 3
+            fetch(`http://localhost:3000/featured?_page=1&_limit=4`).then(res => res.json()).then(data => displayData(data)).catch((Error) => console.log(Error))
+            count = 1
         }
         else{
             document.getElementById("diaplayFData").innerHTML = loader
@@ -44,17 +44,33 @@ function displayData(data){
     let html = ""
     for(i in data){
         let img = data[i].img
-        // console.log(img)
+        let title = data[i].title
+        let mrp = data[i].mrp
+        let price = data[i].price
+        console.log(data)
         html += `                
-        <div class="displayCard">
-            <img class="img" src="${img}" alt="">
+        <div class="displayCard" id=${data[i].id} onClick="testClick(this)">
+            <div class="productImage"><img class="img" src="${img}" alt=""></div>
+            <div class="productTitle"><label id="titleUnderline">${title}</label></div>
+            <div class="productFinalSalePrice">
+                <div class="productActualPrice"><label id="priceStriked">Rs. ${mrp}</label></div>
+                <div class="productSalePrice">Rs. ${price}</div>
+            </div>
         </div>`
         
         document.getElementById("diaplayFData").innerHTML = html
     }
 }
-
 //---------------------------------------Featured pagination ends here-------------------------------------------//
+//---------------------------------------Onclick getting product details starts here------------------------------------//
+
+function testClick(elem){
+    let id = elem.id
+    console.log(id)
+
+    fetch(`http://localhost:3000/combined?id=${id}`).then(res => res.json()).then(data => console.log(data)).catch((Error) => console.log(Error))
+}
+//---------------------------------------Onclick getting product details ends here--------------------------------------//
 
 //---------------------------------------JustIn pagination starts here-------------------------------------------//
 window.addEventListener('load', getJustInData)
@@ -66,8 +82,8 @@ function getJustInData(){
         count++
         if(count>8){
             document.getElementById("diaplayJustInData").innerHTML = loader
-            fetch(`http://localhost:3000/combined?_page=8&_limit=4`).then(res => res.json()).then(data => displayJustInData(data)).catch((Error) => console.log(Error))
-            count = 8
+            fetch(`http://localhost:3000/combined?_page=1&_limit=4`).then(res => res.json()).then(data => displayJustInData(data)).catch((Error) => console.log(Error))
+            count = 1
         }
         else{
             document.getElementById("diaplayJustInData").innerHTML = loader
@@ -95,10 +111,18 @@ function displayJustInData(data){
     let Jhtml = ""
     for(i in data){
         let img = data[i].img
-        // console.log(img)
+        let title = data[i].title
+        let mrp = data[i].mrp
+        let price = data[i].price
+        console.log(data)
         Jhtml += `                
-        <div class="displayCard">
-            <img class="img" src="${img}" alt="">
+        <div class="displayCard" id=${data[i].id} onClick="testClick(this)">
+            <div class="productImage"><img class="img" src="${img}" alt=""></div>
+            <div class="productTitle"><label id="titleUnderline">${title}</label></div>
+            <div class="productFinalSalePrice">
+                <div class="productActualPrice"><label id="priceStriked">Rs. ${mrp}</label></div>
+                <div class="productSalePrice">Rs. ${price}</div>
+            </div>
         </div>`
         
         document.getElementById("diaplayJustInData").innerHTML = Jhtml
@@ -106,6 +130,120 @@ function displayJustInData(data){
 }
 
 //---------------------------------------JustIn pagination ends here-------------------------------------------//
+
+//---------------------------------------Skincare pagination starts here-------------------------------------------//
+
+window.addEventListener('load', getSkincareData)
+
+function getSkincareData(){
+    let count = 1
+
+    document.getElementById("nextBtnInSc").addEventListener('click', function(){
+        count++
+        if(count>3){
+            document.getElementById("diaplaySkincareData").innerHTML = loader
+            fetch(`http://localhost:3000/skin?_page=1&_limit=4`).then(res => res.json()).then(data => displaySkincareData(data)).catch((Error) => console.log(Error))
+            count = 1
+        }
+        else{
+            document.getElementById("diaplaySkincareData").innerHTML = loader
+            fetch(`http://localhost:3000/skin?_page=${count}&_limit=4`).then(res => res.json()).then(data => displaySkincareData(data)).catch((Error) => console.log(Error))
+        }
+    })
+
+    document.getElementById("prevBtnInSc").addEventListener('click', function(){
+        count--
+        if(count == 1 || count < 1){
+            document.getElementById("diaplaySkincareData").innerHTML = loader
+            fetch(`http://localhost:3000/skin?_page=1&_limit=4`).then(res => res.json()).then(data => displaySkincareData(data)).catch((Error) => console.log(Error))
+            count = 1
+        }
+        else{
+            document.getElementById("diaplaySkincareData").innerHTML = loader
+            fetch(`http://localhost:3000/skin?_page=${count}&_limit=4`).then(res => res.json()).then(data => displaySkincareData(data)).catch((Error) => console.log(Error))
+        }
+    })
+    document.getElementById("diaplaySkincareData").innerHTML = loader
+    fetch(`http://localhost:3000/skin?_page=1&_limit=4`).then(res => res.json()).then(data => displaySkincareData(data)).catch((Error) => console.log(Error))
+}
+
+function displaySkincareData(data){
+    let Jhtml = ""
+    for(i in data){
+        let img = data[i].img
+        let title = data[i].title
+        let mrp = data[i].mrp
+        let price = data[i].price
+        console.log(data)
+        Jhtml += `                
+        <div class="displayCard" id=${data[i].id} onClick="testClick(this)">
+            <div class="productImage"><img class="img" src="${img}" alt=""></div>
+            <div class="productTitle"><label id="titleUnderline">${title}</label></div>
+            <div class="productFinalSalePrice">
+                <div class="productActualPrice"><label id="priceStriked">Rs. ${mrp}</label></div>
+                <div class="productSalePrice">Rs. ${price}</div>
+            </div>
+        </div>`
+        
+        document.getElementById("diaplaySkincareData").innerHTML = Jhtml
+    }
+}
+
+//---------------------------------------Skincare pagination ends here-------------------------------------------//
+
+//---------------------------------------Explore pagination starts here-------------------------------------------//
+
+window.addEventListener('load', getExploreData)
+
+function getExploreData(){
+    let count = 1
+
+    document.getElementById("nextBtnInSE").addEventListener('click', function(){
+        count++
+        if(count>2){
+            document.getElementById("diaplayExpolreData").innerHTML = loader
+            fetch(`http://localhost:3000/explore?_page=1&_limit=5`).then(res => res.json()).then(data => displayExploreData(data)).catch((Error) => console.log(Error))
+            count = 1
+        }
+        else{
+            document.getElementById("diaplayExpolreData").innerHTML = loader
+            fetch(`http://localhost:3000/explore?_page=${count}&_limit=5`).then(res => res.json()).then(data => displayExploreData(data)).catch((Error) => console.log(Error))
+        }
+    })
+
+    document.getElementById("prevBtnInE").addEventListener('click', function(){
+        count--
+        if(count == 1 || count < 1){
+            document.getElementById("diaplayExpolreData").innerHTML = loader
+            fetch(`http://localhost:3000/explore?_page=1&_limit=5`).then(res => res.json()).then(data => displayExploreData(data)).catch((Error) => console.log(Error))
+            count = 1
+        }
+        else{
+            document.getElementById("diaplayExpolreData").innerHTML = loader
+            fetch(`http://localhost:3000/explore?_page=${count}&_limit=5`).then(res => res.json()).then(data => displayExploreData(data)).catch((Error) => console.log(Error))
+        }
+    })
+
+    document.getElementById("diaplayExpolreData").innerHTML = loader
+    fetch(`http://localhost:3000/explore?_page=1&_limit=5`).then(res => res.json()).then(data => displayExploreData(data)).catch((Error) => console.log(Error))
+}
+
+function displayExploreData(data){
+    let html = ""
+    for(i in data){
+        let img = data[i].img
+
+        html += `                
+        <div class="displayCardExplore">
+            <img class="img" src="${img}" alt="">
+        </div>`
+        
+        document.getElementById("diaplayExpolreData").innerHTML = html
+    }
+}
+
+
+//---------------------------------------Explore pagination ends here-------------------------------------------//
 
 //---------------------------------------live search starts here-------------------------------------------//
 
@@ -181,10 +319,18 @@ function displayClearance(data){
     let Chtml = ""
     for(i in data){
         let img = data[i].img
-        
+        let title = data[i].title
+        let mrp = data[i].mrp
+        let price = data[i].price
+        console.log(data)
         Chtml += `                
-        <div class="adds__Cards">
-            <img class="img" src="${img}" alt="">
+        <div class="displayCard" id=${data[i].id} onClick="testClick(this)">
+            <div class="productImage"><img class="img" src="${img}" alt=""></div>
+            <div class="productTitle"><label id="titleUnderline">${title}</label></div>
+            <div class="productFinalSalePrice">
+                <div class="productActualPrice"><label id="priceStriked">Rs. ${mrp}</label></div>
+                <div class="productSalePrice">Rs. ${price}</div>
+            </div>
         </div>`
         
         document.getElementById("display__Clearance__page").innerHTML = Chtml
@@ -204,9 +350,9 @@ function currentSlide(n) {
 }
 
 function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
   if (n > slides.length) {slideIndex = 1}    
   if (n < 1) {slideIndex = slides.length}
   for (i = 0; i < slides.length; i++) {
@@ -219,6 +365,37 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
 }
 //---------------------------------------slides for top carousel ends here-------------------------------------------//
+
+//---------------------------------------slides for daySpecial carousel starts here--------------------------------------//
+
+let slideIndexDS = 1;
+showSlidesDS(slideIndexDS);
+
+function plusSlides(n) {
+  showSlidesDS(slideIndexDS += n);
+}
+
+function currentSlideDS(n) {
+  showSlidesDS(slideIndexDS = n);
+}
+
+function showSlidesDS(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlidesDS");
+  let dots = document.getElementsByClassName("dotDS");
+  if (n > slides.length) {slideIndexDS = 1}    
+  if (n < 1) {slideIndexDS = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" activeDS", "");
+  }
+  slides[slideIndexDS-1].style.display = "block";  
+  dots[slideIndexDS-1].className += " activeDS";
+}
+
+//---------------------------------------slides for daySpecial carousel ends here--------------------------------------//
 
 //---------------------------------------ChatBot code starts here-------------------------------------------//
 

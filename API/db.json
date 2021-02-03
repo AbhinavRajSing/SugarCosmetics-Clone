@@ -666,5 +666,36 @@
             "discount": 22,
             "img": "//cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-the-most-eligiblur-smoothing-primer-13588736835667.progressive.jpg?v=1587374578      "
         }
+    ],
+
+    "explore": [
+      {
+        "id": 1,
+        "img": "https://cdn.shopify.com/s/files/1/0906/2558/files/Explore-Banner_Face-345X230_4c8ad25c-e177-46b7-9132-ef027cba46e7_250x250.jpg"
+      },
+      {
+        "id": 2,
+        "img": "https://cdn.shopify.com/s/files/1/0906/2558/files/Explore-Banner_Lips-345X230_77093a01-e746-4de6-bba4-25354ff89d47_250x250.jpg"
+      },
+      {
+        "id": 3,
+        "img": "https://cdn.shopify.com/s/files/1/0906/2558/files/Explore-Banner_Eyes-345X230_1_250x250.jpg"
+      },
+      {
+        "id": 4,
+        "img": "https://cdn.shopify.com/s/files/1/0906/2558/files/Explore-Banner_Value-Set-345X230-_india_250x250.jpg"
+      },
+      {
+        "id": 5,
+        "img": "https://cdn.shopify.com/s/files/1/0906/2558/files/Explore-Banner_skin-345X230_1_250x250.jpg"
+      },
+      {
+        "id": 6,
+        "img": "https://cdn.shopify.com/s/files/1/0906/2558/files/Explore-Banner_Clearance-345X230_6eee55f7-4116-49d7-8fed-d7708d52d401_250x250.jpg"
+      },
+      {
+        "id": 7,
+        "img": "https://cdn.shopify.com/s/files/1/0906/2558/files/Explore-Banner_Gifting-345X230_cd0d922d-e46c-4497-ae3e-4dd7b9c9b7c0_250x250.jpg"
+      }
     ]
 }
