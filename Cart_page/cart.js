@@ -17,8 +17,9 @@ let modalClose = document.querySelector(".modal-close");
 
 // Delivery date
 let date = document.getElementById('deliveryDate')
+let x = Math.floor((Math.random() * 10) + 4);
 let targetDate = new Date()
-targetDate.setDate(targetDate.getDate() + 7)
+targetDate.setDate(targetDate.getDate() + x)
 date.textContent = targetDate.toDateString()
 
 // pay button 
@@ -48,24 +49,40 @@ modalClose.addEventListener("click", function () {
   });
 // added  product
 
-// let data =[ {
-//     id: 2,
-//     title: "SMUDGE ME NOT LIP DUO",
-//     mrp: 999,
-//     price: 599,
-//     discount: 30,
-//     img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-lip-duo-01-brazen-raisin-burgundy-13200661643347.progressive.jpg?v=1577305698      "
-//   },
-//   {
-//     id: 3,
-//     title: "SMUDGE ME NOT MINIS SET- BLACK",
-//     mrp: 589,
-//     price: 459,
-//     discount: 18,
-//     img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-minis-set-black-14964843151443.progressive.jpg?v=1611061746"
-//   }
-// ]
-//   localStorage.setItem( "cart-products",JSON.stringify(data))
+let data =[ {
+    id: 2,
+    title: "SMUDGE ME NOT LIP DUO",
+    mrp: 999,
+    price: 599,
+    discount: 30,
+    img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-lip-duo-01-brazen-raisin-burgundy-13200661643347.progressive.jpg?v=1577305698      "
+  },
+  {
+    id: 3,
+    title: "SMUDGE ME NOT MINIS SET- BLACK",
+    mrp: 589,
+    price: 459,
+    discount: 18,
+    img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-minis-set-black-14964843151443.progressive.jpg?v=1611061746"
+  },
+  {
+    id: 4,
+    title: "SMUDGE ME NOT LIP DUO",
+    mrp: 999,
+    price: 599,
+    discount: 30,
+    img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-lip-duo-01-brazen-raisin-burgundy-13200661643347.progressive.jpg?v=1577305698      "
+  },
+  {
+    id: 5,
+    title: "SMUDGE ME NOT MINIS SET- BLACK",
+    mrp: 589,
+    price: 459,
+    discount: 18,
+    img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-minis-set-black-14964843151443.progressive.jpg?v=1611061746"
+  }
+]
+  localStorage.setItem( "cart-products",JSON.stringify(data))
 
 function getPurchaseData(){
     let added = localStorage.getItem("cart-products")
@@ -182,6 +199,7 @@ function plus(pid){
 }
 let offer = document.querySelector('.offer')
 let freeShip = document.querySelector('.free_ship')
+
 function cartTotal(){
     let added = localStorage.getItem("cart-products")
     let data = JSON.parse(added)
@@ -211,35 +229,40 @@ function addprice(data){
     }
     bill_amt.textContent =bill
     total_amt.textContent = total
+    if(bill_amt.textContent > 1999){
+        offer.style.display = "none"
+        freeShip.style.display = "block"
+    } else if (bill_amt.textContent < 1999){
+        offer.style.display = "block"
+        freeShip.style.display = "none"
+    }
 }
+let temp = JSON.parse(localStorage.getItem('cart-products'))
+localStorage.setItem('temp', JSON.stringify(temp))
 
 function delet(did){
-    let added = localStorage.getItem("cart-products")
+    let added = localStorage.getItem("temp")
     let data = JSON.parse(added)
-    for(i in data){
-        if(data[i].id == did){
-            // console.log(data[i])
-            localStorage.setItem('temp', JSON.stringify(data[i]))
-            // localStorage.removeItem("cart-products", 'data[i]');
-        }
+    let cart_remained = data.filter(el => {
+        return (el.id !== did)
+    })
+    
+    localStorage.setItem('temp', JSON.stringify(cart_remained))
+   
+    let final = JSON.parse(localStorage.getItem('temp'))
+
+    if(JSON.stringify(final) !== JSON.stringify([])){
+        showPurchaseData(final)
+    } else {
+        remove()
     }
-    let temp = JSON.parse(localStorage.getItem('temp'))
-    // console.log(temp)
-    for(i in data){
-        // console.log(data[i])
-        if(JSON.stringify(data[i]) !== JSON.stringify(temp)){
-            // console.log(data[i])
-            localStorage.setItem('temp2', JSON.stringify(data[i]))
-            // localStorage.removeItem("cart-products", 'data[i]');
-        }
-    }
-    localStorage.removeItem('cart-products')
-    localStorage.removeItem('temp')
-    let final = JSON.parse(localStorage.getItem('temp2'))
-    // showPurchaseData(final)
-    console.log(final)
+    
 }
 
 function remove (){
+    document.querySelector('.empty-cart').style.display = 'block'
+    display.style.display = 'none'
     localStorage.removeItem('cart-products')
+    localStorage.removeItem('temp')
+    addprice()
 }
