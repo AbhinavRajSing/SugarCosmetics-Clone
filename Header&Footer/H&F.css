@@ -475,7 +475,7 @@ body{
     /* border: 1px solid black; */
     position: absolute;
     top: 2px;
-    right: 2px;
+    right: 25px;
     display: none;
 }
 
@@ -485,7 +485,6 @@ body{
 
 .plain{
     top: 45px;
-    right: 2px;
 }
 
 .display__Featured>p, .display__Clearance>p, .display__JustIn__page>p, .diaplay__DaySpecial>p, .display__Skincare>p,
