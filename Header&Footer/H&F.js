@@ -55,6 +55,7 @@ function displayData(data){
             <div class="productTitle"><label id="titleUnderline">${title}</label></div>
             <div class="flat" id="${data[i].id}" onClick="addToWishList(this)"><i class="far fa-heart"></i></div>
             <div class="plain" id="${data[i].id}" onClick="viewProductModal(this)"><i class="fas fa-search-plus"></i></div>
+            <button data-id="${data[i].id}" onclick="settols(this)" class="cart1">Add to Cart</button>
             <div class="productFinalSalePrice">
                 <div class="productActualPrice"><label id="priceStriked">Rs. ${mrp}</label></div>
                 <div class="productSalePrice">Rs. ${price}</div>
@@ -105,7 +106,7 @@ function diaplayModalData(val){
                     <div class="salePrice">Rs. ${price}</div>
                 </div>
                 <div class="modalAddBtn">
-                    <button class="addCartBtnModal">ADD TO CART</button>
+                    <button class="addCartBtnModal" data-id="${val[0].id}" onclick="settols(this)">ADD TO CART</button>
                 </div>
                 <div class="modalAddwishlist">
                     <i class="far fa-heart">Add to Wishlist</i>
@@ -146,6 +147,10 @@ function showItemsOnCard(val){
     for(let j = 0; j <elems.length; j+=1){
         elems[j].style.display = "block"
     }
+    let elems1 = document.getElementsByClassName("cart1");
+    for(let k = 0; k <elems1.length; k+=1){
+        elems1[k].style.display = "block"
+    }
 }
 
 function removeItemsOnCard(val){
@@ -159,30 +164,61 @@ function removeItemsOnCard(val){
     for(let j = 0; j <elemes.length; j+=1){
         elemes[j].style.display = "none"
     }
+    let elemes1 = document.getElementsByClassName("cart1");
+    for(let k = 0; k <elemes1.length; k+=1){
+        elemes1[k].style.display = "none"
+    }
 }
+
 //---------------------------------------whishlist and product view ends here-------------------------------------------//
 
 //---------------------------------------Onclick getting product details starts here------------------------------------//
 
 function testClick(elem){
     let id = elem.id
-    console.log(id)
+    // console.log(id)
 
     fetch(`http://localhost:3000/combined?id=${id}`).then(res => res.json()).then(data => addToLocalStorageCart(data)).catch((Error) => console.log(Error))
 }
+
+//---------------------------------------Onclick getting product details ends here--------------------------------------//
+
+//---------------------------------------Add to localstorage starts here--------------------------------------//
 
 function addToLocalStorageCart(val){
     let id = val[0].id
     let img = val[0].img
     let price = val[0].price
     let title = val[0].title
-
-    console.log(title, price)
-
+    // console.log(title, price)
 }
 
+let arr = []
+function settols(e){
+    // console.log("object")
+    let id = e.getAttribute("data-id")
+    fetch(`http://localhost:3000/combined?id=${id}`).then(res => res.json()).then(data => AddToLSFromHp(data)).catch((Error) => console.log(Error))
+}
 
-//---------------------------------------Onclick getting product details ends here--------------------------------------//
+function AddToLSFromHp(data){
+    let title = data[0].title
+    let price = data[0].price
+    let img = data[0].img
+    let id = data[0].id
+
+    var temp = {}
+    temp.id=id
+    temp.title=title
+    temp.price=price
+    temp.img = img
+
+    console.log(temp)
+    
+    arr = [...arr,temp]
+    localStorage.setItem("cart-products",JSON.stringify(arr))
+}
+
+//---------------------------------------Add to localstorage ends here--------------------------------------//
 
 //---------------------------------------JustIn pagination starts here-------------------------------------------//
 window.addEventListener('load', getJustInData)
@@ -234,6 +270,7 @@ function displayJustInData(data){
             <div class="productTitle"><label id="titleUnderline">${title}</label></div>
             <div class="flat" id="${data[i].id}" onClick="addToWishList(this)"><i class="far fa-heart"></i></div>
             <div class="plain" id="${data[i].id}" onClick="viewProductModal(this)"><i class="fas fa-search-plus"></i></div>
+            <button data-id="${data[i].id}" onclick="settols(this)" class="cart1">Add to Cart</button>
             <div class="productFinalSalePrice">
                 <div class="productActualPrice"><label id="priceStriked">Rs. ${mrp}</label></div>
                 <div class="productSalePrice">Rs. ${price}</div>
@@ -297,6 +334,7 @@ function displaySkincareData(data){
             <div class="productTitle"><label id="titleUnderline">${title}</label></div>
             <div class="flat" id="${data[i].id}" onClick="addToWishList(this)"><i class="far fa-heart"></i></div>
             <div class="plain" id="${data[i].id}" onClick="viewProductModal(this)"><i class="fas fa-search-plus"></i></div>
+            <button data-id="${data[i].id}" onclick="settols(this)" class="cart1">Add to Cart</button>
             <div class="productFinalSalePrice">
                 <div class="productActualPrice"><label id="priceStriked">Rs. ${mrp}</label></div>
                 <div class="productSalePrice">Rs. ${price}</div>
@@ -387,11 +425,21 @@ function displaySearchData(Sdata, val){
         document.getElementById("midDisplay").setAttribute('class', 'displaySearchItem')
         for(i in Sdata){
             let img = Sdata[i].img
+            let title = Sdata[i].title
+            let mrp = Sdata[i].mrp
+            let price = Sdata[i].price
             // console.log(img)
             Shtml += `             
-                <div class="displayCard">
-                    <img class="img" src="${img}" alt="">
-                </div>`
+            <div class="displayCard" id=${Sdata[i].id} onClick="testClick(this)" onmouseover="showItemsOnCard(this)" 
+            onmouseout="removeItemsOnCard(this)">
+                <div class="productImage"><img class="img" src="${img}" alt=""></div>
+                <div class="productTitle"><label id="titleUnderline">${title}</label></div>
+                <button data-id="${Sdata[i].id}" onclick="settols(this)" class="cart1">Add to Cart</button>
+                <div class="productFinalSalePrice">
+                    <div class="productActualPrice"><label id="priceStriked">Rs. ${mrp}</label></div>
+                    <div class="productSalePrice">Rs. ${price}</div>
+                </div>
+            </div>`
             
             document.getElementById("midDisplay").innerHTML = Shtml
         }
@@ -448,6 +496,7 @@ function displayClearance(data){
             <div class="productTitle"><label id="titleUnderline">${title}</label></div>
             <div class="flat" id="${data[i].id}" onClick="addToWishList(this)"><i class="far fa-heart"></i></div>
             <div class="plain" id="${data[i].id}" onClick="viewProductModal(this)"><i class="fas fa-search-plus"></i></div>
+            <button data-id="${data[i].id}" onclick="settols(this)" class="cart1">Add to Cart</button>
             <div class="productFinalSalePrice">
                 <div class="productActualPrice"><label id="priceStriked">Rs. ${mrp}</label></div>
                 <div class="productSalePrice">Rs. ${price}</div>

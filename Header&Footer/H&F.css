@@ -650,6 +650,15 @@ body{
     text-decoration-color: #969696;;
 }
 
+.cart1{
+    margin:0px auto;
+    width:100%;
+    background-color: black;
+    color:white;
+    border:none;
+    display:none
+}
+
 
 
 
