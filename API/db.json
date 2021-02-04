@@ -697,5 +697,36 @@
         "id": 7,
         "img": "https://cdn.shopify.com/s/files/1/0906/2558/files/Explore-Banner_Gifting-345X230_cd0d922d-e46c-4497-ae3e-4dd7b9c9b7c0_250x250.jpg"
       }
+    ],
+
+    "users": [
+      {
+        "id": 543212,
+        "first_name": "Morty",
+        "last name": "Smith",
+        "email": "morty@mail.com",
+        "password": "morty123"
+      },
+      {
+        "id": 683212,
+        "first_name": "Rick",
+        "last name": "Sanchez",
+        "email": "rick@mail.com",
+        "password": "rick123"
+      },
+      {
+        "id": 893212,
+        "first_name": "Lisa",
+        "last name": "Parker",
+        "email": "lisa@mail.com",
+        "password": "lisa123"
+      },
+      {
+        "id": 665912,
+        "first_name": "kevin",
+        "last name": "Brown",
+        "email": "kevin@mail.com",
+        "password": "kevin123"
+      }
     ]
 }
