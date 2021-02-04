@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Eye</title>
+    <title>Face</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         body{
             margin:0;
@@ -78,18 +80,20 @@
             width:22%;
             height:350px;
             /* border:1px solid black; */
-            margin:5px 30px 5px 2px;
+            margin:5px 30px 20px 2px;
+            position:relative
         }
         .cards > img{
             width:100%;
             height:300px;
-            margin:0px
+            margin:0px;
+
         }
         .title{
             text-align: center;
             /* border:1px solid black; */
             height:40px;
-            font-weight:900;
+            font-weight:bold;
             color:black
         }
         #main2{
@@ -140,12 +144,34 @@
             width:30%;
             height:30px
         }
+        .inr{
+            position: absolute;
+            margin:-260px 230px;
+            display:none
+
+        }
+        .inr1{
+            position: absolute;
+            margin:-230px 230px;
+            display:none
+        }
+
+        .cart1{
+            margin:0px auto;
+            width:100%;
+            background-color: black;
+            color:white;
+            border:none;
+            display:none
+        }
     </style>
 </head>
 <body>
-    
+    <div class="head-img">
+        <img src="https://cdn.shopify.com/s/files/1/0906/2558/files/Landing-Page--Lips-_1600X400_-psd_7f4548c4-7057-4609-ac6a-41287db74d2b.jpg?v=1612122537"/>
+    </div>
     <div class="main1">
-        <p style="font-family: 'Open Sans', sans-serif;font-size: small;"><a href=""><i class="fa fa-home" style="font-size:20px;color: black;"></i></a> Home/Lips</p>
+        <p style="font-family: 'Open Sans', sans-serif;font-size: small;text-decoration: none;"><a href=""><i class="fa fa-home" style="font-size:20px;color: black;"></i> Home</a>/Lips</p>
         <div class="main2">
             <p class="show">Showing all Results </p>
             <select class="select">
@@ -191,7 +217,7 @@
         let main1 = document.getElementById("main")
         let main2 = document.getElementById("main2")
         function getItem(){
-            let url = `http://localhost:3000/eye`
+            let url = `http://localhost:3000/skin`
 
             let xhr = new XMLHttpRequest()
             xhr.open('GET', url)
@@ -202,12 +228,15 @@
                     let html =""
                     let html1 =""
                     for(i in res){
-                        html+=`<div class="cards">
+                        html+=`<div class="cards" data-id="${res[i].id}" onmouseOver="showItems(this)" onmouseout="removeItems(this)">
                                 
                                     <img src=${res[i].img}/>
+                                    <div class=inr><i class="fa fa-search" style="font-size:20px"></i></div>
+                                    <div class=inr1><i class="fa fa-heart" style="font-size:20px"></i></div>
+                                    <button data-id="${res[i].id} onClick="settols(this)" class="cart1">Add to Cart</button>
                                 <div class="title">
-                                    <p style="margin:0px;">${res[i].title}</p>
-                                    <p style="margin:0px;">₹${res[i].price}</p>
+                                    <h3 style="margin:0px;">${res[i].title}</h3>
+                                    <h4 style="margin:0px;">₹${res[i].price}</h4>
                                 </div>
                             </div>`
                             html1+=`
@@ -215,12 +244,12 @@
                                 
                                 <img src=${res[i].img}/>
                             <div class="title1">
-                                <p style="margin:0px;">${res[i].title}</p>
+                                <h3 style="margin:0px;">${res[i].title}</h3>
                             </div>
                             <div class="price">
                                 
-                                    <p><s>₹${res[i].mrp}</s> - ₹${res[i].price}</p>
-                                    <button id="cart" class="cart">Add to Cart</button>
+                                    <h4><s>₹${res[i].mrp}</s> - ₹${res[i].price}</h4>
+                                    <button data-id="${res[i].id}" id="cart" class="cart" onClick="settols(this)">Add to Cart</button>
                                 
                                 
                             </div>
@@ -251,6 +280,49 @@
             main1.style.display="flex"
             console.log(2)
         }
+
+        function showItems(e){
+            let id = e.getAttribute("data-id")
+            console.log(id)
+            let elem = document.getElementsByClassName("inr");
+            for(let i = 0; i <elem.length; i+=1){
+                elem[i].style.display = "block"
+                console.log("")
+            }
+
+            let elems = document.getElementsByClassName("inr1");
+            for(let j = 0; j <elems.length; j+=1){
+                elems[j].style.display = "block"
+            }
+            let elems1 = document.getElementsByClassName("cart1");
+            for(let k = 0; k <elems1.length; k+=1){
+                elems1[k].style.display = "block"
+            }
+        }
+
+function removeItems(e){
+    let id = e.getAttribute("data-id")
+    let eleme = document.getElementsByClassName("inr");
+    for(let i = 0; i <eleme.length; i+=1){
+        eleme[i].style.display = "none"
+    }
+
+    let elemes = document.getElementsByClassName("inr1");
+    for(let j = 0; j <elemes.length; j+=1){
+        elemes[j].style.display = "none"
+    }
+    let elems1 = document.getElementsByClassName("cart1");
+        for(let k = 0; k <elems1.length; k+=1){
+            elems1[k].style.display = "none"
+        }
+}
+
+    function settols(e){
+        let id = e.getAttribute("data-id")
+        console.log(id)
+    }
+
+
 
     </script>
 </body>
