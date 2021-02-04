@@ -702,31 +702,35 @@
     "users": [
       {
         "id": 543212,
-        "first_name": "Morty",
-        "last name": "Smith",
-        "email": "morty@mail.com",
-        "password": "morty123"
+        "name": "Hari Gupta",
+        "email": "hari@mail.com",
+        "password": "hari123",
+        "number": "9895642510",
+        "address": "75, Anshula Villas, LalitaPur Indore - 363140"
       },
       {
         "id": 683212,
-        "first_name": "Rick",
-        "last name": "Sanchez",
+        "name": "Rick Sanchez",
         "email": "rick@mail.com",
-        "password": "rick123"
+        "password": "rick123",
+        "number": "8725614896",
+        "address": "4552 Brenna Roads Apt. 173 Bells, TX 75414"
       },
       {
         "id": 893212,
-        "first_name": "Lisa",
-        "last name": "Parker",
+        "name": "Lisa Mishra",
         "email": "lisa@mail.com",
-        "password": "lisa123"
+        "password": "lisa123",
+        "number": "9982545875",
+        "address": "15, Shanti Heights, Charlie Nagar Mumbai - 277811"
       },
       {
         "id": 665912,
-        "first_name": "kevin",
-        "last name": "Brown",
+        "name": "Kevin Brown",
         "email": "kevin@mail.com",
-        "password": "kevin123"
+        "password": "kevin123",
+        "number": "9352528700",
+        "address": "80 Grimes Close, Idaville, Northland, 5412"
       }
     ]
 }

@@ -89,6 +89,7 @@
     /* border: 1px solid brown; */
     width: 70%;
     margin: auto;
+    /* display: none; */
 }
 .line2{
     width: 102%;
@@ -188,15 +189,12 @@ td img {
     outline: none;
 }
 .empty-cart {
-    width: 100%;
-    border-radius: 10px;
-    margin: 20px;
-    background-color:#f3f2f2;
+    margin: 10px;
     text-align: center;
-    font-size: 25px;
-    font-style: oblique;
+    display: flex;
+    font-size: 20px;
     padding: 30px;
-    color: grey;
+    color: #205b9e;
 }
 /* modal box after checkout */
 

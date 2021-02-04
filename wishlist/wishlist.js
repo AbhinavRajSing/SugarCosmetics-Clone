@@ -38,10 +38,10 @@ function showWishlistData(data){
     // console.log(data)
     display.innerHTML = ""
 
-    // let clearCart = document.createElement('button')
-    // clearCart.textContent = 'CLEAR WISHLIST'
-    // clearCart.setAttribute('class', 'clear')
-    // clearCart.setAttribute('onclick', 'remove()')
+    let clearCart = document.createElement('button')
+    clearCart.textContent = 'CLEAR WISHLIST'
+    clearCart.setAttribute('class', 'clear')
+    clearCart.setAttribute('onclick', 'remove()')
 
     let html = ""
     for(i in data){
@@ -57,9 +57,11 @@ function showWishlistData(data){
         <div>
             <button class="add_cart" id=${data[i].id} onclick="add(this)">ADD TO CART</button>
         </div>
-    </div>`
+        <button class="delete" onclick=delet(${data[i].id})>X</button>
+        </div>`
     }
-  display.innerHTML = html
+  display.innerHTML= html
+  display.append(clearCart)
 }
 let arayOfProd = []
 
@@ -76,7 +78,37 @@ function add(event) {
         }
     }
     
-    localStorage.setItem("added-Products", JSON.stringify(arayOfProd))
+    localStorage.setItem("cart-products", JSON.stringify(arayOfProd))
 }
+
+let temp = JSON.parse(localStorage.getItem('add-wishlist'))
+localStorage.setItem('temp_wish', JSON.stringify(temp))
+
+function delet(did){
+    let added = localStorage.getItem("temp_wish")
+    let data = JSON.parse(added)
+    let cart_remained = data.filter(el => {
+        return (el.id !== did)
+    })
+    
+    localStorage.setItem('temp_wish', JSON.stringify(cart_remained))
+   
+    let final = JSON.parse(localStorage.getItem('temp_wish'))
+
+    if(JSON.stringify(final) !== JSON.stringify([])){
+        showWishlistData(final)
+    } else {
+        remove()
+    }
+    
+}
+
+function remove (){
+    document.querySelector('.empty-cart').style.display = 'block'
+    display.style.display = 'none'
+    // localStorage.removeItem('cart-products')
+    localStorage.removeItem('temp_wish')
+}
+
 
 // ------------------------------------------------wishlist code ends Here------------------------------------------------
