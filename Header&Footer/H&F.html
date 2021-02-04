@@ -77,20 +77,31 @@
             
              <div id="registerSide" class="hideSide">
                 <div>
-                    <label class="inputLabel" for="firstName">First Name</label>
-                    <input class="loginInput" type="text">
-                    <label class="inputLabel" for="lastName">Last Name</label>
-                    <input class="loginInput" type="text">
+                    <div class="flex">
+                        <label class="inputLabel" for="Name">Name</label>
+                        <label class="inputLabel redStar" for="email"> *</label>
+                    </div>
+                    <input id="getName" class="loginInput" type="text">
                     <div class="flex">
                         <label class="inputLabel" for="email">Email address</label>
                         <label class="inputLabel redStar" for="email"> *</label>
                     </div>
-                    <input class="loginInput" type="text">
+                    <input id="getEmail" class="loginInput" type="text">
+
+                    <div class="flex">
+                        <label class="inputLabel" for="phoneNumber">Contact Number</label>
+                    </div>
+                    <input id="getNumber" class="loginInput" type="text">
+                    <div class="flex">
+                        <label class="inputLabel" for="address">Address</label>
+                    </div>
+                    <input id="getAddress" class="loginInput" type="text">
+
                     <div class="flex">
                         <label class="inputLabel" for="password">Password</label>
                         <label class="inputLabel redStar" for="password">*</label>
                     </div>
-                    <input class="loginInput" type="text">
+                    <input id="getPassword" class="loginInput" type="text">
                 </div>
                 <button class="registerBtn">Register</button>
                 <div class="loginLastDiv">
