@@ -544,7 +544,15 @@ body{
 .filter{
     border:none;
     background: transparent;
+    height:20px;
+    margin-top: 15px;
 
+}
+.filter:focus{
+    outline: none;
+}
+.filter:hover{
+    background-color: rgb(194, 190, 190);
 }
 
 
@@ -656,11 +664,10 @@ body{
 
     
     <div class="main1">
-<<<<<<< HEAD
+<!-- <<<<<<< HEAD -->
         <p style="font-family: 'Open Sans', sans-serif;font-size: small;text-decoration: none;"><a href=""><i class="fa fa-home" style="font-size:20px;color: black;"></i> Home</a>/Eyes</p>
-=======
-        <p style="font-family: 'Open Sans', sans-serif;font-size: small;text-decoration: none;"><a href="/Header&Footer/H&F.html"><i class="fa fa-home" style="font-size:20px;color: black;"></i> Home</a>/Lips</p>
->>>>>>> bbae7b0784d5bb24ea343d6ab104b5a7b01e8de7
+<!-- ======= -->
+        
         <div class="main2">
             <p class="show">Showing all Results </p>
             <select class="select" id="select">
@@ -789,7 +796,7 @@ body{
                                     <img src=${res[i].img}/>
                                     <div class=inr><i class="fa fa-search" style="font-size:20px"></i></div>
                                     <div class=inr1><i class="fa fa-heart" style="font-size:20px"></i></div>
-                                    <button data-id="${res[i].id} onclick="settols1(this)" class="cart1">Add to Cart</button>
+                                    <button data-id=${res[i].id} data-title=${res[i].title} data-price=${res[i].price} data-img=${res[i].img} onclick="settols(this)" class="cart1">Add to Cart</button>
                                 <div class="title">
                                     <h3 style="margin:0px;">${res[i].title}</h3>
                                     <h4 style="margin:0px;">₹${res[i].price}</h4>

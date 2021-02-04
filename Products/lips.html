@@ -544,7 +544,15 @@ body{
 .filter{
     border:none;
     background: transparent;
+    height:20px;
+    margin-top: 15px;
 
+}
+.filter:focus{
+    outline: none;
+}
+.filter:hover{
+    background-color: rgb(194, 190, 190);
 }
 
 
@@ -787,7 +795,7 @@ body{
                                     <img src=${res[i].img}/>
                                     <div class=inr><i class="fa fa-search" style="font-size:20px"></i></div>
                                     <div class=inr1><i class="fa fa-heart" style="font-size:20px"></i></div>
-                                    <button data-id="${res[i].id} onclick="settols1(this)" class="cart1">Add to Cart</button>
+                                    <button data-id=${res[i].id} data-title=${res[i].title} data-price=${res[i].price} data-img=${res[i].img} onclick="settols(this)" class="cart1">Add to Cart</button>
                                 <div class="title">
                                     <h3 style="margin:0px;">${res[i].title}</h3>
                                     <h4 style="margin:0px;">₹${res[i].price}</h4>
@@ -894,7 +902,7 @@ function removeItems(e){
         localStorage.setItem("cart-products",JSON.stringify(arr))
     }
     function settols1(e){
-        // let id = e.getAttribute("data-id")
+        let id = e.getAttribute("data-id")
         // let title = e.getAttribute("data-title")
         // let price = e.getAttribute("data-price")
         // let img = e.getAttribute("data-img")
@@ -910,7 +918,7 @@ function removeItems(e){
         
         // arr = [...arr,temp]
         // localStorage.setItem("cartdata",JSON.stringify(arr))
-        console.log(e)
+        console.log(id)
     }
 
     
