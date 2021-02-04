@@ -134,7 +134,9 @@
             width:30%;
             text-align: center;
             padding:10px;
-            color:rgb(252,40,121)
+            color:rgb(252,40,121);
+            border-left: 1px solid gray;
+            height:200px
             
         }
         
@@ -539,7 +541,11 @@ body{
     margin-bottom: 1%;
 }
 
+.filter{
+    border:none;
+    background: transparent;
 
+}
 
 
 
@@ -648,20 +654,17 @@ body{
 
 
 
-    <div class="head-img">
-        <img src="https://cdn.shopify.com/s/files/1/0906/2558/files/Landing-Page--Lips-_1600X400_-psd_7f4548c4-7057-4609-ac6a-41287db74d2b.jpg?v=1612122537"/>
-    </div>
+   
     <div class="main1">
-        <p style="font-family: 'Open Sans', sans-serif;font-size: small;text-decoration: none;"><a href=""><i class="fa fa-home" style="font-size:20px;color: black;"></i> Home</a>/Lips</p>
+        <p style="font-family: 'Open Sans', sans-serif;font-size: small;text-decoration: none;"><a href=""><i class="fa fa-home" style="font-size:20px;color: black;"></i> Home</a>/Face</p>
         <div class="main2">
             <p class="show">Showing all Results </p>
-            <select class="select">
+            <select class="select" id="select">
                 <option>Filter</option>
-                <option id="az">Alphabetically, A-Z</option>
-                <option id="za">Alphabetically, Z-A</option>
-                <option id="lh">Price, low to high</option>
-                <option id="hl">Price, high to low</option>
+                <option data-id="1" id="lh" onclick="sort(this)">Price, low to high</option>
+                <option data-id="2" id="hl" onclick="sort(this)">Price, high to low</option>
             </select>
+            <button class="filter" id="filter">Filter</button>
             <button class="btn1" id="grid"><i class="fa fa-th" style="font-size:20px"></i></button>
             <button class="btn1" id="list"><i class="fa fa-th-list" style="font-size:20px"></i></button>
         </div>
@@ -908,7 +911,105 @@ function removeItems(e){
         console.log(e)
     }
 
+    
+    document.getElementById("filter").addEventListener("click",sort)
 
+    function sort(){
+        console.log(2)
+        // let id= e.getAttribute("data-id")
+        // console.log(id)
+        let sort=document.getElementById("select").value
+        if( sort === "Price, low to high"){
+            let url = `http://localhost:3000/skin?_sort=price&_order=asc`
+
+            let xhr = new XMLHttpRequest()
+            xhr.open('GET', url)
+            xhr.onload = () => {
+                if(xhr.status === 200){
+                    let res = JSON.parse(xhr.response)
+                    console.log(res)
+                    let html =""
+                    let html1 =""
+                    for(i in res){
+                        html+=`<div class="cards" data-id="${res[i].id}" onmouseOver="showItems(this)" onmouseout="removeItems(this)">
+                                
+                                    <img src=${res[i].img}/>
+                                    <div class=inr><i class="fa fa-search" style="font-size:20px"></i></div>
+                                    <div class=inr1><i class="fa fa-heart" style="font-size:20px"></i></div>
+                                    <button data-id="${res[i].id} onclick="settols1(this)" class="cart1">Add to Cart</button>
+                                <div class="title">
+                                    <h3 style="margin:0px;">${res[i].title}</h3>
+                                    <h4 style="margin:0px;">₹${res[i].price}</h4>
+                                </div>
+                            </div>`
+                            html1+=`
+                            <div class="cards1">
+                                
+                                <img src=${res[i].img}/>
+                            <div class="title1">
+                                <h3 style="margin:0px;">${res[i].title}</h3>
+                            </div>
+                            <div class="price">
+                                
+                                    <h4><s>₹${res[i].mrp}</s> - ₹${res[i].price}</h4>
+                                    <button data-id="${res[i].id}" data-title="${res[i].title}" data-price="${res[i].price}" data-img="${res[i].img}"id="cart" class="cart" onClick="settols(this)">Add to Cart</button>
+                                
+                                
+                            </div>
+                        </div>`
+                           main1.innerHTML = html
+                            main2.innerHTML = html1
+                    }
+                }
+            }
+            xhr.send()
+        }
+        else if (sort === "Price, high to low"){
+            let url = `http://localhost:3000/skin?_sort=price&_order=desc`
+
+            let xhr = new XMLHttpRequest()
+            xhr.open('GET', url)
+            xhr.onload = () => {
+                if(xhr.status === 200){
+                    let res = JSON.parse(xhr.response)
+                    console.log(res)
+                    let html =""
+                    let html1 =""
+                    for(i in res){
+                        html+=`<div class="cards" data-id="${res[i].id}" onmouseOver="showItems(this)" onmouseout="removeItems(this)">
+                                
+                                    <img src=${res[i].img}/>
+                                    <div class=inr><i class="fa fa-search" style="font-size:20px"></i></div>
+                                    <div class=inr1><i class="fa fa-heart" style="font-size:20px"></i></div>
+                                    <button data-id="${res[i].id} onclick="settols1(this)" class="cart1">Add to Cart</button>
+                                <div class="title">
+                                    <h3 style="margin:0px;">${res[i].title}</h3>
+                                    <h4 style="margin:0px;">₹${res[i].price}</h4>
+                                </div>
+                            </div>`
+                            html1+=`
+                            <div class="cards1">
+                                
+                                <img src=${res[i].img}/>
+                            <div class="title1">
+                                <h3 style="margin:0px;">${res[i].title}</h3>
+                            </div>
+                            <div class="price">
+                                
+                                    <h4><s>₹${res[i].mrp}</s> - ₹${res[i].price}</h4>
+                                    <button data-id="${res[i].id}" data-title="${res[i].title}" data-price="${res[i].price}" data-img="${res[i].img}"id="cart" class="cart" onClick="settols(this)">Add to Cart</button>
+                                
+                                
+                            </div>
+                        </div>`
+                           main1.innerHTML = html
+                            main2.innerHTML = html1
+                    }
+                }
+            }
+            xhr.send()
+        }
+    }
     
 
 
