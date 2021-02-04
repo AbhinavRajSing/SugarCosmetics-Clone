@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://kit.fontawesome.com/f612f4d575.js" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://kit.fontawesome.com/f612f4d575.js" crossorigin="anonymous"></script>
     <style>
         body{
             margin:0;
@@ -554,6 +554,145 @@ body{
 .filter:hover{
     background-color: rgb(194, 190, 190);
 }
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 2%;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.close:hover, .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.modalMainContainer{
+    width: auto;
+    height: 550px;
+    /* border: 1px solid black; */
+    display: flex;
+}
+  
+.modalMainContainer>div:nth-child(1), .modalMainContainer>div:nth-child(2){
+    width: 45%;
+    height: 100%;
+    /* border: 1px solid black; */
+}
+  
+.modalMainContainer>div:nth-child(2){
+    width: 55%;
+}
+  
+.img{
+    width: 100%;
+    height: 100%;
+}
+  
+.modalTitle, .modalPrice, .modalPNumber, .modalAddBtn, .modalAddwishlist{
+    width: 100%;
+    height: auto;
+    /* border: 1px solid black; */
+}
+
+.modalTitle{
+    height: auto;
+    font-weight: bold;
+    font-size: 25px;
+    margin-top: 15%;
+}
+  
+.modalTitle:hover{
+    color: #FC2779;
+}
+
+.modalPrice{
+    width: 50%;
+    height: 10%;
+    display: flex;
+    margin-top: 10%;
+}
+  
+.modalPrice>div:nth-child(1){
+    width: 30%;
+    height: 30%;
+    font-size: 15px;
+    margin-top: 3%;
+    color: #828282;
+}
+
+.modalPrice>div:nth-child(2){
+    width: 70%;
+    height: 100%;
+    font-size: 25px;
+    color: #FC2779;
+}
+  
+.modalAddBtn{
+    height: 12%;
+    margin-top: 5%;
+}
+  
+.modalAddwishlist{
+    height: 5%;
+    cursor: pointer;
+}
+
+.modalAddwishlist:hover{
+    color: #FC2779;
+}
+  
+.modalBanner{
+    width: 75%;
+    height: 9%;
+    margin-top: 8%;
+    /* border: 1px solid black; */
+}
+
+.addCartBtnModal{
+    background-color: #FC2779;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 18px;
+    align-items: center;
+    margin-top: 2%;
+    border: none;
+    width: 80%;
+    cursor: pointer;
+    outline: none;
+}
+
+.addCartBtnModal:hover{
+    background-color: rgb(75, 75, 75);
+}
+
+.mrpPrice{
+    text-decoration: line-through;
+}
 
 
 
@@ -562,7 +701,7 @@ body{
 <body>
     <div class="Header">
         <div class="Header__Logo">
-            <a href="/Header&Footer/H&F.html"><img class="img" src="https://cdn.shopify.com/s/files/1/0906/2558/files/SUGAR-Festive-logo_ba6a68ab-b29e-4109-ab60-bc8132bb153b_600x.jpg?v=1609495364" alt="Sugar Cosmetics Logo"></a>
+            <a href=""><img class="img" src="https://cdn.shopify.com/s/files/1/0906/2558/files/SUGAR-Festive-logo_ba6a68ab-b29e-4109-ab60-bc8132bb153b_600x.jpg?v=1609495364" alt="Sugar Cosmetics Logo"></a>
         </div>
         <div class="Header__Search">
             <div><input id="searchItems" class="Header__Search__inputBox" type="text" placeholder="Search for products"></div>
@@ -662,12 +801,11 @@ body{
 
 
 
-    
+    <div class="head-img">
+        <img src="https://cdn.shopify.com/s/files/1/0906/2558/files/Landing-Page--Lips-_1600X400_-psd_7f4548c4-7057-4609-ac6a-41287db74d2b.jpg?v=1612122537"/>
+    </div>
     <div class="main1">
-<!-- <<<<<<< HEAD -->
-<p style="font-family: 'Open Sans', sans-serif;font-size: small;text-decoration: none;"><a href="/Header&Footer/H&F.html"><i class="fa fa-home" style="font-size:20px;color: black;"></i> Home</a>/Eyes</p> 
-<!-- ======= -->
-        
+        <p style="font-family: 'Open Sans', sans-serif;font-size: small;text-decoration: none;"><a href="/Header&Footer/H&F.html"><i class="fa fa-home" style="font-size:20px;color: black;"></i> Home</a>/Lips</p>
         <div class="main2">
             <p class="show">Showing all Results </p>
             <select class="select" id="select">
@@ -759,7 +897,17 @@ body{
     </div>
     <!-- Footer Code Ends here -->
 </div>
-   
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div id="modalData">Some text in the Modal..</div>
+    </div>
+  
+</div>
+
+</div>
 
 
      <script> 
@@ -794,8 +942,8 @@ body{
                         html+=`<div class="cards" data-id="${res[i].id}" onmouseOver="showItems(this)" onmouseout="removeItems(this)">
                                 
                                     <img src=${res[i].img}/>
-                                    <div class=inr><i class="fa fa-search" style="font-size:20px"></i></div>
-                                    <div class=inr1><i class="fa fa-heart" style="font-size:20px"></i></div>
+                                    <div class=inr data-id=${res[i].id} onclick="viewProductModal(this)"><i class="fa fa-search" style="font-size:20px"></i></div>
+                                    <div class="inr1" data-id=${res[i].id} onclick="addToWishList(this)"><i class="fa fa-heart"   style="font-size:20px"></i></div>
                                     <button data-id=${res[i].id} data-title=${res[i].title} data-price=${res[i].price} data-img=${res[i].img} onclick="settols(this)" class="cart1">Add to Cart</button>
                                 <div class="title">
                                     <h3 style="margin:0px;">${res[i].title}</h3>
@@ -862,7 +1010,7 @@ body{
             let elems1 = document.getElementsByClassName("cart1");
             for(let k = 0; k <elems1.length; k+=1){
                 elems1[k].style.display = "block"
-                elems1[k].style.transition="all 0.22s ease-in";
+                elems1[k].style.transition="visibility 0s, opacity 0.5s;";
             }
         }
 
@@ -903,7 +1051,7 @@ function removeItems(e){
         localStorage.setItem("cart-products",JSON.stringify(arr))
     }
     function settols1(e){
-        // let id = e.getAttribute("data-id")
+        let id = e.getAttribute("data-id")
         // let title = e.getAttribute("data-title")
         // let price = e.getAttribute("data-price")
         // let img = e.getAttribute("data-img")
@@ -919,7 +1067,7 @@ function removeItems(e){
         
         // arr = [...arr,temp]
         // localStorage.setItem("cartdata",JSON.stringify(arr))
-        console.log(e)
+        console.log(id)
     }
 
     
@@ -945,8 +1093,8 @@ function removeItems(e){
                         html+=`<div class="cards" data-id="${res[i].id}" onmouseOver="showItems(this)" onmouseout="removeItems(this)">
                                 
                                     <img src=${res[i].img}/>
-                                    <div class=inr><i class="fa fa-search" style="font-size:20px"></i></div>
-                                    <div class=inr1><i class="fa fa-heart" style="font-size:20px"></i></div>
+                                    <div class=inr data-id=${res[i].id} onclick="viewProductModal(this)"><i class="fa fa-search" style="font-size:20px"></i></div>
+                                    <div class="inr1" data-id=${res[i].id} onclick="addToWishList(this)"><i class="fa fa-heart"   style="font-size:20px"></i></div>
                                     <button data-id="${res[i].id} onclick="settols1(this)" class="cart1">Add to Cart</button>
                                 <div class="title">
                                     <h3 style="margin:0px;">${res[i].title}</h3>
@@ -990,8 +1138,8 @@ function removeItems(e){
                         html+=`<div class="cards" data-id="${res[i].id}" onmouseOver="showItems(this)" onmouseout="removeItems(this)">
                                 
                                     <img src=${res[i].img}/>
-                                    <div class=inr><i class="fa fa-search" style="font-size:20px"></i></div>
-                                    <div class=inr1><i class="fa fa-heart" style="font-size:20px"></i></div>
+                                    <div class=inr data-id=${res[i].id} data-title=${res[i].title} onclick="viewProductModal(this)"><i class="fa fa-search" style="font-size:20px"></i></div>
+                                    <div class="inr1" data-id=${res[i].id} onclick="addToWishList(this)"><i class="fa fa-heart"   style="font-size:20px"></i></div>
                                     <button data-id="${res[i].id} onclick="settols1(this)" class="cart1">Add to Cart</button>
                                 <div class="title">
                                     <h3 style="margin:0px;">${res[i].title}</h3>
@@ -1021,7 +1169,95 @@ function removeItems(e){
             xhr.send()
         }
     }
+
+    //---------------------------------------Add to wishList starts here-------------------------------------------//
+function addToWishList(e){
+    let id = e.getAttribute("data-id")
+    fetch(`http://localhost:3000/combined?id=${id}`).then(res => res.json()).then(data => addToWishListLS(data)).catch((Error) => console.log(Error))
+    console.log(id)
+
+    function addToWishListLS(val){
+        let id = val[0].id
+        let title = val[0].title
+        let img = val[0].img
+        let price = val[0].price
+        let mrp = val[0].mrp
+        console.log(mrp)
+
+        let temp = {}
+        temp.id=id
+        temp.title=title
+        temp.price=price
+        temp.img = img
+
+        console.log(temp)
     
+        arr = [...arr,temp]
+        localStorage.setItem("add-wishlist",JSON.stringify(arr))
+        alert("Done")
+    }
+
+}
+//---------------------------------------Add to wishList ends here-------------------------------------------//
+    
+
+//---------------------------------------Product view modal starts here-------------------------------------------//
+function viewProductModal(e){
+    let id = e.getAttribute("data-id")
+    console.log(id)
+    fetch(`http://localhost:3000/combined?id=${id}`).then(res => res.json()).then(data => diaplayModalData(data)).catch((Error) => console.log(Error))
+}
+
+function diaplayModalData(val){
+
+    console.log(val)
+    let html = ""
+    let title = val[0].title
+    let img = val[0].img
+    let mrp = val[0].mrp
+    let price = val[0].price
+    var countItmsub = 1
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("myBtn");
+    var span = document.getElementsByClassName("close")[0];
+    modal.style.display = "block";
+    html+= `
+        <div class="modalMainContainer">
+            <div>
+                <img class="img" src="${img}" alt="${title}">
+            </div>
+            <div>
+            <div class="modalTitle"><label>${title}</label></div>
+                <div class="modalPrice">
+                    <div class="mrpPrice">Rs. ${mrp}</div>
+                    <div class="salePrice">Rs. ${price}</div>
+                </div>
+                <div class="modalAddBtn">
+                    <button class="addCartBtnModal" data-id="${val[0].id}" data-title="${val[0].title}" onclick="settols(this)">ADD TO CART</button>
+                </div>
+                <div class="modalAddwishlist">
+                    <i class="far fa-heart" data-id="${val[0].id}" onClick="addToWishList(this)">Add to Wishlist</i>
+                </div>
+                    
+                <div class="modalBanner">
+                    <img class="img" src="//cdn.shopify.com/s/files/1/0906/2558/files/SUGAR_Trust_Seal_473x.progressive.jpg?v=1597728764" alt="">
+                </div>
+            </div>
+        </div>
+    `
+
+    document.getElementById("modalData").innerHTML = html
+
+    span.onclick = function() {
+    modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+}
 
 
 
