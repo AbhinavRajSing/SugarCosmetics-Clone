@@ -725,7 +725,7 @@ body{
       height: auto;
       font-weight: bold;
       font-size: 25px;
-      margin-top: 5%;
+      margin-top: 15%;
   }
   
   .modalTitle:hover{
@@ -754,8 +754,9 @@ body{
       color: #FC2779;
   }
   
-  .modalPNumber, .modalAddBtn{
+.modalAddBtn{
     height: 12%;
+    margin-top: 5%;
   }
   
   .modalAddwishlist{
@@ -767,66 +768,13 @@ body{
       color: #FC2779;
   }
   
-  .modalPNumber{
-    border: 1px solid #ECECEC;
-    margin: 10px 0px;
-    width: 80px;
-    height: 35px;
-  }
-  
   .modalBanner{
     width: 75%;
     height: 9%;
     margin-top: 8%;
     /* border: 1px solid black; */
   }
-  
-  .minus {
-    border: none;
-    width: 25%;
-    height: 100%;
-    float: left;
-    text-align: center;
-    font-size: 20px;
-    color: grey;
-    cursor: pointer;
-    border: none;
-    border: 1px solid #ECECEC;
-    border-top: none;
-    border-left: none;
-    border-bottom: none;
-    background-color: #ECECEC;
-    outline: none;
-  }
 
-  .quan {
-    width: 40%;
-    height: 85%;
-    float: left;
-    text-align: center;
-    font-size: 15px;
-    color: rgb(95, 94, 94);
-    border: none;
-    outline: none;
-  }
-
-  .plus {
-    border: none;
-    width: 25%;
-    height: 100%;
-    float: right;
-    text-align: center;
-    font-size: 20px;
-    color: grey;
-    background-color: #ECECEC;
-    cursor: pointer;
-    border: 1px solid #ECECEC;
-    border-top: none;
-    border-right: none;
-    border-bottom: none;
-    outline: none;
-  }
-  
   .addCartBtnModal{
     background-color: #FC2779;
     color: white;

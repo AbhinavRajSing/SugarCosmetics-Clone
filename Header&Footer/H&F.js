@@ -104,11 +104,6 @@ function diaplayModalData(val){
                     <div class="mrpPrice">Rs. ${mrp}</div>
                     <div class="salePrice">Rs. ${price}</div>
                 </div>
-                <div class="modalPNumber">
-                    <button class="minus" onClick="subNumOfItem()">-</button>
-                    <input type="text" class="quan" value="${countItmsub}">
-                    <button class="plus" onClick="addNumOfItem">+</button>
-                </div>
                 <div class="modalAddBtn">
                     <button class="addCartBtnModal">ADD TO CART</button>
                 </div>
@@ -121,25 +116,13 @@ function diaplayModalData(val){
             </div>
         </div>
     `
-    
-    // function subNumOfItem(){
-    //     if(count < 0){
-    //         countItmsub = 1
-    //     }
-    //     else{
-    //         countItmsub--
-    //     }
-    //     alert("JJJJ")
-    // }
 
     document.getElementById("modalData").innerHTML = html
 
-    // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
     modal.style.display = "none";
     }
 
-    // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
@@ -183,10 +166,22 @@ function removeItemsOnCard(val){
 
 function testClick(elem){
     let id = elem.id
-    // console.log(id)
+    console.log(id)
 
-    // fetch(`http://localhost:3000/combined?id=${id}`).then(res => res.json()).then(data => console.log(data)).catch((Error) => console.log(Error))
+    fetch(`http://localhost:3000/combined?id=${id}`).then(res => res.json()).then(data => addToLocalStorageCart(data)).catch((Error) => console.log(Error))
 }
+
+function addToLocalStorageCart(val){
+    let id = val[0].id
+    let img = val[0].img
+    let price = val[0].price
+    let title = val[0].title
+
+    console.log(title, price)
+
+}
+
+
 //---------------------------------------Onclick getting product details ends here--------------------------------------//
 
 //---------------------------------------JustIn pagination starts here-------------------------------------------//
