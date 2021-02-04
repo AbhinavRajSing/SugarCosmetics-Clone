@@ -71,7 +71,28 @@ function displayData(data){
 //---------------------------------------Add to wishList starts here-------------------------------------------//
 function addToWishList(pID){
     let id = pID.id
-    console.log(id)
+    fetch(`http://localhost:3000/combined?id=${id}`).then(res => res.json()).then(data => addToWishListLS(data)).catch((Error) => console.log(Error))
+
+    function addToWishListLS(val){
+        let id = val[0].id
+        let title = val[0].title
+        let img = val[0].img
+        let price = val[0].price
+        let mrp = val[0].mrp
+        // console.log(mrp)
+
+        let temp = {}
+        temp.id=id
+        temp.title=title
+        temp.price=price
+        temp.img = img
+
+        console.log(temp)
+    
+        arr = [...arr,temp]
+        localStorage.setItem("add-wishlist",JSON.stringify(arr))
+    }
+
 }
 //---------------------------------------Add to wishList ends here-------------------------------------------//
 //---------------------------------------Product view modal starts here-------------------------------------------//

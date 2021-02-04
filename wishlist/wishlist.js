@@ -4,24 +4,24 @@ function execute(e){
     e.preventDefault()
     getPurchaseData()
 }
-let data =[ {
-    id: 2,
-    title: "SMUDGE ME NOT LIP DUO",
-    mrp: 999,
-    price: 599,
-    discount: 30,
-    img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-lip-duo-01-brazen-raisin-burgundy-13200661643347.progressive.jpg?v=1577305698      "
-  },
-  {
-    id: 3,
-    title: "SMUDGE ME NOT MINIS SET- BLACK",
-    mrp: 589,
-    price: 459,
-    discount: 18,
-    img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-minis-set-black-14964843151443.progressive.jpg?v=1611061746"
-  }
-]
-  localStorage.setItem( "add-wishlist",JSON.stringify(data))
+// let data =[ {
+//     id: 2,
+//     title: "SMUDGE ME NOT LIP DUO",
+//     mrp: 999,
+//     price: 599,
+//     discount: 30,
+//     img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-lip-duo-01-brazen-raisin-burgundy-13200661643347.progressive.jpg?v=1577305698      "
+//   },
+//   {
+//     id: 3,
+//     title: "SMUDGE ME NOT MINIS SET- BLACK",
+//     mrp: 589,
+//     price: 459,
+//     discount: 18,
+//     img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-minis-set-black-14964843151443.progressive.jpg?v=1611061746"
+//   }
+// ]
+//   localStorage.setItem( "add-wishlist",JSON.stringify(data))
 
 function getPurchaseData(){
     let added = localStorage.getItem("add-wishlist")
@@ -33,6 +33,7 @@ function getPurchaseData(){
     }
 }
 let display = document.querySelector('.data')
+
 function showWishlistData(data){
     // console.log(data)
     display.innerHTML = ""
