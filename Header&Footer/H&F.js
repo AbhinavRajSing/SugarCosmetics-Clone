@@ -78,6 +78,7 @@ function addToWishList(pID){
         let img = val[0].img
         let price = val[0].price
         let mrp = val[0].mrp
+        let html = ""
         // console.log(mrp)
 
         let temp = {}
@@ -90,7 +91,20 @@ function addToWishList(pID){
     
         arr = [...arr,temp]
         localStorage.setItem("add-wishlist",JSON.stringify(arr))
-        alert("Done")
+        // alert("Done")
+        let modalW = document.getElementById("myModalW");
+        let spanW = document.getElementsByClassName("closeW")[0];
+        modalW.style.display = "block"; 
+        html += `<div class="wishListPopUp"><i class="far fa-check-circle"></i><p>Item added to Wishlist</p></div>`
+        document.getElementById("wishListPopUpData").innerHTML = html
+        spanW.onclick = function() {
+            modalW.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == modalW) {
+                modalW.style.display = "none";
+            }
+        }
     }
 
 }
@@ -110,10 +124,8 @@ function diaplayModalData(val){
     let img = val[0].img
     let mrp = val[0].mrp
     let price = val[0].price
-    var countItmsub = 1
-    var modal = document.getElementById("myModal");
-    var btn = document.getElementById("myBtn");
-    var span = document.getElementsByClassName("close")[0];
+    let modal = document.getElementById("myModal");
+    let span = document.getElementsByClassName("close")[0];
     modal.style.display = "block";
     html+= `
         <div class="modalMainContainer">
@@ -232,11 +244,12 @@ function settols(e){
     fetch(`http://localhost:3000/combined?id=${id}`).then(res => res.json()).then(data => AddToLSFromHp(data)).catch((Error) => console.log(Error))
 }
 
-function AddToLSFromHp(data){
+function AddToLSFromHp(data){   
     let title = data[0].title
     let price = data[0].price
     let img = data[0].img
     let id = data[0].id
+    let html = ""
 
     var temp = {}
     temp.id=id
@@ -248,6 +261,20 @@ function AddToLSFromHp(data){
     
     arr = [...arr,temp]
     localStorage.setItem("cart-products",JSON.stringify(arr))
+    
+    let modalW = document.getElementById("myModalW");
+    let spanW = document.getElementsByClassName("closeW")[0];
+    modalW.style.display = "block"; 
+    html += `<div class="wishListPopUp"><i class="far fa-check-circle"></i><p>Item added to Cart</p></div>`
+    document.getElementById("wishListPopUpData").innerHTML = html
+    spanW.onclick = function() {
+        modalW.style.display = "none";
+    }
+    window.onclick = function(event) {
+        if (event.target == modalW) {
+            modalW.style.display = "none";
+        }
+    }
 }
 
 //---------------------------------------Add to localstorage ends here--------------------------------------//
