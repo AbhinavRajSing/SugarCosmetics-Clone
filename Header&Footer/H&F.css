@@ -722,20 +722,36 @@ body{
   }
 
   .modalTitle{
-      height: 80px;
+      height: auto;
       font-weight: bold;
-      font-size: 20px;
-      /* margin-top: 10%; */
+      font-size: 25px;
+      margin-top: 5%;
   }
   
+  .modalTitle:hover{
+    color: #FC2779;
+  }
+
   .modalPrice{
-    height: 14%;
+    width: 50%;
+    height: 10%;
     display: flex;
+    margin-top: 10%;
   }
   
-  .modalPrice>div{
-    width: 50%;
-    height: 100%;
+  .modalPrice>div:nth-child(1){
+    width: 30%;
+    height: 30%;
+    font-size: 15px;
+    margin-top: 3%;
+    color: #828282;
+  }
+
+  .modalPrice>div:nth-child(2){
+      width: 70%;
+      height: 100%;
+      font-size: 25px;
+      color: #FC2779;
   }
   
   .modalPNumber, .modalAddBtn{
@@ -744,10 +760,15 @@ body{
   
   .modalAddwishlist{
     height: 5%;
+    cursor: pointer;
+  }
+
+  .modalAddwishlist:hover{
+      color: #FC2779;
   }
   
   .modalPNumber{
-    border: 1px solid rgb(167, 167, 167);
+    border: 1px solid #ECECEC;
     margin: 10px 0px;
     width: 80px;
     height: 35px;
@@ -756,6 +777,7 @@ body{
   .modalBanner{
     width: 75%;
     height: 9%;
+    margin-top: 8%;
     /* border: 1px solid black; */
   }
   
@@ -767,9 +789,16 @@ body{
     text-align: center;
     font-size: 20px;
     color: grey;
-    background-color: #ecebeb;
     cursor: pointer;
+    border: none;
+    border: 1px solid #ECECEC;
+    border-top: none;
+    border-left: none;
+    border-bottom: none;
+    background-color: #ECECEC;
+    outline: none;
   }
+
   .quan {
     width: 40%;
     height: 85%;
@@ -777,7 +806,10 @@ body{
     text-align: center;
     font-size: 15px;
     color: rgb(95, 94, 94);
+    border: none;
+    outline: none;
   }
+
   .plus {
     border: none;
     width: 25%;
@@ -786,24 +818,36 @@ body{
     text-align: center;
     font-size: 20px;
     color: grey;
-    background-color: #ecebeb;
+    background-color: #ECECEC;
     cursor: pointer;
-  
+    border: 1px solid #ECECEC;
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+    outline: none;
   }
   
   .addCartBtnModal{
-    background-color: palevioletred;
+    background-color: #FC2779;
     color: white;
     text-align: center;
-    padding: 5px;
-    font-size: 20px;
+    padding: 10px;
+    font-size: 18px;
     align-items: center;
     margin-top: 2%;
     border: none;
     width: 80%;
     cursor: pointer;
+    outline: none;
   }
 
+  .addCartBtnModal:hover{
+    background-color: rgb(75, 75, 75);
+  }
+
+.mrpPrice{
+    text-decoration: line-through;
+}
 
 /* ---------------------------------------------LandingPage Code Ends here----------------------------------------------- */
 
