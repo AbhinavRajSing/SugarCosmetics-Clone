@@ -91,6 +91,7 @@ function addToWishList(pID){
     
         arr = [...arr,temp]
         localStorage.setItem("add-wishlist",JSON.stringify(arr))
+        alert("Done")
     }
 
 }

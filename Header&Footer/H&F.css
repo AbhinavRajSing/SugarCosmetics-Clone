@@ -659,43 +659,36 @@ body{
     display:none
 }
 
-
-
-
-/* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 2%; /* Location of the box */
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 2%;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  
-  /* Modal Content */
-  .modal-content {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-  }
-  
-  /* The Close Button */
-  .close {
+}
+
+.close {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
   
-  .close:hover,
-  .close:focus {
+.close:hover, .close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
@@ -707,84 +700,84 @@ body{
     height: 550px;
     /* border: 1px solid black; */
     display: flex;
-  }
+}
   
-  .modalMainContainer>div:nth-child(1), .modalMainContainer>div:nth-child(2){
+.modalMainContainer>div:nth-child(1), .modalMainContainer>div:nth-child(2){
     width: 45%;
     height: 100%;
     /* border: 1px solid black; */
-  }
+}
   
-  .modalMainContainer>div:nth-child(2){
+.modalMainContainer>div:nth-child(2){
     width: 55%;
-  }
+}
   
-  .img{
+.img{
     width: 100%;
     height: 100%;
-  }
+}
   
-  .modalTitle, .modalPrice, .modalPNumber, .modalAddBtn, .modalAddwishlist{
+.modalTitle, .modalPrice, .modalPNumber, .modalAddBtn, .modalAddwishlist{
     width: 100%;
     height: auto;
     /* border: 1px solid black; */
-  }
+}
 
-  .modalTitle{
-      height: auto;
-      font-weight: bold;
-      font-size: 25px;
-      margin-top: 15%;
-  }
+.modalTitle{
+    height: auto;
+    font-weight: bold;
+    font-size: 25px;
+    margin-top: 15%;
+}
   
-  .modalTitle:hover{
+.modalTitle:hover{
     color: #FC2779;
-  }
+}
 
-  .modalPrice{
+.modalPrice{
     width: 50%;
     height: 10%;
     display: flex;
     margin-top: 10%;
-  }
+}
   
-  .modalPrice>div:nth-child(1){
+.modalPrice>div:nth-child(1){
     width: 30%;
     height: 30%;
     font-size: 15px;
     margin-top: 3%;
     color: #828282;
-  }
+}
 
-  .modalPrice>div:nth-child(2){
-      width: 70%;
-      height: 100%;
-      font-size: 25px;
-      color: #FC2779;
-  }
+.modalPrice>div:nth-child(2){
+    width: 70%;
+    height: 100%;
+    font-size: 25px;
+    color: #FC2779;
+}
   
 .modalAddBtn{
     height: 12%;
     margin-top: 5%;
-  }
+}
   
-  .modalAddwishlist{
+.modalAddwishlist{
     height: 5%;
     cursor: pointer;
-  }
+}
 
-  .modalAddwishlist:hover{
-      color: #FC2779;
-  }
+.modalAddwishlist:hover{
+    color: #FC2779;
+}
   
-  .modalBanner{
+.modalBanner{
     width: 75%;
     height: 9%;
     margin-top: 8%;
     /* border: 1px solid black; */
-  }
+}
 
-  .addCartBtnModal{
+.addCartBtnModal{
     background-color: #FC2779;
     color: white;
     text-align: center;
@@ -796,11 +789,11 @@ body{
     width: 80%;
     cursor: pointer;
     outline: none;
-  }
+}
 
-  .addCartBtnModal:hover{
+.addCartBtnModal:hover{
     background-color: rgb(75, 75, 75);
-  }
+}
 
 .mrpPrice{
     text-decoration: line-through;
