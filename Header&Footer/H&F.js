@@ -88,7 +88,7 @@ function diaplayModalData(val){
     let img = val[0].img
     let mrp = val[0].mrp
     let price = val[0].price
-
+    var countItmsub = 1
     var modal = document.getElementById("myModal");
     var btn = document.getElementById("myBtn");
     var span = document.getElementsByClassName("close")[0];
@@ -101,13 +101,13 @@ function diaplayModalData(val){
             <div>
             <div class="modalTitle"><label>${title}</label></div>
                 <div class="modalPrice">
-                    <div>${mrp}</div>
-                    <div>${price}</div>
+                    <div class="mrpPrice">Rs. ${mrp}</div>
+                    <div class="salePrice">Rs. ${price}</div>
                 </div>
                 <div class="modalPNumber">
-                    <button class="minus">-</button>
-                    <input type="text" class="quan" value="1">
-                    <button class="plus">+</button>
+                    <button class="minus" onClick="subNumOfItem()">-</button>
+                    <input type="text" class="quan" value="${countItmsub}">
+                    <button class="plus" onClick="addNumOfItem">+</button>
                 </div>
                 <div class="modalAddBtn">
                     <button class="addCartBtnModal">ADD TO CART</button>
@@ -121,6 +121,16 @@ function diaplayModalData(val){
             </div>
         </div>
     `
+    
+    // function subNumOfItem(){
+    //     if(count < 0){
+    //         countItmsub = 1
+    //     }
+    //     else{
+    //         countItmsub--
+    //     }
+    //     alert("JJJJ")
+    // }
 
     document.getElementById("modalData").innerHTML = html
 
