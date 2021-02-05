@@ -6,6 +6,7 @@ let display = document.querySelector('.added_items')
 let bill_amt = document.getElementById('bill_amt')
 let total_amt = document.getElementById('total_amt')
 let cart_active = document.querySelector('.cart_active')
+let wishlist_active = document.querySelector('.wishlist_active')
 
 function execute(e){
     e.preventDefault()
@@ -93,13 +94,17 @@ modalClose.addEventListener("click", function () {
 //   localStorage.setItem( "cart-products",JSON.stringify(data))
 
   // getting data from loacal storage
-function getPurchaseData(){
+function getPurchaseData(){  
     let added = localStorage.getItem("cart-products")
+    let addedW = localStorage.getItem("add-wishlist")
+    let addedW_prod = JSON.parse(addedW)
     let added_prod = JSON.parse(added)
     if(added_prod !== null){
         document.querySelector('.empty-cart').style.display = 'none'
         cart_active.style.display = "block"
         cart_active.textContent = added_prod.length
+        wishlist_active.style.display = "block"
+        wishlist_active.textContent = addedW_prod.length
         showPurchaseData(added_prod)
     } else {
         document.querySelector('.empty-cart').style.display = 'block'
@@ -279,6 +284,7 @@ function delet(did){
 
     if(JSON.stringify(final) !== JSON.stringify([])){
         cart_active.textContent = final.length
+        added_prod.length.textContent = final.length
         showPurchaseData(final)
     } else {
         remove()

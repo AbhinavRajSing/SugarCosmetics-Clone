@@ -1,3 +1,22 @@
+window.addEventListener('load', cartWishNum)
+
+let cart_active = document.querySelector('.cart_active')
+let wishlist_active = document.querySelector('.wishlist_active')
+
+function cartWishNum(){
+    let added = localStorage.getItem("cart-products")
+    let addedW = localStorage.getItem("add-wishlist")
+    let addedW_prod = JSON.parse(addedW)
+    let added_prod = JSON.parse(added)
+    console.log(added_prod)
+    if(added_prod !== null){
+        cart_active.style.display = "block"
+        cart_active.textContent = added_prod.length
+        wishlist_active.style.display = "block"
+        wishlist_active.textContent = addedW_prod.length
+    }
+}
+
 window.addEventListener("DOMContentLoaded", getData)
 
 function getData(){

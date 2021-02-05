@@ -1,6 +1,7 @@
 // ------------------------------------------------wishlist code starts Here------------------------------------------------
 window.addEventListener('load', execute)
 let wishlist_active = document.querySelector('.wishlist_active')
+let cart_active = document.querySelector('.cart_active')
 
 function execute(e){
     e.preventDefault()
@@ -37,13 +38,17 @@ function execute(e){
 
 // get data from local storage
 function getPurchaseData(){
+    let addedC = localStorage.getItem("cart-products")
     let added = localStorage.getItem("add-wishlist")
     let added_prod = JSON.parse(added)
+    let added_prodC = JSON.parse(addedC)
     // console.log(added_prod)
     if(added_prod !== null){
         document.querySelector('.empty-cart').style.display = 'none'
         wishlist_active.style.display = "block"
         wishlist_active.textContent = (added_prod.length)
+        wishlist_active.style.display = "block"
+        wishlist_active.textContent = added_prodC.length
         showWishlistData(added_prod)
     } else {
         document.querySelector('.empty-cart').style.display = 'block'
