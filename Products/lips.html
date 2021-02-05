@@ -1093,7 +1093,7 @@ function removeItems(e){
         }
 }
 
-    let arr = []
+    let arr = JSON.parse(localStorage.getItem("cart-products")) || []
     function settols(e){
         let id = e.getAttribute("data-id")
         let title = e.getAttribute("data-title")
@@ -1112,25 +1112,7 @@ function removeItems(e){
         arr = [...arr,temp]
         localStorage.setItem("cart-products",JSON.stringify(arr))
     }
-    function settols1(e){
-        let id = e.getAttribute("data-id")
-        // let title = e.getAttribute("data-title")
-        // let price = e.getAttribute("data-price")
-        // let img = e.getAttribute("data-img")
-        // console.log(img)
-        // console.log(title)
-        // console.log(price)
-        // console.log(id)
-        // var temp = {}
-        // temp.id=id
-        // temp.title=title
-        // temp.price=price
-        // temp.img = img
-        
-        // arr = [...arr,temp]
-        // localStorage.setItem("cartdata",JSON.stringify(arr))
-        console.log(id)
-    }
+    
 
     
     document.getElementById("filter").addEventListener("click",sort)
@@ -1233,6 +1215,8 @@ function removeItems(e){
     }
 
     //---------------------------------------Add to wishList starts here-------------------------------------------//
+    let arr1 = JSON.parse(localStorage.getItem("add-wishlist")) || []
+
 function addToWishList(e){
     let id = e.getAttribute("data-id")
     fetch(`http://localhost:3000/combined?id=${id}`).then(res => res.json()).then(data => addToWishListLS(data)).catch((Error) => console.log(Error))
@@ -1254,8 +1238,8 @@ function addToWishList(e){
 
         console.log(temp)
     
-        arr = [...arr,temp]
-        localStorage.setItem("add-wishlist",JSON.stringify(arr))
+        arr1 = [...arr1,temp]
+        localStorage.setItem("add-wishlist",JSON.stringify(arr1))
         alert("Done")
     }
 

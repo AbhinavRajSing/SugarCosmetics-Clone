@@ -846,7 +846,11 @@ body{
         <img src="https://cdn.shopify.com/s/files/1/0906/2558/files/Landing-Page--Lips-_1600X400_-psd_7f4548c4-7057-4609-ac6a-41287db74d2b.jpg?v=1612122537"/>
     </div>
     <div class="main1">
+<<<<<<< HEAD
+        <p style="font-family: 'Open Sans', sans-serif;font-size: small;text-decoration: none;"><a href="/Header&Footer/H&F.html"><i class="fa fa-home" style="font-size:20px;color: black;"></i> Home</a>/Eyes</p>
+=======
         <p style="font-family: 'Open Sans', sans-serif;font-size: small;text-decoration: none;"><a href="/Landing_Page.html"><i class="fa fa-home" style="font-size:20px;color: black;"></i> Home</a>/Lips</p>
+>>>>>>> ef5ea0e3ee73100ef4c746d495ad7eb83a687a82
         <div class="main2">
             <p class="show">Showing all Results </p>
             <select class="select" id="select">
@@ -985,9 +989,9 @@ body{
                         html+=`<div class="cards" data-id="card${res[i].id}"  data-title="${res[i].title}" onmouseOver="showItems(${res[i].id})" onmouseout="removeItems(this)">
                                 
                                     <img src=${res[i].img}/>
-                                    <div class=inr id="inr" data-id=${res[i].id} onclick="viewProductModal(this)"><i class="fa fa-search" style="font-size:20px"></i></div>
-                                    <div class="inr1" id="inr1" data-id=${res[i].id} onclick="addToWishList(this)"><i class="fa fa-heart"   style="font-size:20px"></i></div>
-                                    <button id="cart1" data-id=${res[i].id} data-title=${res[i].title} data-price=${res[i].price} data-img=${res[i].img} onclick="settols(this)" class="cart1">Add to Cart</button>
+                                    <div class=inr data-id=${res[i].id} onclick="viewProductModal(this)"><i class="fa fa-search" style="font-size:20px"></i></div>
+                                    <div class="inr1" data-id=${res[i].id} onclick="addToWishList(this)"><i class="fa fa-heart"   style="font-size:20px"></i></div>
+                                    <button data-id=${res[i].id} data-title=${res[i].title} data-price=${res[i].price} data-img=${res[i].img} onclick="settols(this)" class="cart1">Add to Cart</button>
                                 <div class="title">
                                     <h3 style="margin:0px;">${res[i].title}</h3>
                                     <h4 style="margin:0px;">₹${res[i].price}</h4>
@@ -1035,19 +1039,19 @@ body{
         let sort=document.getElementById("select").value
 
             // let id = e.getAttribute("data-id")
-            let elem = document.getElementById("inr");
+            let elem = document.getElementsByClassName("inr");
             // // // for(let i = 0; i <elem.length; i+=1){
                 elem[e-1].style.display = "block";
             // //     elem[i].style.transition="all 2s";
             // //     // console.log("")
             // // // }
 
-            let elems = document.getElementById("inr1");
+            let elems = document.getElementsByClassName("inr1");
             // for(let j = 0; j <elems.length; j+=1){
                 elems[e-1].style.display = "block";
             //     elems[j].style.transition="all  2s ease-out";
             // }
-            let elems1 = document.getElementById("cart1");
+            let elems1 = document.getElementsByClassName("cart1");
             // for(let k = 0; k <elems1.length; k+=1){
                 elems1[e-1].style.display = "block"
             //     elems1[k].style.transition="visibility 0s, opacity 0.5s;";
@@ -1094,7 +1098,7 @@ function removeItems(e){
         }
 }
 
-    let arr = []
+    let arr = JSON.parse(localStorage.getItem("cart-products")) || []
     function settols(e){
         let id = e.getAttribute("data-id")
         let title = e.getAttribute("data-title")
@@ -1113,25 +1117,7 @@ function removeItems(e){
         arr = [...arr,temp]
         localStorage.setItem("cart-products",JSON.stringify(arr))
     }
-    function settols1(e){
-        let id = e.getAttribute("data-id")
-        // let title = e.getAttribute("data-title")
-        // let price = e.getAttribute("data-price")
-        // let img = e.getAttribute("data-img")
-        // console.log(img)
-        // console.log(title)
-        // console.log(price)
-        // console.log(id)
-        // var temp = {}
-        // temp.id=id
-        // temp.title=title
-        // temp.price=price
-        // temp.img = img
-        
-        // arr = [...arr,temp]
-        // localStorage.setItem("cartdata",JSON.stringify(arr))
-        console.log(id)
-    }
+    
 
     
     document.getElementById("filter").addEventListener("click",sort)
@@ -1234,6 +1220,8 @@ function removeItems(e){
     }
 
     //---------------------------------------Add to wishList starts here-------------------------------------------//
+    let arr1 = JSON.parse(localStorage.getItem("add-wishlist")) || []
+
 function addToWishList(e){
     let id = e.getAttribute("data-id")
     fetch(`http://localhost:3000/combined?id=${id}`).then(res => res.json()).then(data => addToWishListLS(data)).catch((Error) => console.log(Error))
@@ -1255,8 +1243,8 @@ function addToWishList(e){
 
         console.log(temp)
     
-        arr = [...arr,temp]
-        localStorage.setItem("add-wishlist",JSON.stringify(arr))
+        arr1 = [...arr1,temp]
+        localStorage.setItem("add-wishlist",JSON.stringify(arr1))
         alert("Done")
     }
 
