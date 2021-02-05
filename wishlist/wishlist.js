@@ -1,9 +1,13 @@
 // ------------------------------------------------wishlist code starts Here------------------------------------------------
 window.addEventListener('load', execute)
+let wishlist_active = document.querySelector('.wishlist_active')
+
 function execute(e){
     e.preventDefault()
     getPurchaseData()
 }
+
+// dummy data for developer, this should be commented on product launch.
 // let data =[ {
 //     id: 2,
 //     title: "SMUDGE ME NOT LIP DUO",
@@ -19,21 +23,34 @@ function execute(e){
 //     price: 459,
 //     discount: 18,
 //     img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-minis-set-black-14964843151443.progressive.jpg?v=1611061746"
+//   },
+//   {
+//     id: 5,
+//     title: "SMUDGE ME NOT MINIS SET- BLACK",
+//     mrp: 589,
+//     price: 459,
+//     discount: 18,
+//     img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-minis-set-black-14964843151443.progressive.jpg?v=1611061746"
 //   }
 // ]
 //   localStorage.setItem( "add-wishlist",JSON.stringify(data))
 
+// get data from local storage
 function getPurchaseData(){
     let added = localStorage.getItem("add-wishlist")
     let added_prod = JSON.parse(added)
     // console.log(added_prod)
-    if(added_prod !== ''){
+    if(added_prod !== null){
         document.querySelector('.empty-cart').style.display = 'none'
+        wishlist_active.style.display = "block"
+        wishlist_active.textContent = (added_prod.length)
         showWishlistData(added_prod)
+    } else {
+        document.querySelector('.empty-cart').style.display = 'block'
     }
 }
+// show data on page
 let display = document.querySelector('.data')
-
 function showWishlistData(data){
     // console.log(data)
     display.innerHTML = ""
@@ -63,7 +80,9 @@ function showWishlistData(data){
   display.innerHTML= html
   display.append(clearCart)
 }
-let arayOfProd = []
+
+// Add products to cart 
+let cart_products = JSON.parse(localStorage.getItem('cart-products')) || []
 
 function add(event) {
     event.textContent = "ADDED "
@@ -74,16 +93,17 @@ function add(event) {
     for(i in data){
         if(data[i].id == event.id){
             // console.log(data[i])
-            arayOfProd = [...arayOfProd, data[i]]
+            cart_products = [...cart_products, data[i]]
         }
     }
     
-    localStorage.setItem("cart-products", JSON.stringify(arayOfProd))
+    localStorage.setItem("cart-products", JSON.stringify(cart_products))
 }
 
 let temp = JSON.parse(localStorage.getItem('add-wishlist'))
 localStorage.setItem('temp_wish', JSON.stringify(temp))
 
+// delete particular item from list
 function delet(did){
     let added = localStorage.getItem("temp_wish")
     let data = JSON.parse(added)
@@ -96,18 +116,20 @@ function delet(did){
     let final = JSON.parse(localStorage.getItem('temp_wish'))
 
     if(JSON.stringify(final) !== JSON.stringify([])){
+        wishlist_active.textContent = (final.length)
         showWishlistData(final)
     } else {
         remove()
     }
     
 }
-
+// clear added products from page as well as local storage
 function remove (){
     document.querySelector('.empty-cart').style.display = 'block'
     display.style.display = 'none'
-    // localStorage.removeItem('cart-products')
+    localStorage.removeItem('add-wishlist')
     localStorage.removeItem('temp_wish')
+    wishlist_active.style.display = "none"
 }
 
 

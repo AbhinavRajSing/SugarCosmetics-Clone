@@ -1,5 +1,22 @@
-/* ---------------------------------------------Cart Code Ends here----------------------------------------------- */
-
+/* ---------------------------------------------Cart Code starts here----------------------------------------------- */
+.cart_active {
+    width: 14px;
+    height: 14px;
+    /* border: 1px solid black; */
+    background-color: #FC2779;
+    border-radius: 50%;
+    font-size: 12px;
+    color: white;
+    margin: 0px;
+    float: right;
+    position: absolute;
+    top: 7px;
+    right: 42px;
+    display: none;
+}
+.Header__LikeCart {
+    position: relative;
+}
 .title{
     text-align: center;
     color: white;
@@ -22,6 +39,14 @@
 }
 .address a:hover{
     text-decoration: underline;
+}
+.pink_offer {
+    background-color: #FC2779;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding: 7px;
+    letter-spacing: 1px;
 }
 .total_box {
     width: 32%;
@@ -143,12 +168,13 @@ td img {
     border: none;
     cursor: pointer;
     margin-left: 50px;
-    background-color: rgb(209, 209, 209);
+    background-color:black;
+    color: white;
 }
 .clear:hover{
-    background-color: black;
-    color: white;
-    transition: 0.6s;
+    background-color: rgb(170, 170, 170);
+    color: black;
+    transition: 0.4s;
 }
 .quantity{
     border: 1px solid rgb(167, 167, 167);
