@@ -56,50 +56,19 @@ modalClose.addEventListener("click", function () {
     modalBg.classList.remove("bg-active");
   });
 
-// adding  Dummy data for developer,// this should be commented after product launch.
-
-// let data =[ {
-//     id: 2,
-//     title: "SMUDGE ME NOT LIP DUO",
-//     mrp: 999,
-//     price: 599,
-//     discount: 30,
-//     img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-lip-duo-01-brazen-raisin-burgundy-13200661643347.progressive.jpg?v=1577305698      "
-//   },
-//   {
-//     id: 3,
-//     title: "SMUDGE ME NOT MINIS SET- BLACK",
-//     mrp: 589,
-//     price: 459,
-//     discount: 18,
-//     img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-minis-set-black-14964843151443.progressive.jpg?v=1611061746"
-//   },
-//   {
-//     id: 4,
-//     title: "SMUDGE ME NOT LIP DUO",
-//     mrp: 999,
-//     price: 599,
-//     discount: 30,
-//     img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-lip-duo-01-brazen-raisin-burgundy-13200661643347.progressive.jpg?v=1577305698      "
-//   },
-//   {
-//     id: 5,
-//     title: "SMUDGE ME NOT MINIS SET- BLACK",
-//     mrp: 589,
-//     price: 459,
-//     discount: 18,
-//     img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-minis-set-black-14964843151443.progressive.jpg?v=1611061746"
-//   }
-// ]
-//   localStorage.setItem( "cart-products",JSON.stringify(data))
-
   // getting data from loacal storage
-function getPurchaseData(){  
-    let added = localStorage.getItem("cart-products")
-    let addedW = localStorage.getItem("add-wishlist")
-    let addedW_prod = JSON.parse(addedW)
-    let added_prod = JSON.parse(added)
-    if(added_prod !== null){
+
+  let added = localStorage.getItem("cart-products")
+  let addedW = localStorage.getItem("add-wishlist")
+  var added_prod = JSON.parse(added)
+  let addedW_prod = JSON.parse(addedW)  
+function getPurchaseData(){
+    if(added_prod !== null && addedW_prod == null){
+        document.querySelector('.empty-cart').style.display = 'none'
+        cart_active.style.display = "block"
+        cart_active.textContent = added_prod.length
+        showPurchaseData(added_prod)
+    } else if(addedW_prod !== null && addedW_prod !== null){
         document.querySelector('.empty-cart').style.display = 'none'
         cart_active.style.display = "block"
         cart_active.textContent = added_prod.length

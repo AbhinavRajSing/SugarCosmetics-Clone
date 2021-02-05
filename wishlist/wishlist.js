@@ -37,13 +37,20 @@ function execute(e){
 //   localStorage.setItem( "add-wishlist",JSON.stringify(data))
 
 // get data from local storage
+let addedC = localStorage.getItem("cart-products")
+let added = localStorage.getItem("add-wishlist")
+let added_prod = JSON.parse(added)
+let added_prodC = JSON.parse(addedC)
 function getPurchaseData(){
-    let addedC = localStorage.getItem("cart-products")
-    let added = localStorage.getItem("add-wishlist")
-    let added_prod = JSON.parse(added)
-    let added_prodC = JSON.parse(addedC)
     // console.log(added_prod)
-    if(added_prod !== null){
+    if(added_prod !== null && added_prodC == null){
+        document.querySelector('.empty-cart').style.display = 'none'
+        wishlist_active.style.display = "block"
+        wishlist_active.textContent = (added_prod.length)
+        // wishlist_active.style.display = "block"
+        // wishlist_active.textContent = added_prodC.length
+        showWishlistData(added_prod)
+    }else if(added_prod !== null && added_prodC !== null){
         document.querySelector('.empty-cart').style.display = 'none'
         wishlist_active.style.display = "block"
         wishlist_active.textContent = (added_prod.length)

@@ -23,8 +23,8 @@ let loader = `
                     <img class=img"" src="https://miro.medium.com/max/978/0*cWpsf9D3g346Va20.gif">
                 </div>`;
 //---------------------------------------Loading Animation ends here-------------------------------------------//
-// window.addEventListener('load', cartWishNum)
 
+//---------------------------------------WishList/Cart count starts here-------------------------------------------//
 setInterval(function(){
     let cart_active = document.querySelector('.cart_active')
     let wishlist_active = document.querySelector('.wishlist_active')
@@ -32,15 +32,23 @@ setInterval(function(){
     let addedW = localStorage.getItem("add-wishlist")
     let addedW_prod = JSON.parse(addedW)
     let added_prod = JSON.parse(added)
-    console.log(added_prod)
-    if(added_prod !== null){
+    // console.log(added_prod)
+    if(added_prod !== null && addedW_prod !== null){
         cart_active.style.display = "block"
         cart_active.textContent = added_prod.length
         wishlist_active.style.display = "block"
         wishlist_active.textContent = addedW_prod.length
     }
+    else if(added_prod !== null && addedW_prod == null){
+        cart_active.style.display = "block"
+        cart_active.textContent = added_prod.length
+    }
+    else if(added_prod == null && addedW_prod !== null){
+        wishlist_active.style.display = "block"
+        wishlist_active.textContent = addedW_prod.length
+    }
 },1000)
-
+//---------------------------------------WishList/Cart count ends here-------------------------------------------//
 //---------------------------------------Featured pagination starts here-------------------------------------------//
 window.addEventListener('load', getFeaData)
 
@@ -84,7 +92,6 @@ function displayData(data){
         let mrp = data[i].mrp
         let price = data[i].price
         // console.log(data)
-        // id="${data[i].id}"
         html += `                
         <div class="displayCard" id=${data[i].id} onmouseover="showItemsOnCard(this)" onmouseout="removeItemsOnCard(this)">
             <div class="productImage"><img class="img" src="${img}" alt=""></div>
@@ -129,7 +136,6 @@ function addToWishList(pID){
     
         arr = [...arr,temp]
         localStorage.setItem("add-wishlist",JSON.stringify(arr))
-        // alert("Done")
         let modalW = document.getElementById("myModalW");
         let spanW = document.getElementsByClassName("closeW")[0];
         modalW.style.display = "block"; 
@@ -144,7 +150,6 @@ function addToWishList(pID){
             }
         }
     }
-
 }
 //---------------------------------------Add to wishList ends here-------------------------------------------//
 //---------------------------------------Product view modal starts here-------------------------------------------//
@@ -201,11 +206,8 @@ function diaplayModalData(val){
         }
     }
 }
-
-
 //---------------------------------------Product view modal ends here-------------------------------------------//
 //---------------------------------------whishlist and product view starts here-------------------------------------------//
-
 function showItemsOnCard(val){
     let ide = val.id
     console.log(ide)
@@ -240,11 +242,9 @@ function removeItemsOnCard(val){
         elemes1[k].style.display = "none"
     }
 }
-
 //---------------------------------------whishlist and product view ends here-------------------------------------------//
 
 //---------------------------------------Onclick getting product details starts here------------------------------------//
-
 function testClick(elem){
     let id = elem.id
     // console.log(id)
@@ -260,13 +260,10 @@ function testClick(elem){
 
         window.location.href =`/Product_detail/prod_detail.html?id=${id}&title=${title}&mrp=${mrp}&price=${price}&img=${img}`
     }
-
 }
-
 //---------------------------------------Onclick getting product details ends here--------------------------------------//
 
 //---------------------------------------Add to localstorage starts here--------------------------------------//
-
 function addToLocalStorageCart(val){
     let id = val[0].id
     let img = val[0].img
@@ -314,7 +311,6 @@ function AddToLSFromHp(data){
         }
     }
 }
-
 //---------------------------------------Add to localstorage ends here--------------------------------------//
 
 //---------------------------------------JustIn pagination starts here-------------------------------------------//
@@ -376,11 +372,9 @@ function displayJustInData(data){
         document.getElementById("diaplayJustInData").innerHTML = Jhtml
     }
 }
-
 //---------------------------------------JustIn pagination ends here-------------------------------------------//
 
 //---------------------------------------Skincare pagination starts here-------------------------------------------//
-
 window.addEventListener('load', getSkincareData)
 
 function getSkincareData(){
@@ -439,11 +433,9 @@ function displaySkincareData(data){
         document.getElementById("diaplaySkincareData").innerHTML = Jhtml
     }
 }
-
 //---------------------------------------Skincare pagination ends here-------------------------------------------//
 
 //---------------------------------------Explore pagination starts here-------------------------------------------//
-
 window.addEventListener('load', getExploreData)
 
 function getExploreData(){
@@ -492,12 +484,9 @@ function displayExploreData(data){
         document.getElementById("diaplayExpolreData").innerHTML = html
     }
 }
-
-
 //---------------------------------------Explore pagination ends here-------------------------------------------//
 
 //---------------------------------------live search starts here-------------------------------------------//
-
 document.getElementById("searchItems").addEventListener('keyup', liveSearch)
 
 function liveSearch(e){
@@ -544,11 +533,9 @@ function displaySearchData(Sdata, val){
         window.location.href = "H&F.html"
     }
 }
-
 //---------------------------------------live search ends here-------------------------------------------//
 
 //---------------------------------------mid Ads banner starts here-------------------------------------------//
-
 window.addEventListener('load', function(){
     document.getElementById("display__Adds").innerHTML = loader
     fetch('http://localhost:3000/bannerAdds').then(res => res.json()).then(data => displayAddsBanner(data)).catch((Error) => console.log(Error))
@@ -567,11 +554,9 @@ function displayAddsBanner(data){
         document.getElementById("display__Adds").innerHTML = Ahtml
     }
 }
-
 //---------------------------------------mid Ads banner ends here-------------------------------------------//
 
 //---------------------------------------clearance div starts here-------------------------------------------//
-
 window.addEventListener('load', function(){
     document.getElementById("display__Clearance__page").innerHTML = loader
     fetch('http://localhost:3000/clearance').then(res => res.json()).then(data => displayClearance(data)).catch((Error) => console.log(Error))
@@ -633,7 +618,6 @@ function showSlides(n) {
 //---------------------------------------slides for top carousel ends here-------------------------------------------//
 
 //---------------------------------------slides for daySpecial carousel starts here--------------------------------------//
-
 let slideIndexDS = 1;
 showSlidesDS(slideIndexDS);
 
@@ -660,11 +644,9 @@ function showSlidesDS(n) {
   slides[slideIndexDS-1].style.display = "block";  
   dots[slideIndexDS-1].className += " activeDS";
 }
-
 //---------------------------------------slides for daySpecial carousel ends here--------------------------------------//
 
 //---------------------------------------ChatBot code starts here-------------------------------------------//
-
 let welcomeFlag = false
 let line1 = "Hello there! Need help? Reach out to us right here, and we'll get back to you as soon as we can!";
 let line2 = "Yes I'm live!!";
@@ -791,9 +773,7 @@ chatInput.addEventListener('submit', e => {
     let msg = e.currentTarget.myText.value
     displayMsg(msg)
 });
-
 //---------------------------------------ChatBot code Ends here-------------------------------------------//
-
 ////////// Login Code Starts Here //////////
 
 let loginLink = document.getElementById("loginLink")
@@ -835,12 +815,8 @@ sideClose.addEventListener("click", closeSideBar)
 shadow.addEventListener("click", closeSideBar)
 loginFormBtn.addEventListener("click", displayLoginForm)
 registerFormBtn.addEventListener("click", displayRegisterForm)
-
 ////////// Login Code Ends Here //////////
-
-
 //-------------------------------------------Registration starts here---------------------------------------------------//
-
 document.getElementById("registerBtn").addEventListener("click", getResData)
 
 async function getResData(){
@@ -870,13 +846,10 @@ async function getResData(){
     function redirectToAccount(data){
         window.location.href="/Login/login.html"
     }
-
 }
-
 //-------------------------------------------Registration ends here---------------------------------------------------//
 
 //-------------------------------------------User Auth starts here---------------------------------------------------//
-
 document.getElementById("userLoginBtn").addEventListener("click", getAuthCheckData)
 
 function getAuthCheckData(){
@@ -910,10 +883,8 @@ function authCheck(data, userData){
         alert("Invalid EmailId or Password")
     }
 }
-
 //-------------------------------------------User Auth starts here---------------------------------------------------//
 ////////// For Small Screen Header /////////
-
 let bar = document.getElementById("barIcon")
 let menuForSmallScreen = document.getElementById("menuForSmallScreen")
 let makeUpDrop = document.getElementById("makeUpDrop")
