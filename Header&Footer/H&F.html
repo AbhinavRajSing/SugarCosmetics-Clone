@@ -157,99 +157,278 @@
         <!-- ChatBot Code Ends here -->
 
         <!-- Header Code starts here -->
-        <div class="Header">
-            <div class="Header__Logo">
-                <a href=""><img class="img" src="https://cdn.shopify.com/s/files/1/0906/2558/files/SUGAR-Festive-logo_ba6a68ab-b29e-4109-ab60-bc8132bb153b_600x.jpg?v=1609495364" alt="Sugar Cosmetics Logo"></a>
+        <div id="headerForLargeScreen">
+            <div class="Header">
+                <div class="Header__Logo">
+                    <a href=""><img class="img" src="https://cdn.shopify.com/s/files/1/0906/2558/files/SUGAR-Festive-logo_ba6a68ab-b29e-4109-ab60-bc8132bb153b_600x.jpg?v=1609495364" alt="Sugar Cosmetics Logo"></a>
+                </div>
+                <div class="Header__Search">
+                    <div><input id="searchItems" class="Header__Search__inputBox" type="text" placeholder="Search for products"></div>
+                    <div class="Header__Search__searchicon"><i class="fas fa-search"></i></div>
+                </div>
+                <div class="Header__Login"> 
+                    <a id="loginLink" class="Header__Login__P">Login / Register</a>
+                </div>
+                <div class="Header__LikeCart">
+                    <div><i class="far fa-heart"></i></div>
+                    <div id="cartPage"><a href="/Cart_page/cart.html"><i class="fas fa-shopping-cart"></i></a></div>
+                </div>
             </div>
-            <div class="Header__Search">
-                <div><input id="searchItems" class="Header__Search__inputBox" type="text" placeholder="Search for products"></div>
-                <div class="Header__Search__searchicon"><i class="fas fa-search"></i></div>
-            </div>
-            <div class="Header__Login"> 
-                <a id="loginLink" class="Header__Login__P">Login / Register</a>
-            </div>
-            <div class="Header__LikeCart">
-                <div><i class="far fa-heart"></i></div>
-                <div id="cartPage"><a href="/Cart_page/cart.html"><i class="fas fa-shopping-cart"></i></a></div>
+            <div class="navBar">
+                <div class="dropdown">
+                    <div class="dropbtn">MAKEUP <i class="fas fa-angle-down"></i></div>
+                    <div class="navBar__content">
+                        <div>
+                            <p>LIPS</p>
+                            <a href="/Products/lips.html">LIPSTICKS</a>
+                            <a href="/Products/lips.html">LIP CARE</a>
+                            <a href="/Products/lips.html">LIQUID LIP COLOURS</a>
+                            <a href="/Products/lips.html">LIP GLOSS & LINERS</a>
+                            <a href="/Products/lips.html">VALUE SETS</a>
+                            <a href="/Products/lips.html">GIFTING</a>
+                        </div>
+                        <div>
+                            <p>FACE</p>
+                            <a href="/Products/face.html">PRIMERS</a>
+                            <a href="/Products/face.html">FOUNDATION</a>
+                            <a href="/Products/face.html">POWDER / COMPACT</a>
+                            <a href="/Products/face.html">CONCEALERS & <br>CORRECTORS</a>
+                            <a href="/Products/face.html">BLUSH</a>
+                            <a href="/Products/face.html">HIGHLIGHTERS & <br>CONTOUR</a>
+                            <a href="/Products/face.html">BRONZER</a>
+                            <a href="/Products/face.html">FACE PALETTES</a>
+                            <a href="/Products/face.html">VALUE SETS</a>
+                        </div>
+                        <div>
+                            <p>EYES</p>
+                            <a href="/Products/eye.html">EYELINERS</a>
+                            <a href="/Products/eye.html">KAJAL</a>
+                            <a href="/Products/eye.html">EYEBROWS</a>
+                            <a href="/Products/eye.html">EYESHADOWS</a>
+                            <a href="/Products/eye.html">MASCARA</a>
+                            <a href="/Products/eye.html">VALUE SETS</a>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="dropdown">
+                    <div class="dropbtn">SKIN <i class="fas fa-angle-down"></i></div>
+                    <div class="navBar__content" id="navBar__content1">
+                        <div>
+                            <a href="">MOISTURIZERS</a>
+                            <a href="">MASKS</a>
+                            <a href="">SETTING MISTS</a>
+                            <a href="">MAKEUP REMOVER</a>
+                            <a href="">SKINCARE<br>COMBOS</a>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="dropdown">
+                    <div class="dropbtn">BLOG <i class="fas fa-angle-down"></i></div>
+                    <div class="navBar__content" id="navBar__content1">
+                        <div>
+                            <a href="">FEATURED</a>
+                            <a href="">MAKEUP</a>
+                            <a href="">SKINCARE</a>
+                            <a href="">CARE</a>
+                            <a href="">QUIZ</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dropbtn">OFFERS</div>
+    
+                <div class="dropdown">
+                    <div class="dropbtn">TRENDING <i class="fas fa-angle-down"></i></div>
+                    <div class="navBar__content" id="navBar__content1">
+                        <div>
+                            <a href="">MINIS SET</a>
+                            <a href="">LIMITED EDITION</a>
+                            <a href="">NEW LAUNCHES</a>
+                            <a href="">VALUE SETS</a>
+                            <a href="">GIFTING</a>
+                        </div>
+                    </div>
+                </div>  
             </div>
         </div>
-        <div class="navBar">
-            <div class="dropdown">
-                <div class="dropbtn">MAKEUP <i class="fas fa-angle-down"></i></div>
-                <div class="navBar__content">
-                    <div>
-                        <p>LIPS</p>
-                        <a href="/Products/lips.html">LIPSTICKS</a>
-                        <a href="/Products/lips.html">LIP CARE</a>
-                        <a href="/Products/lips.html">LIQUID LIP COLOURS</a>
-                        <a href="/Products/lips.html">LIP GLOSS & LINERS</a>
-                        <a href="/Products/lips.html">VALUE SETS</a>
-                        <a href="/Products/lips.html">GIFTING</a>
+
+        <div id="headerForSmallScreen">
+            <div id="barIcon"  class="headerBarDiv">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="headerLogoDiv">
+                <img src="https://cdn.shopify.com/s/files/1/0906/2558/files/SUGAR-Festive-logo_07df2bb3-935e-4fa4-a77f-28aaf46b663d_600x@2x.jpg?v=1609495379" alt="">
+            </div>
+            <div class="headerIcons">
+                <i class="fas fa-shopping-cart"></i>
+                <i class="far fa-user"></i>
+            </div>
+        </div>
+
+        <div id="menuForSmallScreen" class="hideItem"  >
+            <div >
+                <div class="menuSearchDiv">
+                    <div><input class="" type="text" placeholder="Search for products"></div>
+                    <div class=""><i class="fas fa-lg fa-search"></i></div>
+                </div>
+                <div class="menuOptionDiv makeupDiv">
+                    <div class="menuTextDiv">
+                        <p class="menuText">MAKEUP</p>
                     </div>
-                    <div>
-                        <p>FACE</p>
-                        <a href="/Products/face.html">PRIMERS</a>
-                        <a href="/Products/face.html">FOUNDATION</a>
-                        <a href="/Products/face.html">POWDER / COMPACT</a>
-                        <a href="/Products/face.html">CONCEALERS & <br>CORRECTORS</a>
-                        <a href="/Products/face.html">BLUSH</a>
-                        <a href="/Products/face.html">HIGHLIGHTERS & <br>CONTOUR</a>
-                        <a href="/Products/face.html">BRONZER</a>
-                        <a href="/Products/face.html">FACE PALETTES</a>
-                        <a href="/Products/face.html">VALUE SETS</a>
+                    <div id="makeUpDrop" class="menuDrop" onclick="changeIconMakeUp()" >
+                        <i class="fas fa-lg fa-angle-down"></i>
                     </div>
-                    <div>
-                        <p>EYES</p>
-                        <a href="/Products/eye.html">EYELINERS</a>
-                        <a href="/Products/eye.html">KAJAL</a>
-                        <a href="/Products/eye.html">EYEBROWS</a>
-                        <a href="/Products/eye.html">EYESHADOWS</a>
-                        <a href="/Products/eye.html">MASCARA</a>
-                        <a href="/Products/eye.html">VALUE SETS</a>
+                    <div id="makeUpClose" class="hideItem" onclick="closeIconMakeUp()" >
+                        <i class="fas  fa-times"></i>
                     </div>
                 </div>
-            </div>
-
-            <div class="dropdown">
-                <div class="dropbtn">SKIN <i class="fas fa-angle-down"></i></div>
-                <div class="navBar__content" id="navBar__content1">
-                    <div>
-                        <a href="">MOISTURIZERS</a>
-                        <a href="">MASKS</a>
-                        <a href="">SETTING MISTS</a>
-                        <a href="">MAKEUP REMOVER</a>
-                        <a href="">SKINCARE<br>COMBOS</a>
+                <div id="makeUpOptions" class="hideItem">
+                    <div class="menuOptionDiv menuSubOptionDiv">
+                        <div class="menuTextDiv">
+                            <p class="menuText menuSubText">LIPS</p>
+                        </div>
+                    </div>
+                    <div class="menuOptionDiv menuSubOptionDiv">
+                        <div class="menuTextDiv">
+                            <p class="menuText menuSubText">FACE</p>
+                        </div>
+                    </div>
+                    <div class="menuOptionDiv menuSubOptionDiv">
+                        <div class="menuTextDiv">
+                            <p class="menuText menuSubText">EYES</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="dropdown">
-                <div class="dropbtn">BLOG <i class="fas fa-angle-down"></i></div>
-                <div class="navBar__content" id="navBar__content1">
-                    <div>
-                        <a href="">FEATURED</a>
-                        <a href="">MAKEUP</a>
-                        <a href="">SKINCARE</a>
-                        <a href="">CARE</a>
-                        <a href="">QUIZ</a>
+                <div class="menuOptionDiv">
+                    <div class="menuTextDiv">
+                        <p class="menuText">SKIN</p>
                     </div>
+                    <div id="skinDrop" class="menuDrop" onclick="changeIconSkin()" >
+                        <i class="fas fa-lg fa-angle-down"></i>
+                    </div>
+                    <div id="skinClose" class="hideItem" onclick="closeIconSkin()" >
+                        <i class="fas  fa-times"></i>
+                    </div>
+                </div>
+                <div id="skinOptions" class="hideItem">
+                    <div class="menuOptionDiv menuSubOptionDiv">
+                        <div class="menuTextDiv">
+                            <p class="menuText menuSubText">MOISTURIZERS</p>
+                        </div>
+                    </div>
+                    <div class="menuOptionDiv menuSubOptionDiv">
+                        <div class="menuTextDiv">
+                            <p class="menuText menuSubText">MASKS</p>
+                        </div>
+                    </div>
+                    <div class="menuOptionDiv menuSubOptionDiv">
+                        <div class="menuTextDiv">
+                            <p class="menuText menuSubText">SETTING MISTS</p>
+                        </div>
+                    </div>
+                    <div class="menuOptionDiv menuSubOptionDiv">
+                        <div class="menuTextDiv">
+                            <p class="menuText menuSubText">MAKEUP REMOVER</p>
+                        </div>
+                    </div>
+                    <div class="menuOptionDiv menuSubOptionDiv">
+                        <div class="menuTextDiv">
+                            <p class="menuText menuSubText">SKINCARE COMBOS</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="menuOptionDiv">
+                    <div class="menuTextDiv">
+                        <p class="menuText">BLOG</p>
+                    </div>
+                    <div id="blogDrop" class="menuDrop" onclick="changeIconBlog()" >
+                        <i class="fas fa-lg fa-angle-down"></i>
+                    </div>
+                    <div id="blogClose" class="hideItem" onclick="closeIconBlog()" >
+                        <i class="fas  fa-times"></i>
+                    </div>
+                </div>
+                <div  id="blogOptions" class="hideItem">
+                    <div class="menuOptionDiv menuSubOptionDiv">
+                        <div class="menuTextDiv">
+                            <p class="menuText menuSubText">FEATURED</p>
+                        </div>
+                    </div>
+                    <div class="menuOptionDiv menuSubOptionDiv">
+                        <div class="menuTextDiv">
+                            <p class="menuText menuSubText">SKINCARE</p>
+                        </div>
+                    </div>
+                    <div class="menuOptionDiv menuSubOptionDiv">
+                        <div class="menuTextDiv">
+                            <p class="menuText menuSubText">CARE</p>
+                        </div>
+                    </div>
+                    <div class="menuOptionDiv menuSubOptionDiv">
+                        <div class="menuTextDiv">
+                            <p class="menuText">QUIZ</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="menuOptionDiv">
+                    <div class="menuTextDiv">
+                        <p class="menuText">OFFERS</p>
+                    </div>
+                </div>
+                <div class="menuOptionDiv">
+                    <div class="menuTextDiv">
+                        <p class="menuText">TREANDING</p>
+                    </div>
+                    <div id="trendingDrop" class="menuDrop" onclick="changeIconTrending()" >
+                        <i class="fas fa-lg fa-angle-down"></i>
+                    </div>
+                    <div id="trendingClose" class="hideItem" onclick="closeIconTrending()" >
+                        <i class="fas  fa-times"></i>
+                    </div>
+                </div>
+                <div  id="trendingOptions" class="hideItem">
+                    <div class="menuOptionDiv menuSubOptionDiv">
+                        <div class="menuTextDiv">
+                            <p class="menuText menuSubText">MINIS SET</p>
+                        </div>
+                    </div>
+                    <div class="menuOptionDiv menuSubOptionDiv">
+                        <div class="menuTextDiv">
+                            <p class="menuText menuSubText">LIMITED EDITION</p>
+                        </div>
+                    </div>
+                    <div class="menuOptionDiv menuSubOptionDiv">
+                        <div class="menuTextDiv">
+                            <p class="menuText menuSubText">NEW LAUNCHES</p>
+                        </div>
+                    </div>
+                    <div class="menuOptionDiv menuSubOptionDiv">
+                        <div class="menuTextDiv">
+                            <p class="menuText menuSubText">VALUE SETS</p>
+                        </div>
+                    </div>
+                    <div class="menuOptionDiv menuSubOptionDiv">
+                        <div class="menuTextDiv">
+                            <p class="menuText menuSubText">GIFTING</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="menuOptionDiv">
+                    <div class="menuTextDiv">
+                        <p class="menuText">MY ACCOUNT</p>
+                    </div>
+                   
+                </div>
+                <div class="menuOptionDiv">
+                    <div class="menuTextDiv">
+                        <p class="menuText">LOGOUT</p>
+                    </div>
+                   
                 </div>
             </div>
             
-            <div class="dropbtn">OFFERS</div>
-
-            <div class="dropdown">
-                <div class="dropbtn">TRENDING <i class="fas fa-angle-down"></i></div>
-                <div class="navBar__content" id="navBar__content1">
-                    <div>
-                        <a href="">MINIS SET</a>
-                        <a href="">LIMITED EDITION</a>
-                        <a href="">NEW LAUNCHES</a>
-                        <a href="">VALUE SETS</a>
-                        <a href="">GIFTING</a>
-                    </div>
-                </div>
-            </div>  
         </div>
         <!-- Header Code Ends here -->
 

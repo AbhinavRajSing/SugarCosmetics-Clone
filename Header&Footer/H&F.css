@@ -1,4 +1,5 @@
 /* ---------------------------------------------Header Code starts here----------------------------------------------- */
+
 html{
     scroll-behavior: smooth;
 }
@@ -7,6 +8,10 @@ body{
     margin: 0;
     padding: 0%;
     font-family: 'Poppins', sans-serif;
+}
+
+#headerForLargeScreen {
+    display: block;
 }
 
 .img{
@@ -186,6 +191,12 @@ body{
 
 #navBar__content1{
     width: 200px;
+}
+
+#headerForSmallScreen {
+    width: 100vw;
+    /* display: flex; */
+    display: none;
 }
 
 /* ---------------------------------------------Header Code Ends here----------------------------------------------- */
@@ -1289,4 +1300,170 @@ body{
 .redStar {
     color: red;
     margin-left: 5px;
+}
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 900px) {
+    #headerForLargeScreen {
+        display: none;
+    }
+
+    #headerForSmallScreen {
+        display: flex;
+    }
+
+    .headerBarDiv {
+        width: 10%;
+        height: 20px;
+        display: flex;
+        padding: 20px;
+        align-items: center;
+    }
+    
+    .headerLogoDiv {
+        width: 70%;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    
+    .headerLogoDiv img {
+        width: 28%;
+    }
+    .headerIcons {
+        width: 20%;
+        height: 60px;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+    .headerIcons i {
+        margin: 0px 10px;
+    }
+
+    #menuForSmallScreen {
+        top: 0px;
+        left: 0px;
+        position: fixed;
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        background-color: rgb(12, 12, 12);
+        z-index: 15;
+        width: 280px;
+    }
+
+    #menuForSmallScreen::-webkit-scrollbar {
+        display: none;
+    }
+
+    .menuSearchDiv {
+        display: flex;
+        width: 260px;
+        height: 40px;
+        background-color: rgb(41, 41, 41);
+        margin: 10px;
+        border: 1px solid rgb(53, 53, 53);
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .menuSearchDiv i {
+        color: rgb(177, 177, 177);
+        width: 20px;
+    }
+
+    .menuSearchDiv input {
+        background-color: transparent;
+        outline: none;
+        border: none;
+        color: white;
+        margin-right: 30px;
+    }
+
+    .menuSearchDiv input::placeholder {
+        color: rgb(177, 177, 177);
+    }
+
+    .makeupDiv {
+        border-top: 2px solid rgb(30,30,30);
+    }
+
+    .menuOptionDiv {
+        width: 280px;
+        border-bottom: 1px solid rgb(39,39,39);
+        display: flex;
+        
+        
+    }
+
+    .menuTextDiv {
+        width: 235px;
+        padding: 8px 0px;
+    }
+
+    .menuText {
+        font-size: 17px;
+        color: rgb(173, 173, 173);
+        line-height: 0px;
+        margin-left: 10px;
+    }
+    .menuTextDiv:hover {
+        cursor: pointer;
+    }
+    .menuText:hover {
+        color: white;
+    }
+    .menuDrop, .menuDropClose {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-left: 1px solid rgb(39,39,39);
+    }
+
+    .menuDrop i {
+        color: white;
+        padding: 10px 17px;
+    }
+
+    .menuSubOptionDiv {
+        background-color: rgb(23,23,23);
+    }
+
+    .menuSubText {
+        font-size: 14px;
+    }
+
+    .menuDropClose {
+        background-color: rgb(230,38,120);
+    }
+
+    .menuDropClose i {
+        color: white;
+        padding: 10px 17px;
+    }
+
+    .showOptions {
+        display: block;
+    }
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+    #headerForLargeScreen {
+        display: block;
+    }
+
+    #headerForSmallScreen {
+        display: none;
+    }
+
+    #menuForSmallScreen {
+        display: none;
+    }
 }
