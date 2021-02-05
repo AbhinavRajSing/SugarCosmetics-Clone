@@ -1,9 +1,11 @@
+/* ---------------------------------------------Cart Code starts here----------------------------------------------- */
+
 window.addEventListener('load', execute)
 
 let display = document.querySelector('.added_items')
 let bill_amt = document.getElementById('bill_amt')
 let total_amt = document.getElementById('total_amt')
-
+let cart_active = document.querySelector('.cart_active')
 
 function execute(e){
     e.preventDefault()
@@ -47,7 +49,8 @@ checkout.addEventListener('click', ()=>{
 modalClose.addEventListener("click", function () {
     modalBg.classList.remove("bg-active");
   });
-// added  product
+
+// adding  Dummy data for developer,// this should be commented after product launch.
 
 let data =[ {
     id: 2,
@@ -84,17 +87,21 @@ let data =[ {
 ]
   localStorage.setItem( "cart-products",JSON.stringify(data))
 
+  // getting data from loacal storage
 function getPurchaseData(){
     let added = localStorage.getItem("cart-products")
     let added_prod = JSON.parse(added)
     // console.log(added_prod)
     if(added_prod !== ''){
         document.querySelector('.empty-cart').style.display = 'none'
+        cart_active.style.display = "block"
+        cart_active.textContent = added_prod.length
         showPurchaseData(added_prod)
     }
     addprice(added_prod)
 }
 
+// displaying data get from local storage, displaying in table form
 function showPurchaseData(data){
     // console.log(data)
     display.innerHTML = ""
@@ -122,11 +129,18 @@ function showPurchaseData(data){
     table.append(thead)
     
     let tbody = document.createElement('tbody')
-    let clearCart = document.createElement('button')
 
+        // adding clear cart button attached to table
+    let clearCart = document.createElement('button')
     clearCart.textContent = 'CLEAR SHOPPING CART'
     clearCart.setAttribute('class', 'clear')
     clearCart.setAttribute('onclick', 'remove()')
+
+    // added update cart button, which update cart total when clicked
+    let updateCart = document.createElement('button')
+    updateCart.textContent = 'UPDATE CART'
+    updateCart.setAttribute('class', 'clear')
+    updateCart.setAttribute('onclick', 'updateTotal()')
 
     let html = ""
     for(i in data){
@@ -156,7 +170,7 @@ function showPurchaseData(data){
     }
     tbody.innerHTML = html
     table.append(tbody)
-   display.append(table, clearCart)
+   display.append(table, clearCart, updateCart)
     
 }
 // Handling no of quantity
@@ -179,6 +193,7 @@ function minus(pid){
             }
         }
     }
+    updateTotal()
     cartTotal()
 }
 
@@ -195,11 +210,13 @@ function plus(pid){
             input.value = Number(val) + 1
         }
     }
+    updateTotal()
     cartTotal()
 }
 let offer = document.querySelector('.offer')
 let freeShip = document.querySelector('.free_ship')
 
+// on changing quantit this should change price in total cart.
 function cartTotal(){
     let added = localStorage.getItem("cart-products")
     let data = JSON.parse(added)
@@ -219,6 +236,7 @@ function cartTotal(){
     }
 }
 
+// on page reload this should show total price of available products
 function addprice(data){
     let total = 0;
     let bill = 0;
@@ -240,6 +258,7 @@ function addprice(data){
 let temp = JSON.parse(localStorage.getItem('cart-products'))
 localStorage.setItem('temp', JSON.stringify(temp))
 
+// delete particular from table and local storage
 function delet(did){
     let added = localStorage.getItem("temp")
     let data = JSON.parse(added)
@@ -252,6 +271,7 @@ function delet(did){
     let final = JSON.parse(localStorage.getItem('temp'))
 
     if(JSON.stringify(final) !== JSON.stringify([])){
+        cart_active.textContent = final.length
         showPurchaseData(final)
     } else {
         remove()
@@ -259,10 +279,21 @@ function delet(did){
     
 }
 
+// clear all data from local storage as well as page
 function remove (){
     document.querySelector('.empty-cart').style.display = 'block'
     display.style.display = 'none'
     localStorage.removeItem('cart-products')
     localStorage.removeItem('temp')
+    cart_active.style.display = "none"
     addprice()
+    
 }
+
+// update total price of cart if cart gets updated
+function updateTotal(){
+    let added = localStorage.getItem("temp")
+    let data = JSON.parse(added)
+    addprice(data)
+}
+/* ---------------------------------------------Cart Code ends here----------------------------------------------- */
