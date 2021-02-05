@@ -1,9 +1,13 @@
 // ------------------------------------------------wishlist code starts Here------------------------------------------------
 window.addEventListener('load', execute)
+let wishlist_active = document.querySelector('.wishlist_active')
+
 function execute(e){
     e.preventDefault()
     getPurchaseData()
 }
+
+// dummy data for developer, this should be commented on product launch.
 // let data =[ {
 //     id: 2,
 //     title: "SMUDGE ME NOT LIP DUO",
@@ -23,15 +27,19 @@ function execute(e){
 // ]
 //   localStorage.setItem( "add-wishlist",JSON.stringify(data))
 
+// get data from local storage
 function getPurchaseData(){
     let added = localStorage.getItem("add-wishlist")
     let added_prod = JSON.parse(added)
     // console.log(added_prod)
     if(added_prod !== ''){
         document.querySelector('.empty-cart').style.display = 'none'
+        wishlist_active.style.display = "block"
+        wishlist_active.textContent = (added_prod.length)
         showWishlistData(added_prod)
     }
 }
+// show data on page
 let display = document.querySelector('.data')
 function showWishlistData(data){
     // console.log(data)
@@ -62,6 +70,8 @@ function showWishlistData(data){
   display.innerHTML= html
   display.append(clearCart)
 }
+
+// Add products to cart 
 let arayOfProd = []
 
 function add(event) {
@@ -83,6 +93,7 @@ function add(event) {
 let temp = JSON.parse(localStorage.getItem('add-wishlist'))
 localStorage.setItem('temp_wish', JSON.stringify(temp))
 
+// delete particular item from list
 function delet(did){
     let added = localStorage.getItem("temp_wish")
     let data = JSON.parse(added)
@@ -95,18 +106,20 @@ function delet(did){
     let final = JSON.parse(localStorage.getItem('temp_wish'))
 
     if(JSON.stringify(final) !== JSON.stringify([])){
+        wishlist_active.textContent = (final.length)
         showWishlistData(final)
     } else {
         remove()
     }
     
 }
-
+// clear added products from page as well as local storage
 function remove (){
     document.querySelector('.empty-cart').style.display = 'block'
     display.style.display = 'none'
     // localStorage.removeItem('cart-products')
     localStorage.removeItem('temp_wish')
+    wishlist_active.style.display = "none"
 }
 
 
