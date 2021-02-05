@@ -43,7 +43,12 @@ goTohome.addEventListener('click', ()=>{
 })
 // Modal box
 checkout.addEventListener('click', ()=>{
-    modalBg.classList.add("bg-active");
+    if(tempc == undefined){
+        alert("You dont have any product to buy")
+    } else {
+
+        modalBg.classList.add("bg-active");
+    }
 })
 
 modalClose.addEventListener("click", function () {
@@ -91,12 +96,13 @@ modalClose.addEventListener("click", function () {
 function getPurchaseData(){
     let added = localStorage.getItem("cart-products")
     let added_prod = JSON.parse(added)
-    // console.log(added_prod)
-    if(added_prod !== ''){
+    if(added_prod !== null){
         document.querySelector('.empty-cart').style.display = 'none'
         cart_active.style.display = "block"
         cart_active.textContent = added_prod.length
         showPurchaseData(added_prod)
+    } else {
+        document.querySelector('.empty-cart').style.display = 'block'
     }
     addprice(added_prod)
 }
@@ -254,21 +260,22 @@ function addprice(data){
         offer.style.display = "block"
         freeShip.style.display = "none"
     }
-}
-let temp = JSON.parse(localStorage.getItem('cart-products'))
-localStorage.setItem('temp', JSON.stringify(temp))
+}  
+let tempc = JSON.parse(localStorage.getItem('cart-products'))
+localStorage.setItem('tempc', JSON.stringify(tempc))
+
 
 // delete particular from table and local storage
 function delet(did){
-    let added = localStorage.getItem("temp")
+    let added = localStorage.getItem("tempc")
     let data = JSON.parse(added)
     let cart_remained = data.filter(el => {
         return (el.id !== did)
     })
     
-    localStorage.setItem('temp', JSON.stringify(cart_remained))
+    localStorage.setItem('tempc', JSON.stringify(cart_remained))
    
-    let final = JSON.parse(localStorage.getItem('temp'))
+    let final = JSON.parse(localStorage.getItem('tempc'))
 
     if(JSON.stringify(final) !== JSON.stringify([])){
         cart_active.textContent = final.length
@@ -284,7 +291,7 @@ function remove (){
     document.querySelector('.empty-cart').style.display = 'block'
     display.style.display = 'none'
     localStorage.removeItem('cart-products')
-    localStorage.removeItem('temp')
+    localStorage.removeItem('tempc')
     cart_active.style.display = "none"
     addprice()
     
@@ -292,7 +299,7 @@ function remove (){
 
 // update total price of cart if cart gets updated
 function updateTotal(){
-    let added = localStorage.getItem("temp")
+    let added = localStorage.getItem("tempc")
     let data = JSON.parse(added)
     addprice(data)
 }
