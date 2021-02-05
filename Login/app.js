@@ -139,3 +139,141 @@ userLogin = () => {
 showRegisterBtn.addEventListener("click", showRegisterPage)
 showLoginBtn.addEventListener("click", showLoginPage)
 loginBtn.addEventListener("click", userLogin)
+
+
+//-------------------------------------------Registration starts here---------------------------------------------------//
+
+document.getElementById("registerBtn").addEventListener("click", getResData)
+
+async function getResData(){
+    let name = document.getElementById("getName").value
+    let email = document.getElementById("getEmail").value
+    let number = document.getElementById("getNumber").value
+    let address = document.getElementById("getAddress").value
+    let password = document.getElementById("getPassword").value
+    let data={
+        name,
+        email,
+        number,
+        address,
+        password
+    }
+
+    await fetch(`http://localhost:3000/users`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },  
+        body: JSON.stringify(data),
+    }).then(response => response.json()).then(data => redirectToAccount(data)).catch((error) => {console.error('Error:', error);});
+
+    // console.log(data)
+
+    function redirectToAccount(data){
+        window.location.href="/Login/login.html"
+    }
+
+}
+
+//-------------------------------------------Registration ends here---------------------------------------------------//
+
+//-------------------------------------------Load with Params starts here-----------------------------------------------//
+
+window.addEventListener("DOMContentLoaded", getData)
+
+function getData(){
+    let query = window.location.search
+    if(query != ""){
+        queryLoad(query)
+    }
+}
+
+function queryLoad(query){
+    let data = new URLSearchParams(query)
+    let name1 = data.get("name")
+    let email1 = data.get("email")
+    let number1 = data.get("number")
+    let address1 = data.get("address")
+    let login = document.getElementById("loginPage")
+    let afterlogin = document.getElementById("aftlgn")
+    user =true
+                let userStatus = []
+                let tempObj = {}
+
+                tempObj.name = name1
+                tempObj.email = email1
+                tempObj.number = number1
+                tempObj.address = address1
+
+                userStatus = [tempObj]
+                localStorage.setItem("userStatus", JSON.stringify(userStatus))
+
+
+
+                let accuser = localStorage.getItem("userStatus")
+                console.log(JSON.parse(accuser))
+                accuser = JSON.parse(accuser)
+                let name = accuser[0].name
+                let email = accuser[0].email
+                let address = accuser[0].address
+                let number = accuser[0].number
+                console.log(name)
+
+                login.style.display="none";
+                
+                // alert("loggedin")
+                let html=""
+                html+=`<div class="left">
+                <div class="profile1" ><p class="profile">Profile</p></div>
+                <div class="profile1"><p class="profile">Orders</p></div>
+                <div class="profile1"><p class="profile">Address</p></div>
+                <div class="profile1"><p class="profile">Wishlist</p></div>
+                <div class="profile1"><p class="profile">Log out</p></div>
+            </div>
+
+            <div class="right">
+                <div class="top">
+                    
+                        <p  class="p">Hello ${name} (not ${name}? Sign out)</p>
+
+                    
+                </div>
+
+                <div class="acc">
+                    
+                        <p  class="p1">Account details :</p>
+
+                    
+                </div>
+
+                <div class="names">
+                    
+                        <p  class="p2">Name:	${name}</p>
+
+                    
+                </div>
+
+                <div class="mail">
+                    
+                        <p  class="p3">E-mail:	${email}</p>
+
+                    
+                </div>
+                <div class="mail">
+                    
+                        <p  class="p3">Address:	${address}</p>
+
+                    
+                </div>
+                <div class="mail">
+                    
+                        <p  class="p3">Phone No.:	${number}</p>
+
+                    
+                </div>`
+                document.getElementById("aftlgn").innerHTML+=html
+                afterlogin.style.display="flex"
+}
+
+
+//-------------------------------------------Load with Params ends here-------------------------------------------------//

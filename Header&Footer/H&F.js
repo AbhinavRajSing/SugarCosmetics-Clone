@@ -25,15 +25,14 @@ let loader = `
 //---------------------------------------Loading Animation ends here-------------------------------------------//
 // window.addEventListener('load', cartWishNum)
 
-let cart_active = document.querySelector('.cart_active')
-let wishlist_active = document.querySelector('.wishlist_active')
-
 setInterval(function(){
+    let cart_active = document.querySelector('.cart_active')
+    let wishlist_active = document.querySelector('.wishlist_active')
     let added = localStorage.getItem("cart-products")
     let addedW = localStorage.getItem("add-wishlist")
     let addedW_prod = JSON.parse(addedW)
     let added_prod = JSON.parse(added)
-    // console.log(added_prod)
+    console.log(added_prod)
     if(added_prod !== null){
         cart_active.style.display = "block"
         cart_active.textContent = added_prod.length
@@ -41,21 +40,6 @@ setInterval(function(){
         wishlist_active.textContent = addedW_prod.length
     }
 },1000)
-
-// function cartWishNum(){
-//     let added = localStorage.getItem("cart-products")
-//     let addedW = localStorage.getItem("add-wishlist")
-//     let addedW_prod = JSON.parse(addedW)
-//     let added_prod = JSON.parse(added)
-//     console.log(added_prod)
-//     if(added_prod !== null){
-//         cart_active.style.display = "block"
-//         cart_active.textContent = added_prod.length
-//         wishlist_active.style.display = "block"
-//         wishlist_active.textContent = addedW_prod.length
-//     }
-// }
-
 
 //---------------------------------------Featured pagination starts here-------------------------------------------//
 window.addEventListener('load', getFeaData)
@@ -854,6 +838,80 @@ registerFormBtn.addEventListener("click", displayRegisterForm)
 
 ////////// Login Code Ends Here //////////
 
+
+//-------------------------------------------Registration starts here---------------------------------------------------//
+
+document.getElementById("registerBtn").addEventListener("click", getResData)
+
+async function getResData(){
+    let name = document.getElementById("getName").value
+    let email = document.getElementById("getEmail").value
+    let number = document.getElementById("getNumber").value
+    let address = document.getElementById("getAddress").value
+    let password = document.getElementById("getPassword").value
+    let data={
+        name,
+        email,
+        number,
+        address,
+        password
+    }
+
+    await fetch(`http://localhost:3000/users`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },  
+        body: JSON.stringify(data),
+    }).then(response => response.json()).then(data => redirectToAccount(data)).catch((error) => {console.error('Error:', error);});
+
+    // console.log(data)
+
+    function redirectToAccount(data){
+        window.location.href="/Login/login.html"
+    }
+
+}
+
+//-------------------------------------------Registration ends here---------------------------------------------------//
+
+//-------------------------------------------User Auth starts here---------------------------------------------------//
+
+document.getElementById("userLoginBtn").addEventListener("click", getAuthCheckData)
+
+function getAuthCheckData(){
+    let email = document.getElementById("loginEmail").value
+    let password = document.getElementById("loginPassword").value
+    let input = {email, password}
+
+    getAPIData(input)
+}
+
+function getAPIData(data){
+    let userData = data
+    fetch(`http://localhost:3000/users`).then(res => res.json()).then(data => authCheck(data, userData)).catch((error) => console.log(error))
+}
+
+function authCheck(data, userData){
+    let dataB = data
+    let userDataI = userData
+
+    const info = dataB.find(user => (userDataI.username === user.username && userDataI.password === user.password))
+    // console.log(info)
+    if(info !== undefined){
+        let name = info.name
+        let email = info.email
+        let number = info.number
+        let address = info.address
+
+        window.location.href=`/Login/login.html?name=${name}&email=${email}&number=${number}&address=${address}`
+    }
+    else{
+        alert("Invalid EmailId or Password")
+    }
+}
+
+//-------------------------------------------User Auth starts here---------------------------------------------------//
 ////////// For Small Screen Header /////////
 
 let bar = document.getElementById("barIcon")
@@ -932,6 +990,7 @@ closeIconTrending = () => {
 bar.addEventListener("click", showSideMenu)
 shadow.addEventListener("click", closeSideBar)
 ////////// For Small Screen Header /////////
+<<<<<<< HEAD
 
 
 ////////// Functions to redirect Page starts here /////////
@@ -966,3 +1025,5 @@ facePage.addEventListener("click", openfacePage)
 eyePage.addEventListener("click", openeyePage)
 
 ////////// Functions to redirect Page ends here /////////
+=======
+>>>>>>> 0ebd66d49652e111c6ff9933bab0df962bbb2788
