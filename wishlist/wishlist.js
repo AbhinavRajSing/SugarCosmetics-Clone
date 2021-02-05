@@ -23,6 +23,14 @@ function execute(e){
 //     price: 459,
 //     discount: 18,
 //     img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-minis-set-black-14964843151443.progressive.jpg?v=1611061746"
+//   },
+//   {
+//     id: 5,
+//     title: "SMUDGE ME NOT MINIS SET- BLACK",
+//     mrp: 589,
+//     price: 459,
+//     discount: 18,
+//     img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-minis-set-black-14964843151443.progressive.jpg?v=1611061746"
 //   }
 // ]
 //   localStorage.setItem( "add-wishlist",JSON.stringify(data))
@@ -32,20 +40,21 @@ function getPurchaseData(){
     let added = localStorage.getItem("add-wishlist")
     let added_prod = JSON.parse(added)
     // console.log(added_prod)
-    if(added_prod !== ''){
+    if(added_prod !== null){
         document.querySelector('.empty-cart').style.display = 'none'
         wishlist_active.style.display = "block"
         wishlist_active.textContent = (added_prod.length)
         showWishlistData(added_prod)
+    } else {
+        document.querySelector('.empty-cart').style.display = 'block'
     }
 }
 // show data on page
 let display = document.querySelector('.data')
-
 function showWishlistData(data){
     // console.log(data)
     display.innerHTML = ""
-    
+
     let clearCart = document.createElement('button')
     clearCart.textContent = 'CLEAR WISHLIST'
     clearCart.setAttribute('class', 'clear')
@@ -53,7 +62,6 @@ function showWishlistData(data){
 
     let html = ""
     for(i in data){
-        console.log(data[i].price)
         html += `<div class="card">
         <div class="product">
             <img src="${data[i].img}" alt="product image">
@@ -74,7 +82,7 @@ function showWishlistData(data){
 }
 
 // Add products to cart 
-let arayOfProd = []
+let cart_products = JSON.parse(localStorage.getItem('cart-products')) || []
 
 function add(event) {
     event.textContent = "ADDED "
@@ -85,11 +93,11 @@ function add(event) {
     for(i in data){
         if(data[i].id == event.id){
             // console.log(data[i])
-            arayOfProd = [...arayOfProd, data[i]]
+            cart_products = [...cart_products, data[i]]
         }
     }
     
-    localStorage.setItem("cart-products", JSON.stringify(arayOfProd))
+    localStorage.setItem("cart-products", JSON.stringify(cart_products))
 }
 
 let temp = JSON.parse(localStorage.getItem('add-wishlist'))
@@ -119,7 +127,7 @@ function delet(did){
 function remove (){
     document.querySelector('.empty-cart').style.display = 'block'
     display.style.display = 'none'
-    // localStorage.removeItem('cart-products')
+    localStorage.removeItem('add-wishlist')
     localStorage.removeItem('temp_wish')
     wishlist_active.style.display = "none"
 }

@@ -40,6 +40,14 @@
 .address a:hover{
     text-decoration: underline;
 }
+.pink_offer {
+    background-color: #FC2779;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding: 7px;
+    letter-spacing: 1px;
+}
 .total_box {
     width: 32%;
     height: fit-content;
