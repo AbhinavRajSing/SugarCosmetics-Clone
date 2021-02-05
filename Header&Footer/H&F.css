@@ -486,7 +486,7 @@ body{
     /* border: 1px solid black; */
     position: absolute;
     top: 2px;
-    right: 2px;
+    right: 25px;
     display: none;
 }
 
@@ -496,7 +496,6 @@ body{
 
 .plain{
     top: 45px;
-    right: 2px;
 }
 
 .display__Featured>p, .display__Clearance>p, .display__JustIn__page>p, .diaplay__DaySpecial>p, .display__Skincare>p,
@@ -661,43 +660,45 @@ body{
     text-decoration-color: #969696;;
 }
 
+.cart1{
+    margin:0px auto;
+    width:100%;
+    background-color: black;
+    color:white;
+    border:none;
+    display:none
+}
 
-
-
-/* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 2%; /* Location of the box */
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 2%;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  
-  /* Modal Content */
-  .modal-content {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-  }
-  
-  /* The Close Button */
-  .close {
+}
+
+.close {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
   
-  .close:hover,
-  .close:focus {
+.close:hover, .close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
@@ -709,136 +710,84 @@ body{
     height: 550px;
     /* border: 1px solid black; */
     display: flex;
-  }
+}
   
-  .modalMainContainer>div:nth-child(1), .modalMainContainer>div:nth-child(2){
+.modalMainContainer>div:nth-child(1), .modalMainContainer>div:nth-child(2){
     width: 45%;
     height: 100%;
     /* border: 1px solid black; */
-  }
+}
   
-  .modalMainContainer>div:nth-child(2){
+.modalMainContainer>div:nth-child(2){
     width: 55%;
-  }
+}
   
-  .img{
+.img{
     width: 100%;
     height: 100%;
-  }
+}
   
-  .modalTitle, .modalPrice, .modalPNumber, .modalAddBtn, .modalAddwishlist{
+.modalTitle, .modalPrice, .modalPNumber, .modalAddBtn, .modalAddwishlist{
     width: 100%;
     height: auto;
     /* border: 1px solid black; */
-  }
+}
 
-  .modalTitle{
-      height: auto;
-      font-weight: bold;
-      font-size: 25px;
-      margin-top: 5%;
-  }
+.modalTitle{
+    height: auto;
+    font-weight: bold;
+    font-size: 25px;
+    margin-top: 15%;
+}
   
-  .modalTitle:hover{
+.modalTitle:hover{
     color: #FC2779;
-  }
+}
 
-  .modalPrice{
+.modalPrice{
     width: 50%;
     height: 10%;
     display: flex;
     margin-top: 10%;
-  }
+}
   
-  .modalPrice>div:nth-child(1){
+.modalPrice>div:nth-child(1){
     width: 30%;
     height: 30%;
     font-size: 15px;
     margin-top: 3%;
     color: #828282;
-  }
+}
 
-  .modalPrice>div:nth-child(2){
-      width: 70%;
-      height: 100%;
-      font-size: 25px;
-      color: #FC2779;
-  }
+.modalPrice>div:nth-child(2){
+    width: 70%;
+    height: 100%;
+    font-size: 25px;
+    color: #FC2779;
+}
   
-  .modalPNumber, .modalAddBtn{
+.modalAddBtn{
     height: 12%;
-  }
+    margin-top: 5%;
+}
   
-  .modalAddwishlist{
+.modalAddwishlist{
     height: 5%;
     cursor: pointer;
-  }
+}
 
-  .modalAddwishlist:hover{
-      color: #FC2779;
-  }
+.modalAddwishlist:hover{
+    color: #FC2779;
+}
   
-  .modalPNumber{
-    border: 1px solid #ECECEC;
-    margin: 10px 0px;
-    width: 80px;
-    height: 35px;
-  }
-  
-  .modalBanner{
+.modalBanner{
     width: 75%;
     height: 9%;
     margin-top: 8%;
     /* border: 1px solid black; */
-  }
-  
-  .minus {
-    border: none;
-    width: 25%;
-    height: 100%;
-    float: left;
-    text-align: center;
-    font-size: 20px;
-    color: grey;
-    cursor: pointer;
-    border: none;
-    border: 1px solid #ECECEC;
-    border-top: none;
-    border-left: none;
-    border-bottom: none;
-    background-color: #ECECEC;
-    outline: none;
-  }
+}
 
-  .quan {
-    width: 40%;
-    height: 85%;
-    float: left;
-    text-align: center;
-    font-size: 15px;
-    color: rgb(95, 94, 94);
-    border: none;
-    outline: none;
-  }
-
-  .plus {
-    border: none;
-    width: 25%;
-    height: 100%;
-    float: right;
-    text-align: center;
-    font-size: 20px;
-    color: grey;
-    background-color: #ECECEC;
-    cursor: pointer;
-    border: 1px solid #ECECEC;
-    border-top: none;
-    border-right: none;
-    border-bottom: none;
-    outline: none;
-  }
-  
-  .addCartBtnModal{
+.addCartBtnModal{
     background-color: #FC2779;
     color: white;
     text-align: center;
@@ -850,14 +799,100 @@ body{
     width: 80%;
     cursor: pointer;
     outline: none;
-  }
+}
 
-  .addCartBtnModal:hover{
+.addCartBtnModal:hover{
     background-color: rgb(75, 75, 75);
-  }
+}
 
 .mrpPrice{
     text-decoration: line-through;
+}
+
+.wishlist_active {
+    width: 14px;
+    height: 14px;
+    /* border: 1px solid black; */
+    background-color: #FC2779;
+    border-radius: 50%;
+    font-size: 12px;
+    color: white;
+    margin: 0px;
+    float: right;
+    position: absolute;
+    top: 4%;
+    left: 88.8%;
+    display: none;
+}
+
+.cart_active {
+    width: 14px;
+    height: 14px;
+    /* border: 1px solid black; */
+    background-color: #FC2779;
+    border-radius: 50%;
+    font-size: 12px;
+    color: white;
+    margin: 0px;
+    float: right;
+    position: absolute;
+    top: 4%;
+    right: 6%;
+    display: none;
+}
+
+/*----------------------------------------------Modal for WishList Popup--------------------------------------------- */
+
+.modalW {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+  
+.modal-contentW {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 25%;
+    margin-top: 10%;
+}
+  
+.closeW {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.closeW:hover, .closeW:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.wishListPopUp{
+    display: flex;
+}
+
+.wishListPopUp>i{
+    width: 20%;
+    height: 100%;
+    font-size: 45px;
+    margin-top: 3%;
+    color: green;
+}
+
+.wishListPopUp>p{
+    font-size: 19px;
 }
 
 /* ---------------------------------------------LandingPage Code Ends here----------------------------------------------- */

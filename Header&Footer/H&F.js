@@ -4,6 +4,39 @@ let loader = `
                     <img class=img"" src="https://miro.medium.com/max/978/0*cWpsf9D3g346Va20.gif">
                 </div>`;
 //---------------------------------------Loading Animation ends here-------------------------------------------//
+// window.addEventListener('load', cartWishNum)
+
+let cart_active = document.querySelector('.cart_active')
+let wishlist_active = document.querySelector('.wishlist_active')
+
+setInterval(function(){
+    let added = localStorage.getItem("cart-products")
+    let addedW = localStorage.getItem("add-wishlist")
+    let addedW_prod = JSON.parse(addedW)
+    let added_prod = JSON.parse(added)
+    // console.log(added_prod)
+    if(added_prod !== null){
+        cart_active.style.display = "block"
+        cart_active.textContent = added_prod.length
+        wishlist_active.style.display = "block"
+        wishlist_active.textContent = addedW_prod.length
+    }
+},1000)
+
+// function cartWishNum(){
+//     let added = localStorage.getItem("cart-products")
+//     let addedW = localStorage.getItem("add-wishlist")
+//     let addedW_prod = JSON.parse(addedW)
+//     let added_prod = JSON.parse(added)
+//     console.log(added_prod)
+//     if(added_prod !== null){
+//         cart_active.style.display = "block"
+//         cart_active.textContent = added_prod.length
+//         wishlist_active.style.display = "block"
+//         wishlist_active.textContent = addedW_prod.length
+//     }
+// }
+
 
 //---------------------------------------Featured pagination starts here-------------------------------------------//
 window.addEventListener('load', getFeaData)
@@ -48,13 +81,14 @@ function displayData(data){
         let mrp = data[i].mrp
         let price = data[i].price
         // console.log(data)
+        // id="${data[i].id}"
         html += `                
-        <div class="displayCard" id=${data[i].id} onClick="testClick(this)" onmouseover="showItemsOnCard(this)" 
-        onmouseout="removeItemsOnCard(this)">
+        <div class="displayCard" id=${data[i].id} onmouseover="showItemsOnCard(this)" onmouseout="removeItemsOnCard(this)">
             <div class="productImage"><img class="img" src="${img}" alt=""></div>
-            <div class="productTitle"><label id="titleUnderline">${title}</label></div>
+            <div class="productTitle" id=${data[i].id} onClick="testClick(this)"><label id="titleUnderline">${title}</label></div>
             <div class="flat" id="${data[i].id}" onClick="addToWishList(this)"><i class="far fa-heart"></i></div>
             <div class="plain" id="${data[i].id}" onClick="viewProductModal(this)"><i class="fas fa-search-plus"></i></div>
+            <button data-id="${data[i].id}" onclick="settols(this)" class="cart1">Add to Cart</button>
             <div class="productFinalSalePrice">
                 <div class="productActualPrice"><label id="priceStriked">Rs. ${mrp}</label></div>
                 <div class="productSalePrice">Rs. ${price}</div>
@@ -70,7 +104,44 @@ function displayData(data){
 //---------------------------------------Add to wishList starts here-------------------------------------------//
 function addToWishList(pID){
     let id = pID.id
-    console.log(id)
+    fetch(`http://localhost:3000/combined?id=${id}`).then(res => res.json()).then(data => addToWishListLS(data)).catch((Error) => console.log(Error))
+
+    function addToWishListLS(val){
+        let id = val[0].id
+        let title = val[0].title
+        let img = val[0].img
+        let price = val[0].price
+        let mrp = val[0].mrp
+        let html = ""
+        // console.log(mrp)
+
+        let temp = {}
+        temp.id=id
+        temp.title=title
+        temp.price=price
+        temp.img = img
+        temp.mrp = mrp
+
+        console.log(temp)
+    
+        arr = [...arr,temp]
+        localStorage.setItem("add-wishlist",JSON.stringify(arr))
+        // alert("Done")
+        let modalW = document.getElementById("myModalW");
+        let spanW = document.getElementsByClassName("closeW")[0];
+        modalW.style.display = "block"; 
+        html += `<div class="wishListPopUp"><i class="far fa-check-circle"></i><p>Item added to Wishlist</p></div>`
+        document.getElementById("wishListPopUpData").innerHTML = html
+        spanW.onclick = function() {
+            modalW.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == modalW) {
+                modalW.style.display = "none";
+            }
+        }
+    }
+
 }
 //---------------------------------------Add to wishList ends here-------------------------------------------//
 //---------------------------------------Product view modal starts here-------------------------------------------//
@@ -88,10 +159,8 @@ function diaplayModalData(val){
     let img = val[0].img
     let mrp = val[0].mrp
     let price = val[0].price
-    var countItmsub = 1
-    var modal = document.getElementById("myModal");
-    var btn = document.getElementById("myBtn");
-    var span = document.getElementsByClassName("close")[0];
+    let modal = document.getElementById("myModal");
+    let span = document.getElementsByClassName("close")[0];
     modal.style.display = "block";
     html+= `
         <div class="modalMainContainer">
@@ -104,16 +173,11 @@ function diaplayModalData(val){
                     <div class="mrpPrice">Rs. ${mrp}</div>
                     <div class="salePrice">Rs. ${price}</div>
                 </div>
-                <div class="modalPNumber">
-                    <button class="minus" onClick="subNumOfItem()">-</button>
-                    <input type="text" class="quan" value="${countItmsub}">
-                    <button class="plus" onClick="addNumOfItem">+</button>
-                </div>
                 <div class="modalAddBtn">
-                    <button class="addCartBtnModal">ADD TO CART</button>
+                    <button class="addCartBtnModal" data-id="${val[0].id}" onclick="settols(this)">ADD TO CART</button>
                 </div>
                 <div class="modalAddwishlist">
-                    <i class="far fa-heart">Add to Wishlist</i>
+                    <i class="far fa-heart" id="${val[0].id}" onClick="addToWishList(this)">Add to Wishlist</i>
                 </div>
                 <div class="modalBanner">
                     <img class="img" src="//cdn.shopify.com/s/files/1/0906/2558/files/SUGAR_Trust_Seal_473x.progressive.jpg?v=1597728764" alt="">
@@ -121,25 +185,13 @@ function diaplayModalData(val){
             </div>
         </div>
     `
-    
-    // function subNumOfItem(){
-    //     if(count < 0){
-    //         countItmsub = 1
-    //     }
-    //     else{
-    //         countItmsub--
-    //     }
-    //     alert("JJJJ")
-    // }
 
     document.getElementById("modalData").innerHTML = html
 
-    // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
     modal.style.display = "none";
     }
 
-    // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
@@ -153,7 +205,7 @@ function diaplayModalData(val){
 
 function showItemsOnCard(val){
     let ide = val.id
-    // console.log(ide.dataset)
+    console.log(ide)
     let elem = document.getElementsByClassName("flat");
     for(let i = 0; i <elem.length; i+=1){
         elem[i].style.display = "block"
@@ -162,6 +214,10 @@ function showItemsOnCard(val){
     let elems = document.getElementsByClassName("plain");
     for(let j = 0; j <elems.length; j+=1){
         elems[j].style.display = "block"
+    }
+    let elems1 = document.getElementsByClassName("cart1");
+    for(let k = 0; k <elems1.length; k+=1){
+        elems1[k].style.display = "block"
     }
 }
 
@@ -176,7 +232,12 @@ function removeItemsOnCard(val){
     for(let j = 0; j <elemes.length; j+=1){
         elemes[j].style.display = "none"
     }
+    let elemes1 = document.getElementsByClassName("cart1");
+    for(let k = 0; k <elemes1.length; k+=1){
+        elemes1[k].style.display = "none"
+    }
 }
+
 //---------------------------------------whishlist and product view ends here-------------------------------------------//
 
 //---------------------------------------Onclick getting product details starts here------------------------------------//
@@ -185,9 +246,73 @@ function testClick(elem){
     let id = elem.id
     // console.log(id)
 
-    // fetch(`http://localhost:3000/combined?id=${id}`).then(res => res.json()).then(data => console.log(data)).catch((Error) => console.log(Error))
+    fetch(`http://localhost:3000/combined?id=${id}`).then(res => res.json()).then(data => sendDataParms(data)).catch((Error) => console.log(Error))
+
+    function sendDataParms(val){
+        let id = val[0].id
+        let title = val[0].title
+        let mrp = val[0].mrp
+        let price = val[0].price
+        let img = val[0].img
+
+        window.location.href =`/Product_detail/prod_detail.html?id=${id}&title=${title}&mrp=${mrp}&price=${price}&img=${img}`
+    }
+
 }
+
 //---------------------------------------Onclick getting product details ends here--------------------------------------//
+
+//---------------------------------------Add to localstorage starts here--------------------------------------//
+
+function addToLocalStorageCart(val){
+    let id = val[0].id
+    let img = val[0].img
+    let price = val[0].price
+    let title = val[0].title
+    // console.log(title, price)
+}
+
+let arr = []
+function settols(e){
+    // console.log("object")
+    let id = e.getAttribute("data-id")
+    fetch(`http://localhost:3000/combined?id=${id}`).then(res => res.json()).then(data => AddToLSFromHp(data)).catch((Error) => console.log(Error))
+}
+
+function AddToLSFromHp(data){   
+    let title = data[0].title
+    let price = data[0].price
+    let img = data[0].img
+    let id = data[0].id
+    let html = ""
+
+    var temp = {}
+    temp.id=id
+    temp.title=title
+    temp.price=price
+    temp.img = img
+
+    console.log(temp)
+    
+    arr = [...arr,temp]
+    localStorage.setItem("cart-products",JSON.stringify(arr))
+    
+    let modalW = document.getElementById("myModalW");
+    let spanW = document.getElementsByClassName("closeW")[0];
+    modalW.style.display = "block"; 
+    html += `<div class="wishListPopUp"><i class="far fa-check-circle"></i><p>Item added to Cart</p></div>`
+    document.getElementById("wishListPopUpData").innerHTML = html
+    spanW.onclick = function() {
+        modalW.style.display = "none";
+    }
+    window.onclick = function(event) {
+        if (event.target == modalW) {
+            modalW.style.display = "none";
+        }
+    }
+}
+
+//---------------------------------------Add to localstorage ends here--------------------------------------//
 
 //---------------------------------------JustIn pagination starts here-------------------------------------------//
 window.addEventListener('load', getJustInData)
@@ -233,12 +358,12 @@ function displayJustInData(data){
         let price = data[i].price
         // console.log(data)
         Jhtml += `                
-        <div class="displayCard" id=${data[i].id} onClick="testClick(this)" onClick="testClick(this)" onmouseover="showItemsOnCard(this)" 
-        onmouseout="removeItemsOnCard(this)">
+        <div class="displayCard" id=${data[i].id} onmouseover="showItemsOnCard(this)" onmouseout="removeItemsOnCard(this)">
             <div class="productImage"><img class="img" src="${img}" alt=""></div>
-            <div class="productTitle"><label id="titleUnderline">${title}</label></div>
+            <div class="productTitle" id=${data[i].id} onClick="testClick(this)"><label id="titleUnderline">${title}</label></div>
             <div class="flat" id="${data[i].id}" onClick="addToWishList(this)"><i class="far fa-heart"></i></div>
             <div class="plain" id="${data[i].id}" onClick="viewProductModal(this)"><i class="fas fa-search-plus"></i></div>
+            <button data-id="${data[i].id}" onclick="settols(this)" class="cart1">Add to Cart</button>
             <div class="productFinalSalePrice">
                 <div class="productActualPrice"><label id="priceStriked">Rs. ${mrp}</label></div>
                 <div class="productSalePrice">Rs. ${price}</div>
@@ -296,12 +421,12 @@ function displaySkincareData(data){
         let price = data[i].price
         // console.log(data)
         Jhtml += `                
-        <div class="displayCard" id=${data[i].id} onClick="testClick(this)" onmouseover="showItemsOnCard(this)" 
-        onmouseout="removeItemsOnCard(this)">
+        <div class="displayCard" id=${data[i].id} onmouseover="showItemsOnCard(this)" onmouseout="removeItemsOnCard(this)">
             <div class="productImage"><img class="img" src="${img}" alt=""></div>
-            <div class="productTitle"><label id="titleUnderline">${title}</label></div>
+            <div class="productTitle" id=${data[i].id} onClick="testClick(this)"><label id="titleUnderline">${title}</label></div>
             <div class="flat" id="${data[i].id}" onClick="addToWishList(this)"><i class="far fa-heart"></i></div>
             <div class="plain" id="${data[i].id}" onClick="viewProductModal(this)"><i class="fas fa-search-plus"></i></div>
+            <button data-id="${data[i].id}" onclick="settols(this)" class="cart1">Add to Cart</button>
             <div class="productFinalSalePrice">
                 <div class="productActualPrice"><label id="priceStriked">Rs. ${mrp}</label></div>
                 <div class="productSalePrice">Rs. ${price}</div>
@@ -392,11 +517,22 @@ function displaySearchData(Sdata, val){
         document.getElementById("midDisplay").setAttribute('class', 'displaySearchItem')
         for(i in Sdata){
             let img = Sdata[i].img
+            let title = Sdata[i].title
+            let mrp = Sdata[i].mrp
+            let price = Sdata[i].price
             // console.log(img)
             Shtml += `             
-                <div class="displayCard">
-                    <img class="img" src="${img}" alt="">
-                </div>`
+            <div class="displayCard" id=${Sdata[i].id} onmouseover="showItemsOnCard(this)" onmouseout="removeItemsOnCard(this)">
+            <div class="productImage"><img class="img" src="${img}" alt=""></div>
+            <div class="productTitle" id=${Sdata[i].id} onClick="testClick(this)"><label id="titleUnderline">${title}</label></div>
+            <div class="flat" id="${Sdata[i].id}" onClick="addToWishList(this)"><i class="far fa-heart"></i></div>
+            <div class="plain" id="${Sdata[i].id}" onClick="viewProductModal(this)"><i class="fas fa-search-plus"></i></div>
+            <button data-id="${Sdata[i].id}" onclick="settols(this)" class="cart1">Add to Cart</button>
+            <div class="productFinalSalePrice">
+                <div class="productActualPrice"><label id="priceStriked">Rs. ${mrp}</label></div>
+                <div class="productSalePrice">Rs. ${price}</div>
+            </div>
+        </div>`
             
             document.getElementById("midDisplay").innerHTML = Shtml
         }
@@ -447,12 +583,12 @@ function displayClearance(data){
         let price = data[i].price
         // console.log(data)
         Chtml += `                
-        <div class="displayCard" id=${data[i].id} onClick="testClick(this)" onmouseover="showItemsOnCard(this)" 
-        onmouseout="removeItemsOnCard(this)">
+        <div class="displayCard" id=${data[i].id} onmouseover="showItemsOnCard(this)" onmouseout="removeItemsOnCard(this)">
             <div class="productImage"><img class="img" src="${img}" alt=""></div>
-            <div class="productTitle"><label id="titleUnderline">${title}</label></div>
+            <div class="productTitle" id=${data[i].id} onClick="testClick(this)"><label id="titleUnderline">${title}</label></div>
             <div class="flat" id="${data[i].id}" onClick="addToWishList(this)"><i class="far fa-heart"></i></div>
             <div class="plain" id="${data[i].id}" onClick="viewProductModal(this)"><i class="fas fa-search-plus"></i></div>
+            <button data-id="${data[i].id}" onclick="settols(this)" class="cart1">Add to Cart</button>
             <div class="productFinalSalePrice">
                 <div class="productActualPrice"><label id="priceStriked">Rs. ${mrp}</label></div>
                 <div class="productSalePrice">Rs. ${price}</div>

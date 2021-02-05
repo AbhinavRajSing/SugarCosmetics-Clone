@@ -1,9 +1,12 @@
+/* ---------------------------------------------Cart Code starts here----------------------------------------------- */
+
 window.addEventListener('load', execute)
 
 let display = document.querySelector('.added_items')
 let bill_amt = document.getElementById('bill_amt')
 let total_amt = document.getElementById('total_amt')
-
+let cart_active = document.querySelector('.cart_active')
+let wishlist_active = document.querySelector('.wishlist_active')
 
 function execute(e){
     e.preventDefault()
@@ -17,8 +20,9 @@ let modalClose = document.querySelector(".modal-close");
 
 // Delivery date
 let date = document.getElementById('deliveryDate')
+let x = Math.floor((Math.random() * 10) + 4);
 let targetDate = new Date()
-targetDate.setDate(targetDate.getDate() + 10)
+targetDate.setDate(targetDate.getDate() + x)
 date.textContent = targetDate.toDateString()
 
 // pay button 
@@ -40,41 +44,75 @@ goTohome.addEventListener('click', ()=>{
 })
 // Modal box
 checkout.addEventListener('click', ()=>{
-    modalBg.classList.add("bg-active");
+    if(tempc == undefined){
+        alert("You dont have any product to buy")
+    } else {
+
+        modalBg.classList.add("bg-active");
+    }
 })
 
 modalClose.addEventListener("click", function () {
     modalBg.classList.remove("bg-active");
   });
-// added  product
 
-let data =[ {
-    id: 2,
-    title: "SMUDGE ME NOT LIP DUO",
-    mrp: 999,
-    price: 599,
-    discount: 30,
-    img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-lip-duo-01-brazen-raisin-burgundy-13200661643347.progressive.jpg?v=1577305698      "
-  },
-  {
-    id: 3,
-    title: "SMUDGE ME NOT MINIS SET- BLACK",
-    mrp: 589,
-    price: 459,
-    discount: 18,
-    img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-minis-set-black-14964843151443.progressive.jpg?v=1611061746"
-  }
-]
-  localStorage.setItem( "cart-products",JSON.stringify(data))
+// adding  Dummy data for developer,// this should be commented after product launch.
 
-function getPurchaseData(){
+// let data =[ {
+//     id: 2,
+//     title: "SMUDGE ME NOT LIP DUO",
+//     mrp: 999,
+//     price: 599,
+//     discount: 30,
+//     img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-lip-duo-01-brazen-raisin-burgundy-13200661643347.progressive.jpg?v=1577305698      "
+//   },
+//   {
+//     id: 3,
+//     title: "SMUDGE ME NOT MINIS SET- BLACK",
+//     mrp: 589,
+//     price: 459,
+//     discount: 18,
+//     img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-minis-set-black-14964843151443.progressive.jpg?v=1611061746"
+//   },
+//   {
+//     id: 4,
+//     title: "SMUDGE ME NOT LIP DUO",
+//     mrp: 999,
+//     price: 599,
+//     discount: 30,
+//     img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-lip-duo-01-brazen-raisin-burgundy-13200661643347.progressive.jpg?v=1577305698      "
+//   },
+//   {
+//     id: 5,
+//     title: "SMUDGE ME NOT MINIS SET- BLACK",
+//     mrp: 589,
+//     price: 459,
+//     discount: 18,
+//     img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-minis-set-black-14964843151443.progressive.jpg?v=1611061746"
+//   }
+// ]
+//   localStorage.setItem( "cart-products",JSON.stringify(data))
+
+  // getting data from loacal storage
+function getPurchaseData(){  
     let added = localStorage.getItem("cart-products")
+    let addedW = localStorage.getItem("add-wishlist")
+    let addedW_prod = JSON.parse(addedW)
     let added_prod = JSON.parse(added)
-    // console.log(added_prod)
-    showPurchaseData(added_prod)
+    if(added_prod !== null){
+        document.querySelector('.empty-cart').style.display = 'none'
+        cart_active.style.display = "block"
+        cart_active.textContent = added_prod.length
+        wishlist_active.style.display = "block"
+        wishlist_active.textContent = addedW_prod.length
+        showPurchaseData(added_prod)
+    } else {
+        document.querySelector('.empty-cart').style.display = 'block'
+    }
     addprice(added_prod)
 }
 
+// displaying data get from local storage, displaying in table form
 function showPurchaseData(data){
     // console.log(data)
     display.innerHTML = ""
@@ -102,7 +140,19 @@ function showPurchaseData(data){
     table.append(thead)
     
     let tbody = document.createElement('tbody')
-   
+
+        // adding clear cart button attached to table
+    let clearCart = document.createElement('button')
+    clearCart.textContent = 'CLEAR SHOPPING CART'
+    clearCart.setAttribute('class', 'clear')
+    clearCart.setAttribute('onclick', 'remove()')
+
+    // added update cart button, which update cart total when clicked
+    let updateCart = document.createElement('button')
+    updateCart.textContent = 'UPDATE CART'
+    updateCart.setAttribute('class', 'clear')
+    updateCart.setAttribute('onclick', 'updateTotal()')
+
     let html = ""
     for(i in data){
         html += ` <tr>
@@ -131,7 +181,7 @@ function showPurchaseData(data){
     }
     tbody.innerHTML = html
     table.append(tbody)
-   display.append(table)
+   display.append(table, clearCart, updateCart)
     
 }
 // Handling no of quantity
@@ -154,6 +204,7 @@ function minus(pid){
             }
         }
     }
+    updateTotal()
     cartTotal()
 }
 
@@ -170,10 +221,13 @@ function plus(pid){
             input.value = Number(val) + 1
         }
     }
+    updateTotal()
     cartTotal()
 }
 let offer = document.querySelector('.offer')
 let freeShip = document.querySelector('.free_ship')
+
+// on changing quantit this should change price in total cart.
 function cartTotal(){
     let added = localStorage.getItem("cart-products")
     let data = JSON.parse(added)
@@ -193,6 +247,7 @@ function cartTotal(){
     }
 }
 
+// on page reload this should show total price of available products
 function addprice(data){
     let total = 0;
     let bill = 0;
@@ -203,16 +258,55 @@ function addprice(data){
     }
     bill_amt.textContent =bill
     total_amt.textContent = total
+    if(bill_amt.textContent > 1999){
+        offer.style.display = "none"
+        freeShip.style.display = "block"
+    } else if (bill_amt.textContent < 1999){
+        offer.style.display = "block"
+        freeShip.style.display = "none"
+    }
+}  
+let tempc = JSON.parse(localStorage.getItem('cart-products'))
+localStorage.setItem('tempc', JSON.stringify(tempc))
+
+
+// delete particular from table and local storage
+function delet(did){
+    let added = localStorage.getItem("tempc")
+    let data = JSON.parse(added)
+    let cart_remained = data.filter(el => {
+        return (el.id !== did)
+    })
+    
+    localStorage.setItem('tempc', JSON.stringify(cart_remained))
+   
+    let final = JSON.parse(localStorage.getItem('tempc'))
+
+    if(JSON.stringify(final) !== JSON.stringify([])){
+        cart_active.textContent = final.length
+        added_prod.length.textContent = final.length
+        showPurchaseData(final)
+    } else {
+        remove()
+    }
+    
 }
 
-function delet(did){
-    let added = localStorage.getItem("cart-products")
-    let data = JSON.parse(added)
-    for(i in data){
-        if(data[i].id == did){
-            console.log(data[i])
-            // localStorage.removeItem("cart-products");
-        }
-    }
-}
+// clear all data from local storage as well as page
+function remove (){
+    document.querySelector('.empty-cart').style.display = 'block'
+    display.style.display = 'none'
+    localStorage.removeItem('cart-products')
+    localStorage.removeItem('tempc')
+    cart_active.style.display = "none"
+    addprice()
     
+}
+
+// update total price of cart if cart gets updated
+function updateTotal(){
+    let added = localStorage.getItem("tempc")
+    let data = JSON.parse(added)
+    addprice(data)
+}
+/* ---------------------------------------------Cart Code ends here----------------------------------------------- */

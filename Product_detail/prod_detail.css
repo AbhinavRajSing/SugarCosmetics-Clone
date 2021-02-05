@@ -6,7 +6,7 @@ body{
 .container{
     /* width: 100%; */
     padding: 50px 180px;
-    border: 1px solid grey;
+    /* border: 1px solid grey; */
     display: flex;
 }
 .left{
@@ -28,15 +28,16 @@ body{
     width: 50%;
     /* border: 1px solid blue; */
     padding: 10px;
+    margin-top: 5%;
 }
 .right > h2 {
-    margin: 0;
+    margin-bottom: 6%;
+    color: #FC2793;
 }
 .right > p {
     font-size: 26px;
-    color: #FC2793;
 }
-.quantity{
+/* .quantity{
     border: 1px solid rgb(167, 167, 167);
     margin: 10px 0px;
     width: 80px;
@@ -72,15 +73,18 @@ body{
     background-color: #ecebeb;
     cursor: pointer;
 
-}
+} */
 .add_to_cart {
     background-color: black;
+    width: 100%;
     color: white;
     text-align: center;
-    padding: 5px;
+    padding: 10px;
     font-size: 20px;
     align-items: center;
     margin-top: 30px;
+    border: none;
+    cursor: pointer;
     /* font-weight: bold; */
 }
 .offer {
@@ -93,17 +97,19 @@ body{
     margin: 10px 0px;
 }
 .symbols {
-    display: flex;
     margin-top: 30px;
-    /* justify-content: space-between; */
-}
-.symbols img {
-    width: 45px;
-    margin: 3px;
+    width: 100%;
+    height: 50px;
+    border: 1px solid black;
 }
 .symbols_box{
-    display: flex;
-    padding: 15px;
+    width: 100%;
+    height: 60px;
+    border: 1px solid black;
+}
+.img{
+    width: 100%;
+    height: 100%;
 }
 .line {
     width: 100%;
@@ -115,6 +121,13 @@ body{
     padding: 5px;
     margin: 30px 0px;
 }
+
+.share>a{
+    margin-left: 5%;
+    color: black;
+    text-decoration: none;
+}
+
 .share p {
     margin: 2px;
     font-size: 15px;
@@ -126,4 +139,73 @@ body{
 }
 .share a:hover {
     transform: scale(1.1);
+}
+
+.priceData{
+    display: flex;
+    width: 50%;
+    height: 55px;
+    /* border: 1px solid black; */
+}
+
+.priceData>p:nth-child(1){
+    width: 40%;
+    height: 100%;
+    /* border: 1px solid black; */
+    margin-top: 2%;
+    font-size: 18px;
+    margin-top: 3%;
+    text-decoration: line-through;
+    color: #96A3C2;
+}
+
+.priceData>p:nth-child(2){
+    width: 40%;
+    height: 100%;
+    width: 60%;
+    font-size: 25px;
+    color: #FC2781;
+    margin-top: 0%;
+}
+
+#wishListLS{
+    font-size: 15px;
+    color: #585858;
+}
+
+#wishListLS:hover{
+    color: #FC2781;
+    cursor: pointer;
+}
+
+.wishlist_active {
+    width: 14px;
+    height: 14px;
+    /* border: 1px solid black; */
+    background-color: #FC2779;
+    border-radius: 50%;
+    font-size: 12px;
+    color: white;
+    margin: 0px;
+    float: right;
+    position: absolute;
+    top: 4%;
+    left: 88.8%;
+    display: none;
+}
+
+.cart_active {
+    width: 14px;
+    height: 14px;
+    /* border: 1px solid black; */
+    background-color: #FC2779;
+    border-radius: 50%;
+    font-size: 12px;
+    color: white;
+    margin: 0px;
+    float: right;
+    position: absolute;
+    top: 4%;
+    right: 6%;
+    display: none;
 }

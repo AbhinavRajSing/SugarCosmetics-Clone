@@ -1,5 +1,13 @@
-/* ---------------------------------------------Header Code starts here----------------------------------------------- */
-html{
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Header&Footer/H&F.css">
+    <link rel="icon" href="https://cdn.shopify.com/s/files/1/0906/2558/files/Sugar_Logo_9182588f-0366-4812-9fc5-f3a4b639c044_32x.png?v=1597067859%22">
+    <title>Document</title>
+    <style>
+        html{
     scroll-behavior: smooth;
 }
 
@@ -189,225 +197,6 @@ body{
 }
 
 /* ---------------------------------------------Header Code Ends here----------------------------------------------- */
-
-
-/* -------------------------------------------- Login Container Starts here ------------------------------------------- */
-
-.hideItems {
-    display: none;
-}
-
-.title{
-    text-align: center;
-    color: white;
-    background-color: #212121;
-    padding: 8px;
-}
-
-.title h1 {
-    margin: 10px;
-}
-
-
-.address {
-    display: flex;
-    width: fit-content;
-    margin: 1px auto;
-}
-.address a, p{
-    text-decoration: none;
-    color: white;
-    font-size: 13px;
-    margin: 0px 5px ;
-}
-.address a:hover{
-    text-decoration: underline;
-}
-
-.loginContainer {
-    height: fit-content;
-    display: flex;
-    margin: 70px 0px;
-}
-
-.loginContainerLeft {
-    width: 35%;
-    height: fit-content;
-    margin: 2% 5% ;
-    margin-left: 10%;
-    margin-right: 0px;
-    padding-right: 5%;
-    padding-bottom: 100px;
-}
-
-.loginContainerRight {
-    width: 40%;
-    height: 500px;
-    margin: 2% 5% ;
-    margin-left: 0px;
-    padding-bottom: 100px;
-    display: flex;
-    text-align: center;
-    border-left: 1px solid lightgray;
-    flex-direction: column;
-    color: black;
-}
-
-.loginTextDiv {
-    display: flex;
-    margin-bottom: 20px;
-}
-
-.loginTextDiv img {
-    width: 30px;
-    margin-right: 10px;
-}
-
-.loginTextDiv p {
-    font-size: 40px;
-    color: black;
-}
-
-.createTextDiv {
-    text-align: center;
-    color: black;
-    justify-content: center;
-    font-size: 40px;
-}
-
-.createTitle {
-    font-size: 40px;
-    color: black;
-}
-
-.createText {
-    color: rgb(77, 77, 77);
-    margin: 15px 50px;
-    line-height: 30px;
-    font-size: 20px;
-    font-weight: 200;
-}
-
-.sidebarFBDiv {
-    width: 100%;
-    height: 50px;
-    background-color: #2C82C9;
-    margin: 3px 0px;
-    color: white;
-    display: flex;
-}
-
-.fbDivLeft, .googleDivLeft {
-    width: 15%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.fbDivRight, .googleDivRight {
-    width: 85%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.sidebarGoogleDiv {
-    width: 100%;
-    height: 50px;
-    background-color: #e74c3c;
-    margin: 5px 0px;
-    color: white;
-    display: flex;
-}
-
-.sidebarFBDiv:hover {
-    background-color:#4c8fc5;
-    cursor: pointer;
-}
-
-.sidebarGoogleDiv:hover {
-    background-color: #e76c5f;
-    cursor: pointer;
-}
-
-.loginOr {
-    font-size: 20px;
-    text-align: center;
-    margin: 25px;
-    color: black;
-}
-
-.loginInput {
-    width: 99%;
-    height: 38px;
-    border: 1px solid lightgray;
-    margin-top: 5px;
-    margin-bottom: 25px;
-}
-
-.inputLabel {
-    color:rgb(22, 22, 22);
-}
-.forgotPassDiv {
-    display: flex;
-    align-items: center;
-    color: black;
-    margin-bottom: 20px;
-}
-
-.forgotPassDiv p {
-    color: black;
-}
-
-.forgotPassDiv p:hover {
-    color: crimson;
-    cursor: pointer;
-}
-
-.forgotPassDiv:hover {
-    color: crimson;
-    cursor: pointer;
-}
-
-.forgotRing {
-    margin-right: 10px;
-}
-
-.loginBtn {
-    width: 100%;
-    background-color: transparent;
-    border: 3px solid black;
-    padding: 10px;
-    text-align: center;
-    margin-top: 40px;
-}
-
-.createBtn {
-    margin-top: 25px;
-    background-color: black;
-    color: white;
-    padding: 10px;
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.loginBtn:hover, .createBtn:hover {
-    background-color: rgb(44, 44, 44);
-    color: white;
-    cursor: pointer;
-    border: 2px solid rgb(44, 44, 44);
-}
-
-.redStar {
-    color: red;
-    margin-left: 5px;
-}
-
-/* -------------------------------------------- Login Container Ends here ------------------------------------------- */
-
 /* ---------------------------------------------Footer Code Starts here----------------------------------------------- */
 
 .Footer{
@@ -596,85 +385,106 @@ body{
 }
 
 /* ---------------------------------------------Footer Code Ends here----------------------------------------------- */
+    </style>
+</head>
+<body>
+        <!-- Header Code starts here -->
+        <div class="Header">
+            <div class="Header__Logo">
+                <a href="/Header&Footer/H&F.html"><img class="img" src="https://cdn.shopify.com/s/files/1/0906/2558/files/SUGAR-Festive-logo_ba6a68ab-b29e-4109-ab60-bc8132bb153b_600x.jpg?v=1609495364" alt="Sugar Cosmetics Logo"></a>
+            </div>
+            <div class="Header__Search">
+                <div><input id="searchItems" class="Header__Search__inputBox" type="text" placeholder="Search for products"></div>
+                <div class="Header__Search__searchicon"><i class="fas fa-search"></i></div>
+            </div>
+            <div class="Header__Login"> 
+                <a id="loginLink" class="Header__Login__P">Login / Register</a>
+            </div>
+            <div class="Header__LikeCart">
+                <div><a href="/wishlist/wishlist.html"><i class="far fa-heart"></i></a></div>
+                <div id="cartPage"><a href="/Cart_page/cart.html"><i class="fas fa-shopping-cart"></i></a></div>
+            </div>
+        </div>
+    <div class="navBar">
+        <div class="dropdown">
+            <div class="dropbtn">MAKEUP <i class="fas fa-angle-down"></i></div>
+            <div class="navBar__content">
+                <div>
+                    <p>LIPS</p>
+                    <a href="/Products/lips.html">LIPSTICKS</a>
+                    <a href="/Products/lips.html">LIP CARE</a>
+                    <a href="/Products/lips.html">LIQUID LIP COLOURS</a>
+                    <a href="/Products/lips.html">LIP GLOSS & LINERS</a>
+                    <a href="/Products/lips.html">VALUE SETS</a>
+                    <a href="/Products/lips.html">GIFTING</a>
+                </div>
+                <div>
+                    <p>FACE</p>
+                    <a href="/Products/face.html">PRIMERS</a>
+                    <a href="/Products/face.html">FOUNDATION</a>
+                    <a href="/Products/face.html">POWDER / COMPACT</a>
+                    <a href="/Products/face.html">CONCEALERS & <br>CORRECTORS</a>
+                    <a href="/Products/face.html">BLUSH</a>
+                    <a href="/Products/face.html">HIGHLIGHTERS & <br>CONTOUR</a>
+                    <a href="/Products/face.html">BRONZER</a>
+                    <a href="/Products/face.html">FACE PALETTES</a>
+                    <a href="/Products/face.html">VALUE SETS</a>
+                </div>
+                <div>
+                    <p>EYES</p>
+                    <a href="/Products/eye.html">EYELINERS</a>
+                    <a href="/Products/eye.html">KAJAL</a>
+                    <a href="/Products/eye.html">EYEBROWS</a>
+                    <a href="/Products/eye.html">EYESHADOWS</a>
+                    <a href="/Products/eye.html">MASCARA</a>
+                    <a href="/Products/eye.html">VALUE SETS</a>
+                </div>
+            </div>
+        </div>
 
-.afterlogin{
-    position: absolute;
-    display:flex;
-    flex-direction: row;
-    color:gray;
-    width:80%;
-    justify-content: space-between;
-    margin:-810px 0px 5px 150px;
-    /* border:1px solid gray; */
-    /* display:none; */
-    /* display:none; */
+        <div class="dropdown">
+            <div class="dropbtn">SKIN <i class="fas fa-angle-down"></i></div>
+            <div class="navBar__content" id="navBar__content1">
+                <div>
+                    <a href="">MOISTURIZERS</a>
+                    <a href="">MASKS</a>
+                    <a href="">SETTING MISTS</a>
+                    <a href="">MAKEUP REMOVER</a>
+                    <a href="">SKINCARE<br>COMBOS</a>
+                </div>
+            </div>
+        </div>
 
-}
-.left{
-    width: 30%;
-    height:200px;
-    /* border:1px solid gray; */
-    color :black;
-    margin:5px;
-    
-}
-.profile{
-    color:black
-}
-.profile1{
-    height:40px;
-    /* background-color: rgb(226, 226, 226); */
-    margin:0px;
-    border:1px solid rgb(224, 223, 223)
-}
-.right{
-    /* border:1px solid gray; */
-    width:65%;
-    /* font-size: x-large; */
-}
-.top{
-    background-color: rgb(226, 226, 226);
-    color:black;
-    margin:5px 0px;
-    height:40px;
-    align-items: center;
-    /* border:1px solid black */
-}
-.acc{
-    background-color: rgb(226, 226, 226);
-    color:black;
-    margin:5px 0px;
-    height:40px;
+        <div class="dropdown">
+            <div class="dropbtn">BLOG <i class="fas fa-angle-down"></i></div>
+            <div class="navBar__content" id="navBar__content1">
+                <div>
+                    <a href="">FEATURED</a>
+                    <a href="">MAKEUP</a>
+                    <a href="">SKINCARE</a>
+                    <a href="">CARE</a>
+                    <a href="">QUIZ</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="dropbtn">OFFERS</div>
 
-}
-.inr{
-    color:black;
-    margin:10px 0px
-}
-.top > p{
-    color:black;
-    margin:10px 0px
-}
-.p1{
-    color:black;
-    margin:10px
-}
-.p2{
-    color:black;
-    margin:10px
-}
-.p3{
-    color:black;
-    margin:10px
-}
-.acc > p{
-    margin:10px;
-}
-.names,.mail{
-    border-bottom: 1px solid gray;
-    height:40px
-}
+        <div class="dropdown">
+            <div class="dropbtn">TRENDING <i class="fas fa-angle-down"></i></div>
+            <div class="navBar__content" id="navBar__content1">
+                <div>
+                    <a href="">MINIS SET</a>
+                    <a href="">LIMITED EDITION</a>
+                    <a href="">NEW LAUNCHES</a>
+                    <a href="">VALUE SETS</a>
+                    <a href="">GIFTING</a>
+                </div>
+            </div>
+        </div>  
+    </div>
+    <!-- Header Code Ends here -->
 
 
-
-
+</body>
+</html>

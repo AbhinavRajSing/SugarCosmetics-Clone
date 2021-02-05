@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/f612f4d575.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="icon" href="https://cdn.shopify.com/s/files/1/0906/2558/files/Sugar_Logo_9182588f-0366-4812-9fc5-f3a4b639c044_32x.png?v=1597067859%22">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="H&F.css">
+    <link rel="stylesheet" href="/Header&Footer/H&F.css">
     <title>SUGAR Cosmetics India - Iconic Makeup & Beauty Products for the Unstopable you</title>
 </head>
 <body>
@@ -15,7 +16,6 @@
     </div>
     <div class="mainContainer">
     <div id="mainContainer" class="mainContainer">
-        
         <!-- Login Code Starts here -->
         <div id="shadow" class="hideSide"></div>
         <div id="loginSidebar" class="hideSide">
@@ -160,7 +160,7 @@
         <div id="headerForLargeScreen">
             <div class="Header">
                 <div class="Header__Logo">
-                    <a href=""><img class="img" src="https://cdn.shopify.com/s/files/1/0906/2558/files/SUGAR-Festive-logo_ba6a68ab-b29e-4109-ab60-bc8132bb153b_600x.jpg?v=1609495364" alt="Sugar Cosmetics Logo"></a>
+                    <a href="#"><img class="img" src="https://cdn.shopify.com/s/files/1/0906/2558/files/SUGAR-Festive-logo_ba6a68ab-b29e-4109-ab60-bc8132bb153b_600x.jpg?v=1609495364" alt="Sugar Cosmetics Logo"></a>
                 </div>
                 <div class="Header__Search">
                     <div><input id="searchItems" class="Header__Search__inputBox" type="text" placeholder="Search for products"></div>
@@ -170,8 +170,14 @@
                     <a id="loginLink" class="Header__Login__P">Login / Register</a>
                 </div>
                 <div class="Header__LikeCart">
-                    <div><i class="far fa-heart"></i></div>
-                    <div id="cartPage"><a href="/Cart_page/cart.html"><i class="fas fa-shopping-cart"></i></a></div>
+                    <div>
+                        <a href="/wishlist/wishlist.html"><i class="far fa-heart"></i></a>
+                        <div class="wishlist_active"></div>
+                     </div>
+                    <div>
+                        <a href="/Cart_page/cart.html"><i class="fas fa-shopping-cart"></i></a>
+                        <div class="cart_active"></div>
+                    </div>
                 </div>
             </div>
             <div class="navBar">
@@ -437,23 +443,23 @@
             <div class="slideshow__container">
             
                 <div class="mySlides fade">
-                    <img class="img" src="img/bannerTop1.PNG">
+                    <img class="img" src="https://cdn.shopify.com/s/files/1/0906/2558/files/Triple-Treat-HP-Web_1a5d9351-390c-4b35-a8fd-9aa59ff06108.gif">
                 </div>
     
                 <div class="mySlides fade">
-                    <img class="img" src="img/bannerTop2.PNG">
+                    <img class="img" src="/Header&Footer/img/bannerTop2.PNG">
                 </div>
     
                 <div class="mySlides fade">
-                    <img class="img" src="img/bannerTop3.PNG">
+                    <img class="img" src="/Header&Footer/img/bannerTop3.PNG">
                 </div>
     
                 <div class="mySlides fade">
-                    <img class="img" src="img/bannerTop4.PNG">
+                    <img class="img" src="/Header&Footer/img/bannerTop4.PNG">
                 </div>
     
                 <div class="mySlides fade">
-                    <img class="img" src="img/bannerTop5.PNG">
+                    <img class="img" src="/Header&Footer/img/bannerTop5.PNG">
                 </div>
                 <br>
                 <div style="text-align:center">
@@ -601,17 +607,20 @@
                     <button id="nextBtnInSE"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
-
-            <div id="myModal" class="modal">
-
-                <!-- Modal content -->
-                <div class="modal-content">
-                  <span class="close">&times;</span>
-                  <div id="modalData">Some text in the Modal..</div>
-                </div>
-              
+        </div>
+        <div id="myModalW" class="modalW">
+            <!-- Modal content -->
+            <div class="modal-contentW">
+                <span class="closeW">&times;</span>
+                <div id="wishListPopUpData"></div>
             </div>
-
+        </div>
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div id="modalData"></div>
+            </div>
         </div>
         <!-- Landing Page Code Ends here -->
 
@@ -682,6 +691,6 @@
         <!-- Footer Code Ends here -->
     </div>
 
-    <script src="H&F.js"></script>
+    <script src="/Header&Footer/H&F.js"></script>
 </body>
 </html>
