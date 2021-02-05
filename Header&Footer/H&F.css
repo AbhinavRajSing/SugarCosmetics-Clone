@@ -1341,7 +1341,7 @@ body{
 
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 950px) {
     #headerForLargeScreen {
         display: none;
     }
