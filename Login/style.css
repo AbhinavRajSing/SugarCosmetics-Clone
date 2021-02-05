@@ -596,3 +596,85 @@ body{
 }
 
 /* ---------------------------------------------Footer Code Ends here----------------------------------------------- */
+
+.afterlogin{
+    position: absolute;
+    display:flex;
+    flex-direction: row;
+    color:gray;
+    width:80%;
+    justify-content: space-between;
+    margin:-810px 0px 5px 150px;
+    /* border:1px solid gray; */
+    /* display:none; */
+    /* display:none; */
+
+}
+.left{
+    width: 30%;
+    height:200px;
+    /* border:1px solid gray; */
+    color :black;
+    margin:5px;
+    
+}
+.profile{
+    color:black
+}
+.profile1{
+    height:40px;
+    /* background-color: rgb(226, 226, 226); */
+    margin:0px;
+    border:1px solid rgb(224, 223, 223)
+}
+.right{
+    /* border:1px solid gray; */
+    width:65%;
+    /* font-size: x-large; */
+}
+.top{
+    background-color: rgb(226, 226, 226);
+    color:black;
+    margin:5px 0px;
+    height:40px;
+    align-items: center;
+    /* border:1px solid black */
+}
+.acc{
+    background-color: rgb(226, 226, 226);
+    color:black;
+    margin:5px 0px;
+    height:40px;
+
+}
+.inr{
+    color:black;
+    margin:10px 0px
+}
+.top > p{
+    color:black;
+    margin:10px 0px
+}
+.p1{
+    color:black;
+    margin:10px
+}
+.p2{
+    color:black;
+    margin:10px
+}
+.p3{
+    color:black;
+    margin:10px
+}
+.acc > p{
+    margin:10px;
+}
+.names,.mail{
+    border-bottom: 1px solid gray;
+    height:40px
+}
+
+
+
+
