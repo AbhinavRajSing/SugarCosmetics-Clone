@@ -936,15 +936,17 @@ body{
                 if(xhr.status === 200){
                     let res = JSON.parse(xhr.response)
                     console.log(res)
+                    
                     let html =""
                     let html1 =""
+
                     for(i in res){
-                        html+=`<div class="cards" data-id="${res[i].id}" onmouseOver="showItems(this)" onmouseout="removeItems(this)">
+                        html+=`<div class="cards" data-id="card${res[i].id}"  data-title="${res[i].title}" onmouseOver="showItems(${res[i].id})" onmouseout="removeItems(this)">
                                 
                                     <img src=${res[i].img}/>
-                                    <div class=inr data-id=${res[i].id} onclick="viewProductModal(this)"><i class="fa fa-search" style="font-size:20px"></i></div>
-                                    <div class="inr1" data-id=${res[i].id} onclick="addToWishList(this)"><i class="fa fa-heart"   style="font-size:20px"></i></div>
-                                    <button data-id=${res[i].id} data-title=${res[i].title} data-price=${res[i].price} data-img=${res[i].img} onclick="settols(this)" class="cart1">Add to Cart</button>
+                                    <div class=inr id="inr" data-id=${res[i].id} onclick="viewProductModal(this)"><i class="fa fa-search" style="font-size:20px"></i></div>
+                                    <div class="inr1" id="inr1" data-id=${res[i].id} onclick="addToWishList(this)"><i class="fa fa-heart"   style="font-size:20px"></i></div>
+                                    <button id="cart1" data-id=${res[i].id} data-title=${res[i].title} data-price=${res[i].price} data-img=${res[i].img} onclick="settols(this)" class="cart1">Add to Cart</button>
                                 <div class="title">
                                     <h3 style="margin:0px;">${res[i].title}</h3>
                                     <h4 style="margin:0px;">₹${res[i].price}</h4>
@@ -974,10 +976,6 @@ body{
         }
         
 
-
-    //    let cmain1 = document.getElementById("cmain1")
-    //    let cmain2 = document.getElementById("cmain2")
-
         function getItemlist(){
             main2.style.display="block"
             main2.style.direction="row"
@@ -989,30 +987,54 @@ body{
         function getItemgrid(){
             main2.style.display="none"
             main1.style.display="flex"
-            console.log(2)
+            // console.log(e)
         }
 
         function showItems(e){
-            let id = e.getAttribute("data-id")
-            console.log(id)
-            let elem = document.getElementsByClassName("inr");
-            for(let i = 0; i <elem.length; i+=1){
-                elem[i].style.display = "block";
-                elem[i].style.transition="all 2s";
-                console.log("")
-            }
+        let sort=document.getElementById("select").value
 
-            let elems = document.getElementsByClassName("inr1");
-            for(let j = 0; j <elems.length; j+=1){
-                elems[j].style.display = "block";
-                elems[j].style.transition="all  2s ease-out";
-            }
-            let elems1 = document.getElementsByClassName("cart1");
-            for(let k = 0; k <elems1.length; k+=1){
-                elems1[k].style.display = "block"
-                elems1[k].style.transition="visibility 0s, opacity 0.5s;";
-            }
+            // let id = e.getAttribute("data-id")
+            let elem = document.getElementById("inr");
+            // // // for(let i = 0; i <elem.length; i+=1){
+                elem[e-1].style.display = "block";
+            // //     elem[i].style.transition="all 2s";
+            // //     // console.log("")
+            // // // }
+
+            let elems = document.getElementById("inr1");
+            // for(let j = 0; j <elems.length; j+=1){
+                elems[e-1].style.display = "block";
+            //     elems[j].style.transition="all  2s ease-out";
+            // }
+            let elems1 = document.getElementById("cart1");
+            // for(let k = 0; k <elems1.length; k+=1){
+                elems1[e-1].style.display = "block"
+            //     elems1[k].style.transition="visibility 0s, opacity 0.5s;";
+            // }
+            
+            console.log(e)
+            // if(sort === "Price, low to high"){
+            //     console.log(1)
+            //     // let elem = document.getElementsByClassName("inr");
+            // // // // for(let i = 0; i <elem.length; i+=1){
+            //     elem[e].style.display = "block";
+            // // //     elem[i].style.transition="all 2s";
+            // // //     // console.log("")
+            // // // // }
+
+            // // let elems = document.getElementsByClassName("inr1");
+            // // for(let j = 0; j <elems.length; j+=1){
+            //     elems[e].style.display = "block";
+            // //     elems[j].style.transition="all  2s ease-out";
+            // // }
+            // // let elems1 = document.getElementsByClassName("cart1");
+            // // for(let k = 0; k <elems1.length; k+=1){
+            //     elems1[e].style.display = "block"
+            // //     elems1[k].style.transition="visibility 0s, opacity 0.5s;";
+            // // }
+            // }
         }
+        
 
 function removeItems(e){
     let id = e.getAttribute("data-id")
@@ -1090,7 +1112,7 @@ function removeItems(e){
                     let html =""
                     let html1 =""
                     for(i in res){
-                        html+=`<div class="cards" data-id="${res[i].id}" onmouseOver="showItems(this)" onmouseout="removeItems(this)">
+                        html+=`<div class="cards" data-id="card${res[i].id}"  data-title="${res[i].title}" onmouseOver="showItems(${res[i].id})" onmouseout="removeItems(this)">
                                 
                                     <img src=${res[i].img}/>
                                     <div class=inr data-id=${res[i].id} onclick="viewProductModal(this)"><i class="fa fa-search" style="font-size:20px"></i></div>
@@ -1135,7 +1157,7 @@ function removeItems(e){
                     let html =""
                     let html1 =""
                     for(i in res){
-                        html+=`<div class="cards" data-id="${res[i].id}" onmouseOver="showItems(this)" onmouseout="removeItems(this)">
+                        html+=`<div class="cards" data-id="card${res[i].id}"  data-title="${res[i].title}" onmouseOver="showItems(${res[i].id})" onmouseout="removeItems(this)">
                                 
                                     <img src=${res[i].img}/>
                                     <div class=inr data-id=${res[i].id} data-title=${res[i].title} onclick="viewProductModal(this)"><i class="fa fa-search" style="font-size:20px"></i></div>
