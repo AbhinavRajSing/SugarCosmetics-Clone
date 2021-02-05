@@ -190,18 +190,20 @@ function getData(){
 
 function queryLoad(query){
     let data = new URLSearchParams(query)
-    let name = data.get("name")
-    let email = data.get("email")
-    let number = data.get("number")
-    let address = data.get("address")
+    let name1 = data.get("name")
+    let email1 = data.get("email")
+    let number1 = data.get("number")
+    let address1 = data.get("address")
+    let login = document.getElementById("loginPage")
+    let afterlogin = document.getElementById("aftlgn")
     user =true
                 let userStatus = []
                 let tempObj = {}
 
-                tempObj.name = res[i].name
-                tempObj.email = res[i].email
-                tempObj.number = res[i].number
-                tempObj.address = res[i].address
+                tempObj.name = name1
+                tempObj.email = email1
+                tempObj.number = number1
+                tempObj.address = address1
 
                 userStatus = [tempObj]
                 localStorage.setItem("userStatus", JSON.stringify(userStatus))
@@ -212,7 +214,7 @@ function queryLoad(query){
                 console.log(JSON.parse(accuser))
                 accuser = JSON.parse(accuser)
                 let name = accuser[0].name
-                let emails = accuser[0].email
+                let email = accuser[0].email
                 let address = accuser[0].address
                 let number = accuser[0].number
                 console.log(name)
