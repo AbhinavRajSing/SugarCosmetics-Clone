@@ -1,3 +1,22 @@
+//---------------------------------------Go to Top Function starts here-------------------------------------------//
+let goToTop = document.getElementById("goToTop");
+
+function scrollFunction() {
+  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+    goToTop.style.display = "block";
+  } else {
+    goToTop.style.display = "none";
+  }
+}
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+window.onscroll = function() {scrollFunction()};
+//---------------------------------------Go to Top Function starts here-------------------------------------------//
+
 //---------------------------------------loading Animation starts here-------------------------------------------//
 let loader = `
                 <div class="boxLoading">
@@ -893,3 +912,81 @@ function authCheck(data, userData){
 }
 
 //-------------------------------------------User Auth starts here---------------------------------------------------//
+////////// For Small Screen Header /////////
+
+let bar = document.getElementById("barIcon")
+let menuForSmallScreen = document.getElementById("menuForSmallScreen")
+let makeUpDrop = document.getElementById("makeUpDrop")
+let makeUpClose = document.getElementById("makeUpClose")
+let makeUpOptions = document.getElementById("makeUpOptions")
+let skinDrop = document.getElementById("skinDrop")
+let skinClose = document.getElementById("skinClose")
+let skinOptions = document.getElementById("skinOptions")
+let blogDrop = document.getElementById("blogDrop")
+let blogClose = document.getElementById("blogClose")
+let blogOptions = document.getElementById("blogOptions")
+let trendingDrop = document.getElementById("trendingDrop")
+let trendingClose = document.getElementById("trendingClose")
+let trendingOptions = document.getElementById("trendingOptions")
+
+showSideMenu = () => {
+    shadow.setAttribute("class", "shadow")
+    menuForSmallScreen.setAttribute("class", "showOption")
+}
+
+closeSideBar = () => {
+    shadow.setAttribute("class", "hideSide")
+    menuForSmallScreen.setAttribute("class", "hideSide")
+}
+
+changeIconMakeUp = () => {
+    makeUpDrop.setAttribute("class", "hideItem")
+    makeUpClose.setAttribute("class", "menuDropClose")
+    makeUpOptions.setAttribute("class", "showOption")
+}
+
+closeIconMakeUp = () => {
+    makeUpClose.setAttribute("class", "hideItem")
+    makeUpDrop.setAttribute("class", "menuDrop")
+    makeUpOptions.setAttribute("class", "hideItem")
+}
+
+changeIconSkin = () => {
+    skinDrop.setAttribute("class", "hideItem")
+    skinClose.setAttribute("class", "menuDropClose")
+    skinOptions.setAttribute("class", "showOption")
+}
+
+closeIconSkin = () => {
+    skinClose.setAttribute("class", "hideItem")
+    skinDrop.setAttribute("class", "menuDrop")
+    skinOptions.setAttribute("class", "hideItem")
+}
+
+changeIconBlog = () => {
+    blogDrop.setAttribute("class", "hideItem")
+    blogClose.setAttribute("class", "menuDropClose")
+    blogOptions.setAttribute("class", "showOption")
+}
+
+closeIconBlog = () => {
+    blogClose.setAttribute("class", "hideItem")
+    blogDrop.setAttribute("class", "menuDrop")
+    blogOptions.setAttribute("class", "hideItem")
+}
+
+changeIconTrending = () => {
+    trendingDrop.setAttribute("class", "hideItem")
+    trendingClose.setAttribute("class", "menuDropClose")
+    trendingOptions.setAttribute("class", "showOption")
+}
+
+closeIconTrending = () => {
+    trendingClose.setAttribute("class", "hideItem")
+    trendingDrop.setAttribute("class", "menuDrop")
+    trendingOptions.setAttribute("class", "hideItem")
+}
+
+bar.addEventListener("click", showSideMenu)
+shadow.addEventListener("click", closeSideBar)
+////////// For Small Screen Header /////////
