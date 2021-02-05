@@ -6,7 +6,6 @@ let display = document.querySelector('.added_items')
 let bill_amt = document.getElementById('bill_amt')
 let total_amt = document.getElementById('total_amt')
 let cart_active = document.querySelector('.cart_active')
-let wishlist_active = document.querySelector('.wishlist_active')
 
 function execute(e){
     e.preventDefault()
@@ -72,8 +71,6 @@ function getPurchaseData(){
         document.querySelector('.empty-cart').style.display = 'none'
         cart_active.style.display = "block"
         cart_active.textContent = added_prod.length
-        wishlist_active.style.display = "block"
-        wishlist_active.textContent = addedW_prod.length
         showPurchaseData(added_prod)
     } else {
         document.querySelector('.empty-cart').style.display = 'block'
@@ -253,7 +250,6 @@ function delet(did){
 
     if(JSON.stringify(final) !== JSON.stringify([])){
         cart_active.textContent = final.length
-        added_prod.length.textContent = final.length
         showPurchaseData(final)
     } else {
         remove()
@@ -279,3 +275,32 @@ function updateTotal(){
     addprice(data)
 }
 /* ---------------------------------------------Cart Code ends here----------------------------------------------- */
+
+// change of payment mode
+function SetSelectedValue() {
+    let e = document.getElementById("cust");
+    let pay_mode_show = document.getElementById('payment_mode_show')
+    let name = e.options[e.selectedIndex].value;
+    // console.log(name)
+    pay_mode_show.textContent = "PAYMENT MODE: "+ name
+    name = "";
+}
+
+// adding address and phone to payment page
+// let  users = [
+//     {
+//       id: 543212,
+//       name: "Hari Gupta",
+//       email: "hari@mail.com",
+//       password: "hari123",
+//       number: "9895642510",
+//       address: "75, Anshula Villas, LalitaPur Indore - 363140"
+//     }
+// ]
+// localStorage.setItem('userStatus', JSON.stringify(users))
+let address = document.getElementById('address')
+let phone = document.getElementById('phone')
+
+let userData = JSON.parse(localStorage.getItem('userStatus'))
+address.textContent = userData[0].address;
+phone.textContent = userData[0].number
