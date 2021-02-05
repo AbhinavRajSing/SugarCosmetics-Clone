@@ -93,7 +93,7 @@ modalClose.addEventListener("click", function () {
 //   localStorage.setItem( "cart-products",JSON.stringify(data))
 
   // getting data from loacal storage
-function getPurchaseData(){
+function getPurchaseData(){  
     let added = localStorage.getItem("cart-products")
     let added_prod = JSON.parse(added)
     if(added_prod !== null){
