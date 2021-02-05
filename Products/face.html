@@ -696,6 +696,38 @@ body{
     text-decoration: line-through;
 }
 
+.wishlist_active {
+    width: 14px;
+    height: 14px;
+    /* border: 1px solid black; */
+    background-color: #FC2779;
+    border-radius: 50%;
+    font-size: 12px;
+    color: white;
+    margin: 0px;
+    float: right;
+    position: absolute;
+    top: 4%;
+    left: 88.8%;
+    display: none;
+}
+
+.cart_active {
+    width: 14px;
+    height: 14px;
+    /* border: 1px solid black; */
+    background-color: #FC2779;
+    border-radius: 50%;
+    font-size: 12px;
+    color: white;
+    margin: 0px;
+    float: right;
+    position: absolute;
+    top: 4%;
+    right: 6%;
+    display: none;
+}
+
 
 
     </style>
@@ -714,8 +746,14 @@ body{
                 <a id="loginLink" class="Header__Login__P">Login / Register</a>
             </div>
             <div class="Header__LikeCart">
-                <div><a href="/wishlist/wishlist.html"><i class="far fa-heart"></i></a></div>
-                <div id="cartPage"><a href="/Cart_page/cart.html"><i class="fas fa-shopping-cart"></i></a></div>
+                <div>
+                    <a href="/wishlist/wishlist.html"><i class="far fa-heart"></i></a>
+                    <div class="wishlist_active"></div>
+                 </div>
+                <div>
+                    <a href="/Cart_page/cart.html"><i class="fas fa-shopping-cart"></i></a>
+                    <div class="cart_active"></div>
+                </div>
             </div>
         </div>
     <div class="navBar">
@@ -808,7 +846,7 @@ body{
         <img src="https://cdn.shopify.com/s/files/1/0906/2558/files/Landing-Page--Lips-_1600X400_-psd_7f4548c4-7057-4609-ac6a-41287db74d2b.jpg?v=1612122537"/>
     </div>
     <div class="main1">
-        <p style="font-family: 'Open Sans', sans-serif;font-size: small;text-decoration: none;"><a href="/Header&Footer/H&F.html"><i class="fa fa-home" style="font-size:20px;color: black;"></i> Home</a>/Lips</p>
+        <p style="font-family: 'Open Sans', sans-serif;font-size: small;text-decoration: none;"><a href="/Landing_Page.html"><i class="fa fa-home" style="font-size:20px;color: black;"></i> Home</a>/Lips</p>
         <div class="main2">
             <p class="show">Showing all Results </p>
             <select class="select" id="select">
@@ -1284,7 +1322,24 @@ function diaplayModalData(val){
     }
 }
 
+window.addEventListener('load', cartWishNum)
 
+let cart_active = document.querySelector('.cart_active')
+let wishlist_active = document.querySelector('.wishlist_active')
+
+function cartWishNum(){
+    let added = localStorage.getItem("cart-products")
+    let addedW = localStorage.getItem("add-wishlist")
+    let addedW_prod = JSON.parse(addedW)
+    let added_prod = JSON.parse(added)
+    console.log(added_prod)
+    if(added_prod !== null){
+        cart_active.style.display = "block"
+        cart_active.textContent = added_prod.length
+        wishlist_active.style.display = "block"
+        wishlist_active.textContent = addedW_prod.length
+    }
+}
 
     </script>
 </body>
