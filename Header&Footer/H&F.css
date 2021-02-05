@@ -600,8 +600,8 @@ body{
     height: 50px;
     border: 1px solid black;
     position: fixed;
-    bottom: 14%;
-    right: 1.5%;
+    bottom: 90px;
+    right: 25px;
     border-radius: 25px;
     background-color: white;
 }
