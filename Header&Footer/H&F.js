@@ -86,6 +86,7 @@ function addToWishList(pID){
         temp.title=title
         temp.price=price
         temp.img = img
+        temp.mrp = mrp
 
         console.log(temp)
     

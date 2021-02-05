@@ -37,7 +37,7 @@ let display = document.querySelector('.data')
 function showWishlistData(data){
     // console.log(data)
     display.innerHTML = ""
-
+    
     let clearCart = document.createElement('button')
     clearCart.textContent = 'CLEAR WISHLIST'
     clearCart.setAttribute('class', 'clear')
@@ -45,6 +45,7 @@ function showWishlistData(data){
 
     let html = ""
     for(i in data){
+        console.log(data[i].price)
         html += `<div class="card">
         <div class="product">
             <img src="${data[i].img}" alt="product image">
