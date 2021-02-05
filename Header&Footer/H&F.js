@@ -1,3 +1,22 @@
+//---------------------------------------Go to Top Function starts here-------------------------------------------//
+let goToTop = document.getElementById("goToTop");
+
+function scrollFunction() {
+  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+    goToTop.style.display = "block";
+  } else {
+    goToTop.style.display = "none";
+  }
+}
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+window.onscroll = function() {scrollFunction()};
+//---------------------------------------Go to Top Function starts here-------------------------------------------//
+
 //---------------------------------------loading Animation starts here-------------------------------------------//
 let loader = `
                 <div class="boxLoading">
