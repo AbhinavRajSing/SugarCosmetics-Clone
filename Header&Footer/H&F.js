@@ -990,3 +990,40 @@ closeIconTrending = () => {
 bar.addEventListener("click", showSideMenu)
 shadow.addEventListener("click", closeSideBar)
 ////////// For Small Screen Header /////////
+<<<<<<< HEAD
+
+
+////////// Functions to redirect Page starts here /////////
+let lipPage = document.getElementById("lipPage")
+let facePage = document.getElementById("facePage")
+let eyePage = document.getElementById("eyePage")
+
+openlipPage = () => {
+    window.location.href = "/Products/lips.html"
+}
+openfacePage = () => {
+    window.location.href = "/Products/face.html"
+}
+openeyePage = () => {
+    window.location.href = "/Products/eye.html"
+}
+
+openHomePage = () => {
+    window.location.href = "Landing_Page.html"
+}
+
+openAccountPage = () => {
+    window.location.href = "/Login/login.html"
+}
+
+openCartPage = () => {
+    window.location.href = "/Cart_page/cart.html"
+}
+
+lipPage.addEventListener("click", openlipPage)
+facePage.addEventListener("click", openfacePage)
+eyePage.addEventListener("click", openeyePage)
+
+////////// Functions to redirect Page ends here /////////
+=======
+>>>>>>> 0ebd66d49652e111c6ff9933bab0df962bbb2788
