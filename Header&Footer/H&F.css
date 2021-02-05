@@ -2,6 +2,7 @@
 
 html{
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body{
@@ -604,6 +605,7 @@ body{
     right: 25px;
     border-radius: 25px;
     background-color: white;
+    z-index: 5;
 }
 
 .autoPageUp>a{
