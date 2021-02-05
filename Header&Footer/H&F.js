@@ -883,7 +883,7 @@ function authCheck(data, userData){
         alert("Invalid EmailId or Password")
     }
 }
-//-------------------------------------------User Auth starts here---------------------------------------------------//
+//-------------------------------------------User Auth ends here---------------------------------------------------//
 ////////// For Small Screen Header /////////
 let bar = document.getElementById("barIcon")
 let menuForSmallScreen = document.getElementById("menuForSmallScreen")

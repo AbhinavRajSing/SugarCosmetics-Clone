@@ -146,6 +146,7 @@ function removeItems(e){
         let title = e.getAttribute("data-title")
         let price = e.getAttribute("data-price")
         let img = e.getAttribute("data-img")
+        let html = ""
         console.log(img)
         console.log(title)
         console.log(price)
@@ -158,6 +159,19 @@ function removeItems(e){
         
         arr = [...arr,temp]
         localStorage.setItem("cart-products",JSON.stringify(arr))
+        let modalW = document.getElementById("myModalW");
+        let spanW = document.getElementsByClassName("closeW")[0];
+        modalW.style.display = "block"; 
+        html += `<div class="wishListPopUp"><i class="far fa-check-circle"></i><p>Item added to Cart</p></div>`
+        document.getElementById("wishListPopUpData").innerHTML = html
+        spanW.onclick = function() {
+            modalW.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == modalW) {
+                modalW.style.display = "none";
+            }
+        }
     }
     
 
@@ -275,6 +289,7 @@ function addToWishList(e){
         let img = val[0].img
         let price = val[0].price
         let mrp = val[0].mrp
+        let html =""
         console.log(mrp)
 
         let temp = {}
@@ -287,7 +302,20 @@ function addToWishList(e){
     
         arr1 = [...arr1,temp]
         localStorage.setItem("add-wishlist",JSON.stringify(arr1))
-        alert("Done")
+        // alert("Done")
+        let modalW = document.getElementById("myModalW");
+        let spanW = document.getElementsByClassName("closeW")[0];
+        modalW.style.display = "block"; 
+        html += `<div class="wishListPopUp"><i class="far fa-check-circle"></i><p>Item added to Wishlist</p></div>`
+        document.getElementById("wishListPopUpData").innerHTML = html
+        spanW.onclick = function() {
+            modalW.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == modalW) {
+                modalW.style.display = "none";
+            }
+        }
     }
 
 }
@@ -352,21 +380,47 @@ function diaplayModalData(val){
     }
 }
 
-window.addEventListener('load', cartWishNum)
+// window.addEventListener('load', cartWishNum)
 
-let cart_active = document.querySelector('.cart_active')
-let wishlist_active = document.querySelector('.wishlist_active')
+// let cart_active = document.querySelector('.cart_active')
+// let wishlist_active = document.querySelector('.wishlist_active')
 
-function cartWishNum(){
+// function cartWishNum(){
+//     let added = localStorage.getItem("cart-products")
+//     let addedW = localStorage.getItem("add-wishlist")
+//     let addedW_prod = JSON.parse(addedW)
+//     let added_prod = JSON.parse(added)
+//     console.log(added_prod)
+//     if(added_prod !== null){
+//         cart_active.style.display = "block"
+//         cart_active.textContent = added_prod.length
+//         wishlist_active.style.display = "block"
+//         wishlist_active.textContent = addedW_prod.length
+//     }
+// }
+
+//---------------------------------------WishList/Cart count starts here-------------------------------------------//
+setInterval(function(){
+    let cart_active = document.querySelector('.cart_active')
+    let wishlist_active = document.querySelector('.wishlist_active')
     let added = localStorage.getItem("cart-products")
     let addedW = localStorage.getItem("add-wishlist")
     let addedW_prod = JSON.parse(addedW)
     let added_prod = JSON.parse(added)
-    console.log(added_prod)
-    if(added_prod !== null){
+    // console.log(added_prod)
+    if(added_prod !== null && addedW_prod !== null){
         cart_active.style.display = "block"
         cart_active.textContent = added_prod.length
         wishlist_active.style.display = "block"
         wishlist_active.textContent = addedW_prod.length
     }
-}
+    else if(added_prod !== null && addedW_prod == null){
+        cart_active.style.display = "block"
+        cart_active.textContent = added_prod.length
+    }
+    else if(added_prod == null && addedW_prod !== null){
+        wishlist_active.style.display = "block"
+        wishlist_active.textContent = addedW_prod.length
+    }
+},1000)
+//---------------------------------------WishList/Cart count ends here-------------------------------------------//
