@@ -530,7 +530,7 @@ function displaySearchData(Sdata, val){
         }
     }
     else if(val === "" || val === [] || val === null){
-        window.location.href = "H&F.html"
+        window.location.href = "/Landing_Page.html"
     }
 }
 //---------------------------------------live search ends here-------------------------------------------//

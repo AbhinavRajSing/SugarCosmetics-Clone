@@ -59,7 +59,7 @@ modalClose.addEventListener("click", function () {
 
   let added = localStorage.getItem("cart-products")
   let addedW = localStorage.getItem("add-wishlist")
-  var added_prod = JSON.parse(added)
+  let added_prod = JSON.parse(added)
   let addedW_prod = JSON.parse(addedW)  
 function getPurchaseData(){
     if(added_prod !== null && addedW_prod == null){
