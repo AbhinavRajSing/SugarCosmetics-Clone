@@ -6,7 +6,6 @@ let display = document.querySelector('.added_items')
 let bill_amt = document.getElementById('bill_amt')
 let total_amt = document.getElementById('total_amt')
 let cart_active = document.querySelector('.cart_active')
-let wishlist_active = document.querySelector('.wishlist_active')
 
 function execute(e){
     e.preventDefault()
@@ -58,53 +57,49 @@ modalClose.addEventListener("click", function () {
 
 // adding  Dummy data for developer,// this should be commented after product launch.
 
-// let data =[ {
-//     id: 2,
-//     title: "SMUDGE ME NOT LIP DUO",
-//     mrp: 999,
-//     price: 599,
-//     discount: 30,
-//     img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-lip-duo-01-brazen-raisin-burgundy-13200661643347.progressive.jpg?v=1577305698      "
-//   },
-//   {
-//     id: 3,
-//     title: "SMUDGE ME NOT MINIS SET- BLACK",
-//     mrp: 589,
-//     price: 459,
-//     discount: 18,
-//     img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-minis-set-black-14964843151443.progressive.jpg?v=1611061746"
-//   },
-//   {
-//     id: 4,
-//     title: "SMUDGE ME NOT LIP DUO",
-//     mrp: 999,
-//     price: 599,
-//     discount: 30,
-//     img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-lip-duo-01-brazen-raisin-burgundy-13200661643347.progressive.jpg?v=1577305698      "
-//   },
-//   {
-//     id: 5,
-//     title: "SMUDGE ME NOT MINIS SET- BLACK",
-//     mrp: 589,
-//     price: 459,
-//     discount: 18,
-//     img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-minis-set-black-14964843151443.progressive.jpg?v=1611061746"
-//   }
-// ]
-//   localStorage.setItem( "cart-products",JSON.stringify(data))
+let data =[ {
+    id: 2,
+    title: "SMUDGE ME NOT LIP DUO",
+    mrp: 999,
+    price: 599,
+    discount: 30,
+    img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-lip-duo-01-brazen-raisin-burgundy-13200661643347.progressive.jpg?v=1577305698      "
+  },
+  {
+    id: 3,
+    title: "SMUDGE ME NOT MINIS SET- BLACK",
+    mrp: 589,
+    price: 459,
+    discount: 18,
+    img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-minis-set-black-14964843151443.progressive.jpg?v=1611061746"
+  },
+  {
+    id: 4,
+    title: "SMUDGE ME NOT LIP DUO",
+    mrp: 999,
+    price: 599,
+    discount: 30,
+    img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-lip-duo-01-brazen-raisin-burgundy-13200661643347.progressive.jpg?v=1577305698      "
+  },
+  {
+    id: 5,
+    title: "SMUDGE ME NOT MINIS SET- BLACK",
+    mrp: 589,
+    price: 459,
+    discount: 18,
+    img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-minis-set-black-14964843151443.progressive.jpg?v=1611061746"
+  }
+]
+  localStorage.setItem( "cart-products",JSON.stringify(data))
 
   // getting data from loacal storage
-function getPurchaseData(){  
+function getPurchaseData(){
     let added = localStorage.getItem("cart-products")
-    let addedW = localStorage.getItem("add-wishlist")
-    let addedW_prod = JSON.parse(addedW)
     let added_prod = JSON.parse(added)
     if(added_prod !== null){
         document.querySelector('.empty-cart').style.display = 'none'
         cart_active.style.display = "block"
         cart_active.textContent = added_prod.length
-        wishlist_active.style.display = "block"
-        wishlist_active.textContent = addedW_prod.length
         showPurchaseData(added_prod)
     } else {
         document.querySelector('.empty-cart').style.display = 'block'
@@ -284,7 +279,6 @@ function delet(did){
 
     if(JSON.stringify(final) !== JSON.stringify([])){
         cart_active.textContent = final.length
-        added_prod.length.textContent = final.length
         showPurchaseData(final)
     } else {
         remove()
@@ -310,3 +304,32 @@ function updateTotal(){
     addprice(data)
 }
 /* ---------------------------------------------Cart Code ends here----------------------------------------------- */
+
+// change of payment mode
+function SetSelectedValue() {
+    let e = document.getElementById("cust");
+    let pay_mode_show = document.getElementById('payment_mode_show')
+    let name = e.options[e.selectedIndex].value;
+    // console.log(name)
+    pay_mode_show.textContent = "PAYMENT MODE: "+ name
+    name = "";
+}
+
+// adding address and phone to payment page
+// let  users = [
+//     {
+//       id: 543212,
+//       name: "Hari Gupta",
+//       email: "hari@mail.com",
+//       password: "hari123",
+//       number: "9895642510",
+//       address: "75, Anshula Villas, LalitaPur Indore - 363140"
+//     }
+// ]
+// localStorage.setItem('userStatus', JSON.stringify(users))
+let address = document.getElementById('address')
+let phone = document.getElementById('phone')
+
+let userData = JSON.parse(localStorage.getItem('userStatus'))
+address.textContent = userData[0].address;
+phone.textContent = userData[0].number
