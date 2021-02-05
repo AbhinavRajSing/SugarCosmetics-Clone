@@ -48,6 +48,7 @@ function displayData(data){
         let mrp = data[i].mrp
         let price = data[i].price
         // console.log(data)
+        // id="${data[i].id}"
         html += `                
         <div class="displayCard" id=${data[i].id} onmouseover="showItemsOnCard(this)" onmouseout="removeItemsOnCard(this)">
             <div class="productImage"><img class="img" src="${img}" alt=""></div>
@@ -171,7 +172,7 @@ function diaplayModalData(val){
 
 function showItemsOnCard(val){
     let ide = val.id
-    // console.log(ide.dataset)
+    console.log(ide)
     let elem = document.getElementsByClassName("flat");
     for(let i = 0; i <elem.length; i+=1){
         elem[i].style.display = "block"
