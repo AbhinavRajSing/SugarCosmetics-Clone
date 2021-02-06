@@ -21,8 +21,8 @@
 * CSS
 ![alt Icons](https://user-images.githubusercontent.com/30186107/29488525-f55a69d0-84da-11e7-8a39-5476f663b5eb.png)
 
-## Sample Image
-![alt Sugar Cosmetics](https://cdn.shopify.com/s/files/1/0906/2558/files/Triple-Treat-HP-Web_1a5d9351-390c-4b35-a8fd-9aa59ff06108.gif)
+## Home Page
+![alt Sugar Cosmetics](https://tgdown.eu-gb.mybluemix.net/4550176747651008/2021-02-06_09:44:11.jpg)
 
 ## Features
 * Live Search Bar
