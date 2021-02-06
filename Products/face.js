@@ -151,9 +151,9 @@ function removeItems(e){
         console.log(price)
         console.log(id)
         var temp = {}
-        temp.id=id
+        temp.id=Number(id)
         temp.title=title
-        temp.price=price
+        temp.price=Number(price)
         temp.img = img
         
         arr = [...arr,temp]
