@@ -11,7 +11,7 @@ To create this clone following Tech stack is used by contributors.
 ***
 
 ## Landing Page :
-- The Landing of Sugar Cosmetic website displays various products, offers and ads of their own.
+- The Landing Page of Sugar Cosmetic website displays various products, offers and ads of their own.
 - There is Pagination and Live Search enabled on the Landing Page.
 - In top section there is a Header which displays Dropdown menu of pages.
 - At the bottom section there is a footer, both Header & Footer are same across all the pages.
@@ -19,8 +19,8 @@ To create this clone following Tech stack is used by contributors.
 ![Landing page](https://tgdown.eu-gb.mybluemix.net/4553440922795968/2021-02-06_10:23:32.jpg)
 
 ## Bot On Landing Page :
-- Bot will be appeared and will reply User with some welcome messages.
-- if User ask relavent Questiton/Query then Bot will reply according to that.
+- On click Bot will be appeared and will reply User with some welcome messages.
+- If User ask relavent Questiton/Query then Bot will reply according to that.
 - If the Questiton/Query is irrelavent then bot will suggest some terms to ask.
 
 ![Bot](https://tgdown.eu-gb.mybluemix.net/4551929094307776/2021-02-06_09:53:31.jpg)
