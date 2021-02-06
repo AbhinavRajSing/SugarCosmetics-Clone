@@ -43,8 +43,13 @@ goTohome.addEventListener('click', ()=>{
 })
 // Modal box
 checkout.addEventListener('click', ()=>{
+    let userData = JSON.parse(localStorage.getItem('userStatus'))
     if(tempc == undefined){
         alert("You dont have any product to buy")
+    }
+    else if(userData == null){
+        alert("Please login to checkout")
+
     } else {
 
         modalBg.classList.add("bg-active");
@@ -286,21 +291,8 @@ function SetSelectedValue() {
     name = "";
 }
 
-// adding address and phone to payment page
-// let  users = [
-//     {
-//       id: 543212,
-//       name: "Hari Gupta",
-//       email: "hari@mail.com",
-//       password: "hari123",
-//       number: "9895642510",
-//       address: "75, Anshula Villas, LalitaPur Indore - 363140"
-//     }
-// ]
-// localStorage.setItem('userStatus', JSON.stringify(users))
 let address = document.getElementById('address')
 let phone = document.getElementById('phone')
-
 let userData = JSON.parse(localStorage.getItem('userStatus'))
 address.textContent = userData[0].address;
 phone.textContent = userData[0].number

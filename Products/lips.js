@@ -147,16 +147,16 @@ function removeItems(e){
         let price = e.getAttribute("data-price")
         let img = e.getAttribute("data-img")
         let html = ""
-        console.log(img)
-        console.log(title)
-        console.log(price)
-        console.log(id)
+        // console.log(img)
+        // console.log(title)
+        // console.log(price)
+        // console.log(id)
         var temp = {}
         temp.id=id
         temp.title=title
         temp.price=price
         temp.img = img
-        
+        console.log(temp)
         arr = [...arr,temp]
         localStorage.setItem("cart-products",JSON.stringify(arr))
         let modalW = document.getElementById("myModalW");
