@@ -230,7 +230,7 @@ function addprice(data){
     for(i in data){
         let total_prod_price = document.querySelector(`[data-id=total${data[i].id}]`).textContent
         bill += Number(total_prod_price) 
-        total = Number(bill) + (Number(bill) * 0.18)
+        total = Math.floor(Number(bill) + (Number(bill) * 0.18))
     }
     bill_amt.textContent =bill
     total_amt.textContent = total
