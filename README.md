@@ -3,8 +3,9 @@
  Our team was given a task to Clone the Sugar Cosmetics Website.
  We have to create the website using the Mock Server which was created in JSON file.
 
-## Team Members
-* Abhinav Raj
+# Team Members
+## Abhinav Raj
+*
 * Lokesh Nimje
 * Vinesh Nair
 * Akash Vaghela
@@ -17,6 +18,11 @@
 
 ## Sample Image
 ![alt Sugar Cosmetics](https://cdn.shopify.com/s/files/1/0906/2558/files/Triple-Treat-HP-Web_1a5d9351-390c-4b35-a8fd-9aa59ff06108.gif)
+
+## Features
+* Live Search Bar
+* Chat Bot
+![alt Sugar Cosmetics](Screen Shot 2021-02-06 at 2.49.59 PM.png)
 
 
 
