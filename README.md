@@ -5,10 +5,15 @@
 
 # Team Members
 ## Abhinav Raj
-*
-* Lokesh Nimje
-* Vinesh Nair
-* Akash Vaghela
+* Email:rajabhinav13nov@gmail.com
+* Git: https://github.com/AbhinavRajSing
+# Lokesh Nimje
+* Email:lokesh.nimje@gmail.com
+* Git: https://github.com/lokeshnimje
+# Vinesh Nair
+# Akash Vaghela
+* Email:akashvaghela09@gmail.com
+* Git: akashvaghela09
 
 ## Tech Stack
 * Java Script
@@ -22,7 +27,6 @@
 ## Features
 * Live Search Bar
 * Chat Bot
-![alt Sugar Cosmetics](Screen Shot 2021-02-06 at 2.49.59 PM.png)
 
 
 
