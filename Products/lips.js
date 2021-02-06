@@ -142,15 +142,17 @@ function removeItems(e){
 
     let arr = JSON.parse(localStorage.getItem("cart-products")) || []
     function settols(e){
-        let id = e.getAttribute("data-id")
+        let ide = e.getAttribute("data-id")
+        let id = +ide
         let title = e.getAttribute("data-title")
-        let price = e.getAttribute("data-price")
+        let priceS = e.getAttribute("data-price")
+        let price = +priceS
         let img = e.getAttribute("data-img")
         let html = ""
         // console.log(img)
         // console.log(title)
         // console.log(price)
-        // console.log(id)
+        console.log(typeof(price))
         var temp = {}
         temp.id=id
         temp.title=title
@@ -296,6 +298,7 @@ function addToWishList(e){
         temp.id=id
         temp.title=title
         temp.price=price
+        temp.mrp=mrp
         temp.img = img
 
         console.log(temp)

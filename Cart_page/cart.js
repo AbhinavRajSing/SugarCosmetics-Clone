@@ -61,7 +61,7 @@ modalClose.addEventListener("click", function () {
   });
 
   // getting data from loacal storage
-
+  let wishlist_active = document.querySelector('.wishlist_active')
   let added = localStorage.getItem("cart-products")
   let addedW = localStorage.getItem("add-wishlist")
   let added_prod = JSON.parse(added)
@@ -73,10 +73,15 @@ function getPurchaseData(){
         cart_active.textContent = added_prod.length
         showPurchaseData(added_prod)
     } else if(addedW_prod !== null && addedW_prod !== null){
-        document.querySelector('.empty-cart').style.display = 'none'
         cart_active.style.display = "block"
         cart_active.textContent = added_prod.length
+        wishlist_active.style.display = "block"
+        wishlist_active.textContent = addedW_prod.length
         showPurchaseData(added_prod)
+    }
+    else if(added_prod == null && addedW_prod !== null){
+        wishlist_active.style.display = "block"
+        wishlist_active.textContent = addedW_prod.length
     } else {
         document.querySelector('.empty-cart').style.display = 'block'
     }

@@ -8,34 +8,6 @@ function execute(e){
     getPurchaseData()
 }
 
-// dummy data for developer, this should be commented on product launch.
-// let data =[ {
-//     id: 2,
-//     title: "SMUDGE ME NOT LIP DUO",
-//     mrp: 999,
-//     price: 599,
-//     discount: 30,
-//     img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-lip-duo-01-brazen-raisin-burgundy-13200661643347.progressive.jpg?v=1577305698      "
-//   },
-//   {
-//     id: 3,
-//     title: "SMUDGE ME NOT MINIS SET- BLACK",
-//     mrp: 589,
-//     price: 459,
-//     discount: 18,
-//     img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-minis-set-black-14964843151443.progressive.jpg?v=1611061746"
-//   },
-//   {
-//     id: 5,
-//     title: "SMUDGE ME NOT MINIS SET- BLACK",
-//     mrp: 589,
-//     price: 459,
-//     discount: 18,
-//     img: "https://cdn.shopify.com/s/files/1/0906/2558/products/sugar-cosmetics-smudge-me-not-minis-set-black-14964843151443.progressive.jpg?v=1611061746"
-//   }
-// ]
-//   localStorage.setItem( "add-wishlist",JSON.stringify(data))
-
 // get data from local storage
 let addedC = localStorage.getItem("cart-products")
 let added = localStorage.getItem("add-wishlist")
@@ -47,16 +19,18 @@ function getPurchaseData(){
         document.querySelector('.empty-cart').style.display = 'none'
         wishlist_active.style.display = "block"
         wishlist_active.textContent = (added_prod.length)
-        // wishlist_active.style.display = "block"
-        // wishlist_active.textContent = added_prodC.length
         showWishlistData(added_prod)
     }else if(added_prod !== null && added_prodC !== null){
         document.querySelector('.empty-cart').style.display = 'none'
         wishlist_active.style.display = "block"
         wishlist_active.textContent = (added_prod.length)
-        wishlist_active.style.display = "block"
-        wishlist_active.textContent = added_prodC.length
+        cart_active.style.display = "block"
+        cart_active.textContent = added_prodC.length
         showWishlistData(added_prod)
+    }
+    else if(added_prod == null && added_prodC !== null){
+        cart_active.style.display = "block"
+        cart_active.textContent = added_prodC.length
     } else {
         document.querySelector('.empty-cart').style.display = 'block'
     }

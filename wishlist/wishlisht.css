@@ -70,12 +70,12 @@
     margin: 0px;
     float: right;
     position: absolute;
-    top: 7px;
-    left: 35px;
+    top: 4%;
+    left: 88%;
     display: none;
 }
 
-.cart_active {
+.cart_active{
     width: 14px;
     height: 14px;
     /* border: 1px solid black; */
@@ -87,7 +87,7 @@
     float: right;
     position: absolute;
     top: 4%;
-    right: 6%;
+    right: 7%;
     display: none;
 }
 
