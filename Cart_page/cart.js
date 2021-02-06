@@ -73,6 +73,7 @@ function getPurchaseData(){
         cart_active.textContent = added_prod.length
         showPurchaseData(added_prod)
     } else if(addedW_prod !== null && addedW_prod !== null){
+        document.querySelector('.empty-cart').style.display = 'none'
         cart_active.style.display = "block"
         cart_active.textContent = added_prod.length
         wishlist_active.style.display = "block"
@@ -80,6 +81,7 @@ function getPurchaseData(){
         showPurchaseData(added_prod)
     }
     else if(added_prod == null && addedW_prod !== null){
+        document.querySelector('.empty-cart').style.display = 'none'
         wishlist_active.style.display = "block"
         wishlist_active.textContent = addedW_prod.length
     } else {
@@ -230,7 +232,7 @@ function addprice(data){
     for(i in data){
         let total_prod_price = document.querySelector(`[data-id=total${data[i].id}]`).textContent
         bill += Number(total_prod_price) 
-        total = Math.floor(Number(bill) + (Number(bill) * 0.18))
+        total = Number(bill) + (Number(bill) * 0.18)
     }
     bill_amt.textContent =bill
     total_amt.textContent = total
