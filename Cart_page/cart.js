@@ -39,7 +39,7 @@ function showPage() {
 // close button redirect to home page
 let goTohome = document.getElementById('close')
 goTohome.addEventListener('click', ()=>{
-    window.location =  "/Landing_Page.html" //"H&F.html"
+    window.location =  "/index.html" //"H&F.html"
 })
 // Modal box
 checkout.addEventListener('click', ()=>{

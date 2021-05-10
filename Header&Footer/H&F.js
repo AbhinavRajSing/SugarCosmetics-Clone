@@ -530,7 +530,7 @@ function displaySearchData(Sdata, val){
         }
     }
     else if(val === "" || val === [] || val === null){
-        window.location.href = "/Landing_Page.html"
+        window.location.href = "/index.html"
     }
 }
 //---------------------------------------live search ends here-------------------------------------------//
@@ -977,7 +977,7 @@ openeyePage = () => {
 }
 
 openHomePage = () => {
-    window.location.href = "Landing_Page.html"
+    window.location.href = "index.html"
 }
 
 openAccountPage = () => {
