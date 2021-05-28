@@ -27,7 +27,7 @@ showLoginPage = () => {
 // let login = document.getElementsByClassName("loginContainer")
 // let afterlogin = document.getElementsByClassName("afterlogin")
 userLogin = () => {
-    fetch("http://localhost:3000/users")
+    fetch("https://sugarcosmeticsdb.herokuapp.com/users")
     .then(res => res.json())
     .then((res) => {
 
@@ -159,7 +159,7 @@ async function getResData(){
         password
     }
 
-    await fetch(`http://localhost:3000/users`, {
+    await fetch(`https://sugarcosmeticsdb.herokuapp.com/users`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

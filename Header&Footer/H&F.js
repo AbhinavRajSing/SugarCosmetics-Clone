@@ -58,12 +58,12 @@ function getFeaData(){
         count++
         if(count>3){
             document.getElementById("diaplayFData").innerHTML = loader
-            fetch(`http://localhost:3000/featured?_page=1&_limit=4`).then(res => res.json()).then(data => displayData(data)).catch((Error) => console.log(Error))
+            fetch(`https://sugarcosmeticsdb.herokuapp.com/featured?_page=1&_limit=4`).then(res => res.json()).then(data => displayData(data)).catch((Error) => console.log(Error))
             count = 1
         }
         else{
             document.getElementById("diaplayFData").innerHTML = loader
-            fetch(`http://localhost:3000/featured?_page=${count}&_limit=4`).then(res => res.json()).then(data => displayData(data)).catch((Error) => console.log(Error))
+            fetch(`https://sugarcosmeticsdb.herokuapp.com/featured?_page=${count}&_limit=4`).then(res => res.json()).then(data => displayData(data)).catch((Error) => console.log(Error))
         }
     })
 
@@ -71,17 +71,17 @@ function getFeaData(){
         count--
         if(count == 1 || count < 1){
             document.getElementById("diaplayFData").innerHTML = loader
-            fetch(`http://localhost:3000/featured?_page=1&_limit=4`).then(res => res.json()).then(data => displayData(data)).catch((Error) => console.log(Error))
+            fetch(`https://sugarcosmeticsdb.herokuapp.com/featured?_page=1&_limit=4`).then(res => res.json()).then(data => displayData(data)).catch((Error) => console.log(Error))
             count = 1
         }
         else{
             document.getElementById("diaplayFData").innerHTML = loader
-            fetch(`http://localhost:3000/featured?_page=${count}&_limit=4`).then(res => res.json()).then(data => displayData(data)).catch((Error) => console.log(Error))
+            fetch(`https://sugarcosmeticsdb.herokuapp.com/featured?_page=${count}&_limit=4`).then(res => res.json()).then(data => displayData(data)).catch((Error) => console.log(Error))
         }
     })
 
     document.getElementById("diaplayFData").innerHTML = loader
-    fetch(`http://localhost:3000/featured?_page=1&_limit=4`).then(res => res.json()).then(data => displayData(data)).catch((Error) => console.log(Error))
+    fetch(`https://sugarcosmeticsdb.herokuapp.com/featured?_page=1&_limit=4`).then(res => res.json()).then(data => displayData(data)).catch((Error) => console.log(Error))
 }
 
 function displayData(data){
@@ -114,7 +114,7 @@ function displayData(data){
 //---------------------------------------Add to wishList starts here-------------------------------------------//
 function addToWishList(pID){
     let id = pID.id
-    fetch(`http://localhost:3000/combined?id=${id}`).then(res => res.json()).then(data => addToWishListLS(data)).catch((Error) => console.log(Error))
+    fetch(`https://sugarcosmeticsdb.herokuapp.com/combined?id=${id}`).then(res => res.json()).then(data => addToWishListLS(data)).catch((Error) => console.log(Error))
 
     function addToWishListLS(val){
         let id = val[0].id
@@ -156,7 +156,7 @@ function addToWishList(pID){
 function viewProductModal(pID){
     let id = pID.id
     console.log(id)
-    fetch(`http://localhost:3000/combined?id=${id}`).then(res => res.json()).then(data => diaplayModalData(data)).catch((Error) => console.log(Error))
+    fetch(`https://sugarcosmeticsdb.herokuapp.com/combined?id=${id}`).then(res => res.json()).then(data => diaplayModalData(data)).catch((Error) => console.log(Error))
 }
 
 function diaplayModalData(val){
@@ -249,7 +249,7 @@ function testClick(elem){
     let id = elem.id
     // console.log(id)
 
-    fetch(`http://localhost:3000/combined?id=${id}`).then(res => res.json()).then(data => sendDataParms(data)).catch((Error) => console.log(Error))
+    fetch(`https://sugarcosmeticsdb.herokuapp.com/combined?id=${id}`).then(res => res.json()).then(data => sendDataParms(data)).catch((Error) => console.log(Error))
 
     function sendDataParms(val){
         let id = val[0].id
@@ -276,7 +276,7 @@ let arr = []
 function settols(e){
     // console.log("object")
     let id = e.getAttribute("data-id")
-    fetch(`http://localhost:3000/combined?id=${id}`).then(res => res.json()).then(data => AddToLSFromHp(data)).catch((Error) => console.log(Error))
+    fetch(`https://sugarcosmeticsdb.herokuapp.com/combined?id=${id}`).then(res => res.json()).then(data => AddToLSFromHp(data)).catch((Error) => console.log(Error))
 }
 
 function AddToLSFromHp(data){   
@@ -323,12 +323,12 @@ function getJustInData(){
         count++
         if(count>8){
             document.getElementById("diaplayJustInData").innerHTML = loader
-            fetch(`http://localhost:3000/combined?_page=1&_limit=4`).then(res => res.json()).then(data => displayJustInData(data)).catch((Error) => console.log(Error))
+            fetch(`https://sugarcosmeticsdb.herokuapp.com/combined?_page=1&_limit=4`).then(res => res.json()).then(data => displayJustInData(data)).catch((Error) => console.log(Error))
             count = 1
         }
         else{
             document.getElementById("diaplayJustInData").innerHTML = loader
-            fetch(`http://localhost:3000/combined?_page=${count}&_limit=4`).then(res => res.json()).then(data => displayJustInData(data)).catch((Error) => console.log(Error))
+            fetch(`https://sugarcosmeticsdb.herokuapp.com/combined?_page=${count}&_limit=4`).then(res => res.json()).then(data => displayJustInData(data)).catch((Error) => console.log(Error))
         }
     })
 
@@ -336,16 +336,16 @@ function getJustInData(){
         count--
         if(count == 1 || count < 1){
             document.getElementById("diaplayJustInData").innerHTML = loader
-            fetch(`http://localhost:3000/combined?_page=1&_limit=4`).then(res => res.json()).then(data => displayJustInData(data)).catch((Error) => console.log(Error))
+            fetch(`https://sugarcosmeticsdb.herokuapp.com/combined?_page=1&_limit=4`).then(res => res.json()).then(data => displayJustInData(data)).catch((Error) => console.log(Error))
             count = 1
         }
         else{
             document.getElementById("diaplayJustInData").innerHTML = loader
-            fetch(`http://localhost:3000/combined?_page=${count}&_limit=4`).then(res => res.json()).then(data => displayJustInData(data)).catch((Error) => console.log(Error))
+            fetch(`https://sugarcosmeticsdb.herokuapp.com/combined?_page=${count}&_limit=4`).then(res => res.json()).then(data => displayJustInData(data)).catch((Error) => console.log(Error))
         }
     })
     document.getElementById("diaplayJustInData").innerHTML = loader
-    fetch(`http://localhost:3000/combined?_page=1&_limit=4`).then(res => res.json()).then(data => displayJustInData(data)).catch((Error) => console.log(Error))
+    fetch(`https://sugarcosmeticsdb.herokuapp.com/combined?_page=1&_limit=4`).then(res => res.json()).then(data => displayJustInData(data)).catch((Error) => console.log(Error))
 }
 
 function displayJustInData(data){
@@ -384,12 +384,12 @@ function getSkincareData(){
         count++
         if(count>3){
             document.getElementById("diaplaySkincareData").innerHTML = loader
-            fetch(`http://localhost:3000/skin?_page=1&_limit=4`).then(res => res.json()).then(data => displaySkincareData(data)).catch((Error) => console.log(Error))
+            fetch(`https://sugarcosmeticsdb.herokuapp.com/skin?_page=1&_limit=4`).then(res => res.json()).then(data => displaySkincareData(data)).catch((Error) => console.log(Error))
             count = 1
         }
         else{
             document.getElementById("diaplaySkincareData").innerHTML = loader
-            fetch(`http://localhost:3000/skin?_page=${count}&_limit=4`).then(res => res.json()).then(data => displaySkincareData(data)).catch((Error) => console.log(Error))
+            fetch(`https://sugarcosmeticsdb.herokuapp.com/skin?_page=${count}&_limit=4`).then(res => res.json()).then(data => displaySkincareData(data)).catch((Error) => console.log(Error))
         }
     })
 
@@ -397,16 +397,16 @@ function getSkincareData(){
         count--
         if(count == 1 || count < 1){
             document.getElementById("diaplaySkincareData").innerHTML = loader
-            fetch(`http://localhost:3000/skin?_page=1&_limit=4`).then(res => res.json()).then(data => displaySkincareData(data)).catch((Error) => console.log(Error))
+            fetch(`https://sugarcosmeticsdb.herokuapp.com/skin?_page=1&_limit=4`).then(res => res.json()).then(data => displaySkincareData(data)).catch((Error) => console.log(Error))
             count = 1
         }
         else{
             document.getElementById("diaplaySkincareData").innerHTML = loader
-            fetch(`http://localhost:3000/skin?_page=${count}&_limit=4`).then(res => res.json()).then(data => displaySkincareData(data)).catch((Error) => console.log(Error))
+            fetch(`https://sugarcosmeticsdb.herokuapp.com/skin?_page=${count}&_limit=4`).then(res => res.json()).then(data => displaySkincareData(data)).catch((Error) => console.log(Error))
         }
     })
     document.getElementById("diaplaySkincareData").innerHTML = loader
-    fetch(`http://localhost:3000/skin?_page=1&_limit=4`).then(res => res.json()).then(data => displaySkincareData(data)).catch((Error) => console.log(Error))
+    fetch(`https://sugarcosmeticsdb.herokuapp.com/skin?_page=1&_limit=4`).then(res => res.json()).then(data => displaySkincareData(data)).catch((Error) => console.log(Error))
 }
 
 function displaySkincareData(data){
@@ -445,12 +445,12 @@ function getExploreData(){
         count++
         if(count>2){
             document.getElementById("diaplayExpolreData").innerHTML = loader
-            fetch(`http://localhost:3000/explore?_page=1&_limit=5`).then(res => res.json()).then(data => displayExploreData(data)).catch((Error) => console.log(Error))
+            fetch(`https://sugarcosmeticsdb.herokuapp.com/explore?_page=1&_limit=5`).then(res => res.json()).then(data => displayExploreData(data)).catch((Error) => console.log(Error))
             count = 1
         }
         else{
             document.getElementById("diaplayExpolreData").innerHTML = loader
-            fetch(`http://localhost:3000/explore?_page=${count}&_limit=5`).then(res => res.json()).then(data => displayExploreData(data)).catch((Error) => console.log(Error))
+            fetch(`https://sugarcosmeticsdb.herokuapp.com/explore?_page=${count}&_limit=5`).then(res => res.json()).then(data => displayExploreData(data)).catch((Error) => console.log(Error))
         }
     })
 
@@ -458,17 +458,17 @@ function getExploreData(){
         count--
         if(count == 1 || count < 1){
             document.getElementById("diaplayExpolreData").innerHTML = loader
-            fetch(`http://localhost:3000/explore?_page=1&_limit=5`).then(res => res.json()).then(data => displayExploreData(data)).catch((Error) => console.log(Error))
+            fetch(`https://sugarcosmeticsdb.herokuapp.com/explore?_page=1&_limit=5`).then(res => res.json()).then(data => displayExploreData(data)).catch((Error) => console.log(Error))
             count = 1
         }
         else{
             document.getElementById("diaplayExpolreData").innerHTML = loader
-            fetch(`http://localhost:3000/explore?_page=${count}&_limit=5`).then(res => res.json()).then(data => displayExploreData(data)).catch((Error) => console.log(Error))
+            fetch(`https://sugarcosmeticsdb.herokuapp.com/explore?_page=${count}&_limit=5`).then(res => res.json()).then(data => displayExploreData(data)).catch((Error) => console.log(Error))
         }
     })
 
     document.getElementById("diaplayExpolreData").innerHTML = loader
-    fetch(`http://localhost:3000/explore?_page=1&_limit=5`).then(res => res.json()).then(data => displayExploreData(data)).catch((Error) => console.log(Error))
+    fetch(`https://sugarcosmeticsdb.herokuapp.com/explore?_page=1&_limit=5`).then(res => res.json()).then(data => displayExploreData(data)).catch((Error) => console.log(Error))
 }
 
 function displayExploreData(data){
@@ -498,7 +498,7 @@ function liveSearch(e){
 function extractItems(val){ 
     let data = val
     document.getElementById("midDisplay").innerHTML = loader
-    fetch(`http://localhost:3000/combined/?q=${data}`).then(res => res.json()).then(Sdata => displaySearchData(Sdata, val)).catch((Error) => console.log(Error))
+    fetch(`https://sugarcosmeticsdb.herokuapp.com/combined/?q=${data}`).then(res => res.json()).then(Sdata => displaySearchData(Sdata, val)).catch((Error) => console.log(Error))
 }
 
 function displaySearchData(Sdata, val){
@@ -530,7 +530,7 @@ function displaySearchData(Sdata, val){
         }
     }
     else if(val === "" || val === [] || val === null){
-        window.location.href = "/Landing_Page.html"
+        window.location.href = "/index.html"
     }
 }
 //---------------------------------------live search ends here-------------------------------------------//
@@ -538,7 +538,7 @@ function displaySearchData(Sdata, val){
 //---------------------------------------mid Ads banner starts here-------------------------------------------//
 window.addEventListener('load', function(){
     document.getElementById("display__Adds").innerHTML = loader
-    fetch('http://localhost:3000/bannerAdds').then(res => res.json()).then(data => displayAddsBanner(data)).catch((Error) => console.log(Error))
+    fetch('https://sugarcosmeticsdb.herokuapp.com/bannerAdds').then(res => res.json()).then(data => displayAddsBanner(data)).catch((Error) => console.log(Error))
 })
 
 function displayAddsBanner(data){
@@ -559,7 +559,7 @@ function displayAddsBanner(data){
 //---------------------------------------clearance div starts here-------------------------------------------//
 window.addEventListener('load', function(){
     document.getElementById("display__Clearance__page").innerHTML = loader
-    fetch('http://localhost:3000/clearance').then(res => res.json()).then(data => displayClearance(data)).catch((Error) => console.log(Error))
+    fetch('https://sugarcosmeticsdb.herokuapp.com/clearance').then(res => res.json()).then(data => displayClearance(data)).catch((Error) => console.log(Error))
 })
 
 function displayClearance(data){
@@ -833,7 +833,7 @@ async function getResData(){
         password
     }
 
-    await fetch(`http://localhost:3000/users`, {
+    await fetch(`https://sugarcosmeticsdb.herokuapp.com/users`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -862,7 +862,7 @@ function getAuthCheckData(){
 
 function getAPIData(data){
     let userData = data
-    fetch(`http://localhost:3000/users`).then(res => res.json()).then(data => authCheck(data, userData)).catch((error) => console.log(error))
+    fetch(`https://sugarcosmeticsdb.herokuapp.com/users`).then(res => res.json()).then(data => authCheck(data, userData)).catch((error) => console.log(error))
 }
 
 function authCheck(data, userData){
@@ -977,7 +977,7 @@ openeyePage = () => {
 }
 
 openHomePage = () => {
-    window.location.href = "Landing_Page.html"
+    window.location.href = "index.html"
 }
 
 openAccountPage = () => {
