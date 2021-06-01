@@ -54,7 +54,7 @@ window.addEventListener('load', getFeaData)
 
 function getFeaData(){
     let count = 1
-    document.getElementById("nextBtn").addEventListener('click', function(){
+    document.getElementById("nextBtn").addEventListener('click', function(){ // previous button
         count++
         if(count>3){
             document.getElementById("diaplayFData").innerHTML = loader
@@ -67,7 +67,7 @@ function getFeaData(){
         }
     })
 
-    document.getElementById("prevBtn").addEventListener('click', function(){
+    document.getElementById("prevBtn").addEventListener('click', function(){    // next button
         count--
         if(count == 1 || count < 1){
             document.getElementById("diaplayFData").innerHTML = loader
@@ -93,21 +93,24 @@ function displayData(data){
         let price = data[i].price
         // console.log(data)
         html += `                
-        <div class="displayCard" id=${data[i].id} onmouseover="showItemsOnCard(this)" onmouseout="removeItemsOnCard(this)">
-            <div class="productImage"><img class="img" src="${img}" alt=""></div>
+        <div class="displayCard" id=${data[i].id} >
+            <div class="productImageF"><img class="img" src="${img}" alt="image"></div>
             <div class="productTitle" id=${data[i].id} onClick="testClick(this)"><label id="titleUnderline">${title}</label></div>
-            <div class="flat" id="${data[i].id}" onClick="addToWishList(this)"><i class="far fa-heart"></i></div>
-            <div class="plain" id="${data[i].id}" onClick="viewProductModal(this)"><i class="fas fa-search-plus"></i></div>
-            <button data-id="${data[i].id}" onclick="settols(this)" class="cart1">Add to Cart</button>
+            <div class="prod_detail" id="${data[i].id}" onClick="viewProductModal(this)"><i class="fas fa-search-plus"></i></div>
             <div class="productFinalSalePrice">
                 <div class="productActualPrice"><label id="priceStriked">Rs. ${mrp}</label></div>
-                <div class="productSalePrice">Rs. ${price}</div>
+                <div class="productSalePrice"><b>Rs. ${price} </b></div>
+            </div>
+            <div class="addBtns">
+                <button data-id="${data[i].id}" onclick="settols(this)" class="cart1">Add to Cart</button>
+                <button id="${data[i].id}" onclick="addToWishList(this)" class="cart1">Add to Wishlist</button>
             </div>
         </div>`
         
         document.getElementById("diaplayFData").innerHTML = html
     }
 }
+
 
 //---------------------------------------Featured pagination ends here-------------------------------------------//
 
@@ -208,40 +211,42 @@ function diaplayModalData(val){
 }
 //---------------------------------------Product view modal ends here-------------------------------------------//
 //---------------------------------------whishlist and product view starts here-------------------------------------------//
-function showItemsOnCard(val){
-    let ide = val.id
-    console.log(ide)
-    let elem = document.getElementsByClassName("flat");
-    for(let i = 0; i <elem.length; i+=1){
-        elem[i].style.display = "block"
-    }
+// function showItemsOnCard(val){
+    
+//     let ide = Number(val.id)
+//     // console.log(val)
+//     // console.log(ide)
+//     let elem = document.getElementsByClassName("flat");
+//     for(let i = 0; i <elem.length; i+=1){
+//         elem[i].style.display = "block"
+//     }
 
-    let elems = document.getElementsByClassName("plain");
-    for(let j = 0; j <elems.length; j+=1){
-        elems[j].style.display = "block"
-    }
-    let elems1 = document.getElementsByClassName("cart1");
-    for(let k = 0; k <elems1.length; k+=1){
-        elems1[k].style.display = "block"
-    }
-}
+//     let elems = document.getElementsByClassName("plain");
+//     for(let j = 0; j <elems.length; j+=1){
+//         elems[j].style.display = "block"
+//     }
+//     let elems1 = document.getElementsByClassName("cart1");
+//     for(let k = 0; k <elems1.length; k+=1){
+//         elems1[k].style.display = "block"
+//     }
+// }
 
-function removeItemsOnCard(val){
-    let id = val.id
-    let eleme = document.getElementsByClassName("flat");
-    for(let i = 0; i <eleme.length; i+=1){
-        eleme[i].style.display = "none"
-    }
+// function removeItemsOnCard(val){
+//     let id = val.id
+//     let eleme = document.getElementsByClassName("flat");
+//     for(let i = 0; i <eleme.length; i+=1){
+//         eleme[i].style.display = "none"
+//     }
 
-    let elemes = document.getElementsByClassName("plain");
-    for(let j = 0; j <elemes.length; j+=1){
-        elemes[j].style.display = "none"
-    }
-    let elemes1 = document.getElementsByClassName("cart1");
-    for(let k = 0; k <elemes1.length; k+=1){
-        elemes1[k].style.display = "none"
-    }
-}
+//     let elemes = document.getElementsByClassName("plain");
+//     for(let j = 0; j <elemes.length; j+=1){
+//         elemes[j].style.display = "none"
+//     }
+//     let elemes1 = document.getElementsByClassName("cart1");
+//     for(let k = 0; k <elemes1.length; k+=1){
+//         elemes1[k].style.display = "none"
+//     }
+// }
 //---------------------------------------whishlist and product view ends here-------------------------------------------//
 
 //---------------------------------------Onclick getting product details starts here------------------------------------//
@@ -360,12 +365,14 @@ function displayJustInData(data){
         <div class="displayCard" id=${data[i].id} onmouseover="showItemsOnCard(this)" onmouseout="removeItemsOnCard(this)">
             <div class="productImage"><img class="img" src="${img}" alt=""></div>
             <div class="productTitle" id=${data[i].id} onClick="testClick(this)"><label id="titleUnderline">${title}</label></div>
-            <div class="flat" id="${data[i].id}" onClick="addToWishList(this)"><i class="far fa-heart"></i></div>
-            <div class="plain" id="${data[i].id}" onClick="viewProductModal(this)"><i class="fas fa-search-plus"></i></div>
-            <button data-id="${data[i].id}" onclick="settols(this)" class="cart1">Add to Cart</button>
+            <div class="prod_detail" id="${data[i].id}" onClick="viewProductModal(this)"><i class="fas fa-search-plus"></i></div>
             <div class="productFinalSalePrice">
                 <div class="productActualPrice"><label id="priceStriked">Rs. ${mrp}</label></div>
                 <div class="productSalePrice">Rs. ${price}</div>
+            </div>
+            <div class="addBtns">
+                <button data-id="${data[i].id}" onclick="settols(this)" class="cart1">Add to Cart</button>
+                <button id="${data[i].id}" onclick="addToWishList(this)" class="cart1">Add to Wishlist</button>
             </div>
         </div>`
         
@@ -421,12 +428,14 @@ function displaySkincareData(data){
         <div class="displayCard" id=${data[i].id} onmouseover="showItemsOnCard(this)" onmouseout="removeItemsOnCard(this)">
             <div class="productImage"><img class="img" src="${img}" alt=""></div>
             <div class="productTitle" id=${data[i].id} onClick="testClick(this)"><label id="titleUnderline">${title}</label></div>
-            <div class="flat" id="${data[i].id}" onClick="addToWishList(this)"><i class="far fa-heart"></i></div>
-            <div class="plain" id="${data[i].id}" onClick="viewProductModal(this)"><i class="fas fa-search-plus"></i></div>
-            <button data-id="${data[i].id}" onclick="settols(this)" class="cart1">Add to Cart</button>
+            <div class="prod_detail" id="${data[i].id}" onClick="viewProductModal(this)"><i class="fas fa-search-plus"></i></div>
             <div class="productFinalSalePrice">
                 <div class="productActualPrice"><label id="priceStriked">Rs. ${mrp}</label></div>
                 <div class="productSalePrice">Rs. ${price}</div>
+            </div>
+            <div class="addBtns">
+                <button data-id="${data[i].id}" onclick="settols(this)" class="cart1">Add to Cart</button>
+                <button id="${data[i].id}" onclick="addToWishList(this)" class="cart1">Add to Wishlist</button>
             </div>
         </div>`
         
@@ -517,12 +526,14 @@ function displaySearchData(Sdata, val){
             <div class="displayCard" id=${Sdata[i].id} onmouseover="showItemsOnCard(this)" onmouseout="removeItemsOnCard(this)">
             <div class="productImage"><img class="img" src="${img}" alt=""></div>
             <div class="productTitle" id=${Sdata[i].id} onClick="testClick(this)"><label id="titleUnderline">${title}</label></div>
-            <div class="flat" id="${Sdata[i].id}" onClick="addToWishList(this)"><i class="far fa-heart"></i></div>
-            <div class="plain" id="${Sdata[i].id}" onClick="viewProductModal(this)"><i class="fas fa-search-plus"></i></div>
-            <button data-id="${Sdata[i].id}" onclick="settols(this)" class="cart1">Add to Cart</button>
+            <div class="prod_detail" id="${Sdata[i].id}" onClick="viewProductModal(this)"><i class="fas fa-search-plus"></i></div>
             <div class="productFinalSalePrice">
                 <div class="productActualPrice"><label id="priceStriked">Rs. ${mrp}</label></div>
                 <div class="productSalePrice">Rs. ${price}</div>
+            </div>
+            <div class="addBtns">
+                <button id="${data[i].id}" onclick="addToWishList(this)" class="cart1">Add to Wishlist</button>
+                <button data-id="${Sdata[i].id}" onclick="settols(this)" class="cart1">Add to Cart</button>
             </div>
         </div>`
             
@@ -574,12 +585,14 @@ function displayClearance(data){
         <div class="displayCard" id=${data[i].id} onmouseover="showItemsOnCard(this)" onmouseout="removeItemsOnCard(this)">
             <div class="productImage"><img class="img" src="${img}" alt=""></div>
             <div class="productTitle" id=${data[i].id} onClick="testClick(this)"><label id="titleUnderline">${title}</label></div>
-            <div class="flat" id="${data[i].id}" onClick="addToWishList(this)"><i class="far fa-heart"></i></div>
-            <div class="plain" id="${data[i].id}" onClick="viewProductModal(this)"><i class="fas fa-search-plus"></i></div>
-            <button data-id="${data[i].id}" onclick="settols(this)" class="cart1">Add to Cart</button>
+            <div class="prod_detail" id="${data[i].id}" onClick="viewProductModal(this)"><i class="fas fa-search-plus"></i></div>
             <div class="productFinalSalePrice">
                 <div class="productActualPrice"><label id="priceStriked">Rs. ${mrp}</label></div>
                 <div class="productSalePrice">Rs. ${price}</div>
+            </div>
+            <div class="addBtns">
+                <button data-id="${data[i].id}" onclick="settols(this)" class="cart1">Add to Cart</button>
+                <button id="${data[i].id}" onclick="addToWishList(this)" class="cart1">Add to Wishlist</button>
             </div>
         </div>`
         

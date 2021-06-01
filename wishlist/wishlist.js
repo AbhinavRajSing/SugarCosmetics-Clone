@@ -1,7 +1,7 @@
 // ------------------------------------------------wishlist code starts Here------------------------------------------------
 window.addEventListener('load', execute)
-let wishlist_active = document.querySelector('.wishlist_active')
-let cart_active = document.querySelector('.cart_active')
+let wishlist_active = document.querySelector('.wishlist_active') //wishlist icon
+let cart_active = document.querySelector('.cart_active')        // cart icon
 
 function execute(e){
     e.preventDefault()
@@ -9,13 +9,13 @@ function execute(e){
 }
 
 // get data from local storage
-let addedC = localStorage.getItem("cart-products")
-let added = localStorage.getItem("add-wishlist")
+let addedC = localStorage.getItem("cart-products")  // getting data from ls
+let added = localStorage.getItem("add-wishlist")    
 let added_prod = JSON.parse(added)
 let added_prodC = JSON.parse(addedC)
 function getPurchaseData(){
     // console.log(added_prod)
-    if(added_prod !== null && added_prodC == null){
+    if(added_prod !== null && added_prodC == null){     //if products are present the  show products
         document.querySelector('.empty-cart').style.display = 'none'
         wishlist_active.style.display = "block"
         wishlist_active.textContent = (added_prod.length)
@@ -32,10 +32,10 @@ function getPurchaseData(){
         cart_active.style.display = "block"
         cart_active.textContent = added_prodC.length
     } else {
-        document.querySelector('.empty-cart').style.display = 'block'
+        document.querySelector('.empty-cart').style.display = 'block'   // prod is not present then show empty
     }
 }
-// show data on page
+// show added products on page
 let display = document.querySelector('.data')
 function showWishlistData(data){
     // console.log(data)

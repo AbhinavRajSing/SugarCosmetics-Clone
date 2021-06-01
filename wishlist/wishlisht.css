@@ -1,4 +1,4 @@
-/* ---------------------------------------------Cart Code starts here----------------------------------------------- */
+/* ---------------------------------------------wishlist Code starts here----------------------------------------------- */
 
 .title{
     text-align: center;
@@ -58,7 +58,6 @@
     background-color: rgb(209, 209, 209);
     transition: 0.6s;
 }
-/* // ------------------------------------------------wishlist code starts Here------------------------------------------------ */
 .wishlist_active {
     width: 14px;
     height: 14px;
@@ -129,8 +128,9 @@
     padding: 10px 20px;
 }
 .add_cart:hover{
-    background-color: #a2d8a2;
     color: black;
+    background-color: rgb(209, 209, 209);
+    transition: 0.6s;
 }
 .delete{
     border-radius: 10px;

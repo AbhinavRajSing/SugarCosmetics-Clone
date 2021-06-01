@@ -443,15 +443,20 @@ body{
     position: relative;
 }
 
-/* .displayCard:hover .flat, .displayCard:hover .plain{
+/* .displayCard:hover .wish_icon, .displayCard:hover .prod_detail{
     display: block;
 } */
 
 .productImage{
     width: 100%;
-    height: 70%;
+    height:70%;
     /* position: absolute; */
     /* border: 1px solid black; */
+}
+.productImageF{
+    width: 100%;
+    height:80%;
+   
 }
 
 .productTitle{
@@ -481,22 +486,23 @@ body{
     margin-left: 3.8%;
 }
 
-.flat, .plain{
+.prod_detail{
     width: 35px;
     height: 35px;
     /* border: 1px solid black; */
     position: absolute;
     top: 2px;
-    right: 25px;
-    display: none;
-}
-
-.flat>i, .plain>i{
+    right: 20px;
     font-size: 20px;
+    /* display: none; */
 }
 
-.plain{
-    top: 45px;
+.prod_detail:hover{
+    color: rgb(252, 143, 161);
+}
+.addBtns {
+    display: flex;
+    justify-content: space-between;
 }
 
 .display__Featured>p, .display__Clearance>p, .display__JustIn__page>p, .diaplay__DaySpecial>p, .display__Skincare>p,
@@ -663,14 +669,20 @@ body{
 }
 
 .cart1{
-    margin:0px auto;
-    width:100%;
+    margin:2px auto;
+    width:40%;
+    padding: 5px;
     background-color: black;
     color:white;
     border:none;
-    display:none
+    cursor: pointer;
+    /* display:none */
 }
-
+.cart1:hover{
+    background-color: rgb(199, 199, 199);
+    color:black;
+    transition: 0.3s;
+}
 .modal {
     display: none;
     position: fixed;
@@ -1140,6 +1152,7 @@ body{
 }
 
 /* ---------------------------------------------ChatBot Code Ends here----------------------------------------------- */
+/* --------------------------------------------->Login Code starts here----------------------------------------------- */
 
 .hideSide {
     display: none;

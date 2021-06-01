@@ -127,6 +127,11 @@
     font-weight: bold;
     cursor: pointer;
 }
+.checkout:hover{
+    background-color: rgb(187, 187, 187);
+    color: black;
+    transition: 0.3s;
+}
 .added_items {
     /* border: 1px solid brown; */
     width: 70%;
@@ -280,7 +285,7 @@ td img {
     position: relative;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: white;
-    width: 60%;
+    width: 50%;
     height: 40%;
     padding: 10px;
     align-items: center;
@@ -295,6 +300,7 @@ td img {
 }
 .deliAddress >div{
     width: 30%;
+    font-size: 20px;
 }
 .modal button {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -306,10 +312,13 @@ td img {
 }
 .modal-close{
     position: absolute;
-    top: 10px;
+    top: 2px;
     right: 10px;
     font-weight: bold;
     cursor: pointer;
+}
+.modal-close:hover{
+    color: red;
 }
 .modal_text {
     width: 270px;

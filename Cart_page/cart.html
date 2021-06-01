@@ -20,7 +20,7 @@
             <div class="Header__Search__searchicon"><i class="fas fa-search"></i></div>
         </div>
         <div class="Header__Login"> 
-            <a id="loginLink" class="Header__Login__P">Login / Register</a>
+            <a id="loginLink" class="Header__Login__P" href="../Login/login.html">Login / Register</a>
         </div>
         <div class="Header__LikeCart">
             <div>
@@ -114,6 +114,7 @@
     <!-- Header Code Ends here -->
     <!-- Cart Page start here -->
     <div class="container">
+        
         <div class="title">
             <h1>CART</h1>
             <div class="address">
@@ -125,10 +126,10 @@
                 <p>Cart</p>
             </div>
         </div>
-        <div class="pink_offer">SHOP FOR <span style="color: black;">RS 401/-</span> MORE AND GET A METTLE LIPSTICK OR 
-            BRONZE POUCH + MIRROR WORTH UP TO RS 1198/-</div>
+        <div class="pink_offer">SHOP FOR <span style="color: black;">RS 4999/-</span> AND GET A METTLE LIPSTICK OR 
+            BRONZE POUCH + MIRROR WORTH UP TO RS 1198/-</div>  <!--offer Ads-->
         <div class="total_box">
-            <h2>CART TOTAL</h2>
+            <h2>CART TOTAL</h2>     <!-- cart total section -->
             <div class="total_amt_box">
                 <div class="sub_total">
                     <h4>Subtotal:</h4>
@@ -150,10 +151,11 @@
                     </div>
                 </div>
             </div>
-            <div class="free_ship" id="freeShip">CONGRATULATIONS! YOU'VE GOT FREE SHIPPING</div>
+            <div class="free_ship" id="freeShip">CONGRATULATIONS! YOU'VE GOT FREE SHIPPING</div>  <!--free shipping info -->
             <div class="offer" id="offer">SHOP ABOVE RS 1999 AND GET FREE SHIPPING</div>
-            <div class="checkout" id="checkout">CHECKOUT</div>
+            <div class="checkout" id="checkout">CHECKOUT</div>  <!--checkout button -->
         </div>
+        <!-- modal to show user details after checkout -->
         <div class="modal-bg">
             <div class="modal">
                 <div class="deliAddress">
@@ -204,9 +206,13 @@
                 </div>
             </div>
         </div>
+        <!-- Cart main container section to show added products detail with their price & quantity -->
         <div class="displayData">
-            <div class="added_items"></div>
+            <div class="added_items">
+                <!-- show added products -->
+            </div>
             <div class="empty-cart">
+                <!-- show empty cart  -->
                 <img src="https://www.omegafoods.in/images/emptycart2.jpg" alt="empty cart">
                 <h3>Your cart is empty</h3>
             </div>

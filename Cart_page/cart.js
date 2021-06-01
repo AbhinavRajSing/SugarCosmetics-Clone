@@ -48,7 +48,8 @@ checkout.addEventListener('click', ()=>{
         alert("You dont have any product to buy")
     }
     else if(userData == null){
-        alert("Please login to checkout")
+        alert("Please login to do checkout")
+        location.href = "http://127.0.0.1:5500/Login/login.html"
 
     } else {
 
@@ -303,3 +304,5 @@ let phone = document.getElementById('phone')
 let userData = JSON.parse(localStorage.getItem('userStatus'))
 address.textContent = userData[0].address;
 phone.textContent = userData[0].number
+
+

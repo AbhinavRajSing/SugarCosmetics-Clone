@@ -31,7 +31,7 @@ let list = document.getElementById("list").addEventListener("click",getItemlist)
                         html+=`<div class="cards" data-id="card${res[i].id}"  data-title="${res[i].title}" onmouseOver="showItems(${res[i].id})" onmouseout="removeItems(this)">
                                 
                                     <img src=${res[i].img}/>
-                                    <div class=inr data-id=${res[i].id} onclick="viewProductModal(this)"><i class="fa fa-search" style="font-size:20px"></i></div>
+                                    <div class="inr" data-id=${res[i].id} onclick="viewProductModal(this)"><i class="fa fa-search" style="font-size:20px"></i></div>
                                     <div class="inr1" data-id=${res[i].id} onclick="addToWishList(this)"><i class="fa fa-heart"   style="font-size:20px"></i></div>
                                     <button data-id=${res[i].id} data-title=${res[i].title} data-price=${res[i].price} data-img=${res[i].img} onclick="settols(this)" class="cart1">Add to Cart</button>
                                 <div class="title">
