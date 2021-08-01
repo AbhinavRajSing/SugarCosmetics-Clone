@@ -16,26 +16,22 @@ To create this clone following Tech stack is used by contributors.
 - In top section there is a Header which displays Dropdown menu of pages.
 - At the bottom section there is a footer, both Header & Footer are same across all the pages.
 
-![Landing page](https://tgdown.eu-gb.mybluemix.net/4553440922795968/2021-02-06_10:23:32.jpg)
+![Landing page](https://cdn.hashnode.com/res/hashnode/image/upload/v1612854799247/LGOlirZCY.png?auto=compress,format&format=webp)
 
 ## Bot On Landing Page :
 - On click Bot will be appeared and will reply User with some welcome messages.
 - If User ask relavent Questiton/Query then Bot will reply according to that.
 - If the Questiton/Query is irrelavent then bot will suggest some terms to ask.
 
-![Bot](https://tgdown.eu-gb.mybluemix.net/4551929094307776/2021-02-06_09:53:31.jpg)
+![Bot](https://cdn.hashnode.com/res/hashnode/image/upload/v1612856986962/0yjChzCbS.png?auto=compress,format&format=webp)
 
 ## Login Page :
 - Existing user can Login and new user's can Register themselves.
 - to Register and Login there are Two option, 
 1. From SideBar of Landing Page
-![Login](https://tgdown.eu-gb.mybluemix.net/4553544002011072/2021-02-06_10:29:50.jpg)
-
-2. From Dedicated Login Page
-![Login](https://tgdown.eu-gb.mybluemix.net/4553578361749440/2021-02-06_10:30:12.jpg)
+![Login](https://cdn.hashnode.com/res/hashnode/image/upload/v1612857014553/br7m_cHaY.png?auto=compress,format&format=webp)
 
 - After Login My Account Page will be visible which shows user's stored data.
-![My Account](https://tgdown.eu-gb.mybluemix.net/4551894734569408/2021-02-06_09:53:21.jpg)
 
 ## Products Pages : 
 - There are many Child pages linked to the Exercise page, but for this clone following pages are made.
@@ -49,9 +45,9 @@ To create this clone following Tech stack is used by contributors.
 ### - Wish List
 ### - Payment Mode Message
 
-![Cart](https://tgdown.eu-gb.mybluemix.net/4551860374831040/2021-02-06_09:53:09.jpg)
-![Payment Mode](https://tgdown.eu-gb.mybluemix.net/4551826015092672/2021-02-06_09:53:01.jpg)
-![Final Message](https://tgdown.eu-gb.mybluemix.net/4551791655354304/2021-02-06_09:52:48.jpg)
+![Cart](https://cdn.hashnode.com/res/hashnode/image/upload/v1612857495403/ZyYTLWwWX.png?auto=compress,format&format=webp)
+![Wishlist](https://cdn.hashnode.com/res/hashnode/image/upload/v1612857039595/ycUirlAR9.png?auto=compress,format&format=webp)
+![Final Message](https://cdn.hashnode.com/res/hashnode/image/upload/v1612857105623/Tn9Pi4ZUY.png?auto=compress,format&format=webp)
 
 *** 
 ## Team Members and Contributors
