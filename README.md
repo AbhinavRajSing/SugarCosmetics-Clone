@@ -10,6 +10,18 @@ To create this clone following Tech stack is used by contributors.
 ![alt Icons](https://user-images.githubusercontent.com/30186107/29488525-f55a69d0-84da-11e7-8a39-5476f663b5eb.png)
 ***
 
+## How to run the project 📑
+
+You can also take the glimpse of our Project,just follow the below steps:
+
+    1.Clone the repo using https://github.com/AbhinavRajSing/SugarCosmetics-Clone.git.
+    
+    2.Oprn the index.html page on your browser.
+
+    3.You will land in the landing page just Register and login if you have signed up before or do the signup.
+
+<br>
+
 ## Landing Page :
 - The Landing Page of Sugar Cosmetic website displays various products, offers and ads of their own.
 - There is Pagination and Live Search enabled on the Landing Page.
